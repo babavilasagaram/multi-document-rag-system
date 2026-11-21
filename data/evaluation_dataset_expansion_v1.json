@@ -1,0 +1,328 @@
+{
+  "dataset_name": "attention_is_all_you_need_retrieval_eval_v1",
+  "source": "NIPS-2017-attention-is-all-you-need-Paper.pdf",
+  "source_chunk_count": 63,
+  "judgment_scale": {
+    "0": "Not relevant; does not provide useful evidence for answering the query.",
+    "1": "Partially relevant; provides useful supporting context but is insufficient on its own.",
+    "2": "Highly relevant; directly provides evidence needed to answer the query."
+  },
+  "notes": [
+    "Initial human-review draft based on the exported chunk text.",
+    "Unlisted chunk IDs have an implicit relevance grade of 0.",
+    "Review and correct these judgments before treating this dataset as ground truth.",
+    "Chunk IDs refer to the current PostgreSQL export and may change if the database is rebuilt.",
+    "Query variants are manually authored, meaning-preserving paraphrases for a controlled query-expansion experiment.",
+    "The original query remains the canonical query; use the same variants for Candidate Pooling and RRF."
+  ],
+  "queries": [
+    {
+      "qid": "q01",
+      "query": "Why does the Transformer eliminate recurrence?",
+      "query_variants": [
+        "Why was recurrence removed from the Transformer architecture?",
+        "What advantages does the Transformer gain by not using recurrent layers?"
+      ],
+      "relevance": {
+        "61": 2,
+        "64": 2,
+        "60": 1 ,
+        "83" : 2
+      }
+    },
+    {
+      "qid": "q02",
+      "query": "How does self-attention enable parallel computation?",
+      "query_variants": [
+        "Why can self-attention process multiple sequence positions in parallel?",
+        "How does self-attention avoid sequential computation?"
+      ],
+      "relevance": {
+        "60": 1,
+        "81": 1,
+        "83": 2
+      }
+    },
+    {
+      "qid": "q03",
+      "query": "What criteria do the authors use to compare self-attention with recurrent and convolutional layers?",
+      "query_variants": [
+        "How are self-attention, recurrent layers, and convolutional layers evaluated against one another?",
+        "Which properties are considered when comparing different sequence-processing layers?"
+      ],
+
+      "relevance": {
+          "81": 2,
+          "82": 1,
+          "78": 2,
+          "83": 1
+      }
+    },
+    {
+      "qid": "q04",
+      "query": "How does scaled dot-product attention calculate attention weights?",
+      "query_variants": [
+        "How are attention scores and weights computed using scaled dot products?",
+        "What mathematical steps are involved in scaled dot-product attention?"
+      ],
+      "relevance": {
+        "69": 2,
+        "70": 2
+      }
+    },
+    {
+      "qid": "q05",
+      "query": "Why is the dot product divided by the square root of the key dimension?",
+      "query_variants": [
+        "What problem occurs with large dot products, and why is scaling necessary?",
+        "Why is the attention score normalized using the key vector dimension?"
+      ],
+      "relevance": {
+        "71": 2,
+        "70": 1
+      }
+    },
+    {
+      "qid": "q06",
+      "query": "How does multi-head attention work?",
+      "query_variants": [
+        "How are multiple attention heads constructed and combined?",
+        "How does the Transformer perform attention across several representation subspaces?"
+      ],
+      "relevance": {
+        "72": 2,
+        "73": 2,
+        "71": 1 ,
+        "69" : 1
+      }
+    },
+    {
+      "qid": "q07",
+      "query": "Why can multiple attention heads be more useful than a single attention head?",
+      "query_variants": [
+        "What advantages does multi-head attention provide over single-head attention?",
+        "Why might attending through multiple representation subspaces improve the model?"
+      ],
+      "relevance": {
+        "73": 2,
+        "72": 1
+      }
+    },
+    {
+      "qid": "q08",
+      "query": "What are the three ways attention is used in the Transformer?",
+      "query_variants": [
+        "What different roles does attention perform in the Transformer architecture?",
+        "Where are attention mechanisms applied in the encoder and decoder?"
+      ],
+      "relevance": {
+        "74": 2,
+        "75": 2
+      }
+    },
+    {
+      "qid": "q09",
+      "query": "How does masked self-attention prevent the decoder from using future tokens?",
+      "query_variants": [
+        "Why is future-token information blocked during decoder self-attention?",
+        "How does the decoder restrict each position from attending to subsequent positions?"
+      ],
+      "relevance": {
+        "68": 2,
+        "75": 2
+      }
+    },
+    {
+      "qid": "q10",
+      "query": "What is the role and structure of the position-wise feed-forward network?",
+      "query_variants": [
+        "How is the feed-forward network applied at each sequence position?",
+        "What operations and layers make up the Transformer's position-wise feed-forward network?"
+      ],
+      "relevance": {
+        "76": 2
+      }
+    },
+    {
+      "qid": "q11",
+      "query": "How are input and output tokens converted into embeddings?",
+      "query_variants": [
+        "How are tokens represented as numerical vectors before entering the Transformer?",
+        "How does the model obtain embeddings for source and target tokens?"
+      ],
+      "relevance": {
+        "77": 2
+      }
+    },
+    {
+      "qid": "q12",
+      "query": "Why does the Transformer need positional information?",
+      "query_variants": [
+        "Why is token order information necessary in the Transformer?",
+        "How does the Transformer represent the positions of tokens in a sequence?"
+      ],
+      "relevance": {
+        "78": 2,
+        "79": 2
+      }
+    },
+    {
+      "qid": "q13",
+      "query": "Why did the authors choose sinusoidal positional encodings?",
+      "query_variants": [
+        "Why were sine and cosine functions selected for positional encoding?",
+        "What benefits motivated the choice of fixed sinusoidal position representations?"
+      ],
+      "relevance": {
+        "80": 2
+      }
+    },
+    {
+      "qid": "q14",
+      "query": "How do sinusoidal positional encodings represent token positions?",
+      "query_variants": [
+        "How are token positions encoded using sine and cosine functions?",
+        "How do sinusoidal functions assign different representations to sequence positions?"
+      ],
+      "relevance": {
+        "79": 2,
+        "80": 2
+      }
+    },
+    {
+      "qid": "q15",
+      "query": "How does self-attention help model long-range dependencies?",
+      "query_variants": [
+        "Why can self-attention capture relationships between distant tokens?",
+        "How does self-attention connect information across long distances in a sequence?"
+      ],
+      "relevance": {
+        "61": 1,
+        "82": 2,
+        "83": 2,
+        "84": 1,
+        "85": 1
+      }
+    },
+    {
+      "qid": "q16",
+      "query": "How does the computational complexity of self-attention compare with recurrence and convolution?",
+      "query_variants": [
+        "What are the computational costs of self-attention compared with recurrent and convolutional approaches?",
+        "How do different sequence-processing architectures compare in complexity and sequential operations?"
+      ],
+      "relevance": {
+        "78": 2,
+        "83": 2,
+        "84": 1,
+        "85": 1
+      }
+    },
+    {
+      "qid": "q17",
+      "query": "What training datasets were used for the English-to-German and English-to-French translation experiments?",
+      "query_variants": [
+        "Which datasets were used to train the two machine translation systems?",
+        "What training corpora supported the German and French translation experiments?"
+      ],
+      "relevance": {
+        "86": 2,
+        "87": 2
+      }
+    },
+    {
+      "qid": "q18",
+      "query": "Which optimizer and learning-rate schedule did the authors use?",
+      "query_variants": [
+        "How was the Transformer optimized during training?",
+        "What optimization algorithm and learning-rate strategy were used?"
+      ],
+      "relevance": {
+        "88": 2
+      }
+    },
+    {
+      "qid": "q19",
+      "query": "What BLEU scores did the Transformer achieve on the WMT 2014 translation tasks?",
+      "query_variants": [
+        "What translation performance did the Transformer achieve on the WMT 2014 benchmarks?",
+        "What were the reported BLEU results for the English-German and English-French tasks?"
+      ],
+      "relevance": {
+        "89": 2,
+        "91": 2,
+        "90": 2
+      }
+    },
+    {
+      "qid": "q20",
+      "query": "What happened when the authors replaced sinusoidal positional encodings with learned positional embeddings?",
+      "query_variants": [
+        "How did learned positional embeddings compare with fixed sinusoidal encodings?",
+        "What difference did changing the positional encoding method make to the experimental results?"
+      ],
+      "relevance": {
+        "80": 2,
+        "95": 2,
+        "96": 2
+      }
+    }
+  ],
+  "review_history": [
+    {
+      "batch": "Q1-Q5",
+      "decision": "User approved both proposed relevance changes",
+      "changes": [
+        {
+          "qid": "q02",
+          "chunk_id": "60",
+          "old_grade": 2,
+          "new_grade": 1
+        },
+        {
+          "qid": "q03",
+          "chunk_id": "78",
+          "old_grade": 1,
+          "new_grade": 2
+        }
+      ]
+    },
+    {
+      "batch": "Q6-Q10",
+      "decision": "User approved Q6-Q10 and addition of chunk 71 with grade 1 to Q6",
+      "changes": [
+        {
+          "qid": "q06",
+          "chunk_id": "71",
+          "old_grade": 0,
+          "new_grade": 1
+        }
+      ]
+    },
+    {
+      "batch": "Q11-Q15",
+      "decision": "User approved Q11-Q15 without changes",
+      "changes": []
+    },
+    {
+      "batch": "Q16-Q20",
+      "decision": "User approved both proposed changes",
+      "changes": [
+        {
+          "qid": "q19",
+          "chunk_id": "90",
+          "old_grade": 0,
+          "new_grade": 2
+        },
+        {
+          "qid": "q20",
+          "chunk_id": "80",
+          "old_grade": 1,
+          "new_grade": 2
+        }
+      ]
+    }
+  ],
+  "status": "reviewed_v1_expansion_v1",
+  "reviewed_question_count": 20
+}

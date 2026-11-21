@@ -1,0 +1,1061 @@
+{
+    "dataset": "attention_is_all_you_need_retrieval_eval_v1",
+    "dataset_status": "reviewed_v1_expansion_v1",
+    "k": 5,
+    "top_k_per_query": 5,
+    "strategies": {
+        "Baseline": {
+            "average_metrics": {
+                "recall": 0.6950000000000001,
+                "precision": 0.31000000000000005,
+                "mrr": 0.7375,
+                "hit": 0.95,
+                "ndcg": 0.6298554133182858
+            },
+            "per_question": [
+                {
+                    "qid": "q01",
+                    "retrieved_ids": [
+                        74,
+                        61,
+                        66,
+                        64,
+                        100
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.4,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.46674505588720844
+                    }
+                },
+                {
+                    "qid": "q02",
+                    "retrieved_ids": [
+                        81,
+                        63,
+                        60,
+                        74,
+                        80
+                    ],
+                    "metrics": {
+                        "recall": 0.6666666666666666,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.3631143808977028
+                    }
+                },
+                {
+                    "qid": "q03",
+                    "retrieved_ids": [
+                        83,
+                        81,
+                        85,
+                        80,
+                        63
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.49674701470413135
+                    }
+                },
+                {
+                    "qid": "q04",
+                    "retrieved_ids": [
+                        69,
+                        71,
+                        70,
+                        57,
+                        72
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.9197207891481876
+                    }
+                },
+                {
+                    "qid": "q05",
+                    "retrieved_ids": [
+                        72,
+                        71,
+                        69,
+                        70,
+                        57
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.4,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.639909328045346
+                    }
+                },
+                {
+                    "qid": "q06",
+                    "retrieved_ids": [
+                        74,
+                        73,
+                        63,
+                        68,
+                        114
+                    ],
+                    "metrics": {
+                        "recall": 0.25,
+                        "precision": 0.2,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.325027967813913
+                    }
+                },
+                {
+                    "qid": "q07",
+                    "retrieved_ids": [
+                        73,
+                        74,
+                        71,
+                        63,
+                        69
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.2,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.8262346571285599
+                    }
+                },
+                {
+                    "qid": "q08",
+                    "retrieved_ids": [
+                        74,
+                        66,
+                        102,
+                        114,
+                        68
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.2,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.6131471927654584
+                    }
+                },
+                {
+                    "qid": "q09",
+                    "retrieved_ids": [
+                        68,
+                        75,
+                        74,
+                        67,
+                        81
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q10",
+                    "retrieved_ids": [
+                        75,
+                        82,
+                        66,
+                        76,
+                        68
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.2,
+                        "mrr": 0.25,
+                        "hit": 1,
+                        "ndcg": 0.4306765580733931
+                    }
+                },
+                {
+                    "qid": "q11",
+                    "retrieved_ids": [
+                        77,
+                        76,
+                        65,
+                        96,
+                        79
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.2,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q12",
+                    "retrieved_ids": [
+                        74,
+                        66,
+                        90,
+                        93,
+                        94
+                    ],
+                    "metrics": {
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
+                    }
+                },
+                {
+                    "qid": "q13",
+                    "retrieved_ids": [
+                        79,
+                        80,
+                        68,
+                        75,
+                        74
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.2,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.6309297535714574
+                    }
+                },
+                {
+                    "qid": "q14",
+                    "retrieved_ids": [
+                        79,
+                        80,
+                        68,
+                        65,
+                        75
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q15",
+                    "retrieved_ids": [
+                        82,
+                        81,
+                        80,
+                        86,
+                        85
+                    ],
+                    "metrics": {
+                        "recall": 0.4,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.5453589439103887
+                    }
+                },
+                {
+                    "qid": "q16",
+                    "retrieved_ids": [
+                        81,
+                        83,
+                        78,
+                        85,
+                        80
+                    ],
+                    "metrics": {
+                        "recall": 0.75,
+                        "precision": 0.6,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.6565619062195633
+                    }
+                },
+                {
+                    "qid": "q17",
+                    "retrieved_ids": [
+                        98,
+                        86,
+                        55,
+                        91,
+                        92
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.2,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.3868528072345416
+                    }
+                },
+                {
+                    "qid": "q18",
+                    "retrieved_ids": [
+                        88,
+                        107,
+                        87,
+                        71,
+                        91
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.2,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q19",
+                    "retrieved_ids": [
+                        91,
+                        90,
+                        89,
+                        55,
+                        56
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.6,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q20",
+                    "retrieved_ids": [
+                        79,
+                        80,
+                        76,
+                        77,
+                        75
+                    ],
+                    "metrics": {
+                        "recall": 0.3333333333333333,
+                        "precision": 0.2,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.2960819109658653
+                    }
+                }
+            ]
+        },
+        "Candidate Pooling": {
+            "average_metrics": {
+                "recall": 0.7516666666666667,
+                "precision": 0.34,
+                "mrr": 0.7266666666666667,
+                "hit": 1.0,
+                "ndcg": 0.6638930903799806
+            },
+            "per_question": [
+                {
+                    "qid": "q01",
+                    "retrieved_ids": [
+                        66,
+                        83,
+                        74,
+                        64,
+                        61
+                    ],
+                    "metrics": {
+                        "recall": 0.75,
+                        "precision": 0.6,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.636828478670413
+                    }
+                },
+                {
+                    "qid": "q02",
+                    "retrieved_ids": [
+                        63,
+                        81,
+                        60,
+                        83,
+                        74
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.6,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.5865409417085417
+                    }
+                },
+                {
+                    "qid": "q03",
+                    "retrieved_ids": [
+                        83,
+                        81,
+                        85,
+                        80,
+                        63
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.49674701470413135
+                    }
+                },
+                {
+                    "qid": "q04",
+                    "retrieved_ids": [
+                        69,
+                        71,
+                        70,
+                        72,
+                        57
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.9197207891481876
+                    }
+                },
+                {
+                    "qid": "q05",
+                    "retrieved_ids": [
+                        71,
+                        72,
+                        69,
+                        70,
+                        68
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.944847956559586
+                    }
+                },
+                {
+                    "qid": "q06",
+                    "retrieved_ids": [
+                        74,
+                        73,
+                        66,
+                        63,
+                        69
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.4,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.39145796315903386
+                    }
+                },
+                {
+                    "qid": "q07",
+                    "retrieved_ids": [
+                        73,
+                        74,
+                        71,
+                        63,
+                        69
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.2,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.8262346571285599
+                    }
+                },
+                {
+                    "qid": "q08",
+                    "retrieved_ids": [
+                        68,
+                        74,
+                        102,
+                        66,
+                        67
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.2,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.3868528072345416
+                    }
+                },
+                {
+                    "qid": "q09",
+                    "retrieved_ids": [
+                        68,
+                        75,
+                        74,
+                        81,
+                        67
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q10",
+                    "retrieved_ids": [
+                        66,
+                        82,
+                        75,
+                        74,
+                        76
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.2,
+                        "mrr": 0.2,
+                        "hit": 1,
+                        "ndcg": 0.38685280723454163
+                    }
+                },
+                {
+                    "qid": "q11",
+                    "retrieved_ids": [
+                        77,
+                        65,
+                        76,
+                        87,
+                        96
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.2,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q12",
+                    "retrieved_ids": [
+                        74,
+                        79,
+                        66,
+                        65,
+                        90
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.2,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.3868528072345416
+                    }
+                },
+                {
+                    "qid": "q13",
+                    "retrieved_ids": [
+                        79,
+                        80,
+                        297,
+                        68,
+                        75
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.2,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.6309297535714574
+                    }
+                },
+                {
+                    "qid": "q14",
+                    "retrieved_ids": [
+                        79,
+                        80,
+                        68,
+                        65,
+                        75
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q15",
+                    "retrieved_ids": [
+                        82,
+                        81,
+                        80,
+                        63,
+                        74
+                    ],
+                    "metrics": {
+                        "recall": 0.2,
+                        "precision": 0.2,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.48306700197788277
+                    }
+                },
+                {
+                    "qid": "q16",
+                    "retrieved_ids": [
+                        81,
+                        83,
+                        80,
+                        85,
+                        78
+                    ],
+                    "metrics": {
+                        "recall": 0.75,
+                        "precision": 0.6,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.5982733219195984
+                    }
+                },
+                {
+                    "qid": "q17",
+                    "retrieved_ids": [
+                        98,
+                        112,
+                        86,
+                        103,
+                        113
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.2,
+                        "mrr": 0.3333333333333333,
+                        "hit": 1,
+                        "ndcg": 0.3065735963827292
+                    }
+                },
+                {
+                    "qid": "q18",
+                    "retrieved_ids": [
+                        88,
+                        93,
+                        89,
+                        90,
+                        92
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.2,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q19",
+                    "retrieved_ids": [
+                        90,
+                        91,
+                        89,
+                        55,
+                        93
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.6,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q20",
+                    "retrieved_ids": [
+                        79,
+                        80,
+                        76,
+                        77,
+                        68
+                    ],
+                    "metrics": {
+                        "recall": 0.3333333333333333,
+                        "precision": 0.2,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.2960819109658653
+                    }
+                }
+            ]
+        },
+        "RRF": {
+            "average_metrics": {
+                "recall": 0.7516666666666667,
+                "precision": 0.34,
+                "mrr": 0.76,
+                "hit": 1.0,
+                "ndcg": 0.6838436108406805
+            },
+            "per_question": [
+                {
+                    "qid": "q01",
+                    "retrieved_ids": [
+                        74,
+                        66,
+                        61,
+                        64,
+                        83
+                    ],
+                    "metrics": {
+                        "recall": 0.75,
+                        "precision": 0.6,
+                        "mrr": 0.3333333333333333,
+                        "hit": 1,
+                        "ndcg": 0.5792639988084543
+                    }
+                },
+                {
+                    "qid": "q02",
+                    "retrieved_ids": [
+                        63,
+                        81,
+                        60,
+                        74,
+                        83
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.6,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.5547148733996122
+                    }
+                },
+                {
+                    "qid": "q03",
+                    "retrieved_ids": [
+                        83,
+                        81,
+                        85,
+                        80,
+                        78
+                    ],
+                    "metrics": {
+                        "recall": 0.75,
+                        "precision": 0.6,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.6960370007394939
+                    }
+                },
+                {
+                    "qid": "q04",
+                    "retrieved_ids": [
+                        69,
+                        71,
+                        70,
+                        72,
+                        57
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.9197207891481876
+                    }
+                },
+                {
+                    "qid": "q05",
+                    "retrieved_ids": [
+                        71,
+                        72,
+                        69,
+                        70,
+                        57
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.944847956559586
+                    }
+                },
+                {
+                    "qid": "q06",
+                    "retrieved_ids": [
+                        74,
+                        73,
+                        68,
+                        114,
+                        66
+                    ],
+                    "metrics": {
+                        "recall": 0.25,
+                        "precision": 0.2,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.325027967813913
+                    }
+                },
+                {
+                    "qid": "q07",
+                    "retrieved_ids": [
+                        73,
+                        74,
+                        71,
+                        63,
+                        67
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.2,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.8262346571285599
+                    }
+                },
+                {
+                    "qid": "q08",
+                    "retrieved_ids": [
+                        74,
+                        66,
+                        68,
+                        102,
+                        67
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.2,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.6131471927654584
+                    }
+                },
+                {
+                    "qid": "q09",
+                    "retrieved_ids": [
+                        68,
+                        75,
+                        74,
+                        81,
+                        67
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q10",
+                    "retrieved_ids": [
+                        75,
+                        66,
+                        76,
+                        82,
+                        74
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.2,
+                        "mrr": 0.3333333333333333,
+                        "hit": 1,
+                        "ndcg": 0.5
+                    }
+                },
+                {
+                    "qid": "q11",
+                    "retrieved_ids": [
+                        77,
+                        65,
+                        76,
+                        96,
+                        79
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.2,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q12",
+                    "retrieved_ids": [
+                        74,
+                        66,
+                        90,
+                        93,
+                        79
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.2,
+                        "mrr": 0.2,
+                        "hit": 1,
+                        "ndcg": 0.23719771276929622
+                    }
+                },
+                {
+                    "qid": "q13",
+                    "retrieved_ids": [
+                        79,
+                        80,
+                        75,
+                        68,
+                        74
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.2,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.6309297535714574
+                    }
+                },
+                {
+                    "qid": "q14",
+                    "retrieved_ids": [
+                        79,
+                        80,
+                        65,
+                        68,
+                        59
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.4,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q15",
+                    "retrieved_ids": [
+                        82,
+                        80,
+                        81,
+                        86,
+                        63
+                    ],
+                    "metrics": {
+                        "recall": 0.2,
+                        "precision": 0.2,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.48306700197788277
+                    }
+                },
+                {
+                    "qid": "q16",
+                    "retrieved_ids": [
+                        83,
+                        81,
+                        78,
+                        80,
+                        85
+                    ],
+                    "metrics": {
+                        "recall": 0.75,
+                        "precision": 0.6,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.8391657063511034
+                    }
+                },
+                {
+                    "qid": "q17",
+                    "retrieved_ids": [
+                        98,
+                        86,
+                        55,
+                        91,
+                        112
+                    ],
+                    "metrics": {
+                        "recall": 0.5,
+                        "precision": 0.2,
+                        "mrr": 0.5,
+                        "hit": 1,
+                        "ndcg": 0.3868528072345416
+                    }
+                },
+                {
+                    "qid": "q18",
+                    "retrieved_ids": [
+                        88,
+                        107,
+                        71,
+                        93,
+                        89
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.2,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 1.0
+                    }
+                },
+                {
+                    "qid": "q19",
+                    "retrieved_ids": [
+                        91,
+                        55,
+                        90,
+                        89,
+                        56
+                    ],
+                    "metrics": {
+                        "recall": 1.0,
+                        "precision": 0.6,
+                        "mrr": 1.0,
+                        "hit": 1,
+                        "ndcg": 0.9060254355346824
+                    }
+                },
+                {
+                    "qid": "q20",
+                    "retrieved_ids": [
+                        79,
+                        75,
+                        80,
+                        76,
+                        77
+                    ],
+                    "metrics": {
+                        "recall": 0.3333333333333333,
+                        "precision": 0.2,
+                        "mrr": 0.3333333333333333,
+                        "hit": 1,
+                        "ndcg": 0.23463936301137825
+                    }
+                }
+            ]
+        }
+    }
+}

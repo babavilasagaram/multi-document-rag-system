@@ -1,0 +1,50 @@
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# IDE files
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local database backups
+*.dump
+*.backup
+
+# Model and embedding cache
+.cache/
+models/
+
+# Source documents
+data/*.pdf
+
+# Extracted document content
+data/chunks_export.csv
+
+# Evaluation outputs containing extracted document passages
+evaluation/controlled_prompt_comparison_results.json
+evaluation/generation_quality_review.json
+
+# Evaluation datasets/results containing source-derived answers
+data/generation_evaluation_dataset.json
+evaluation/generation_evaluation_results.json
+evaluation/prompt_comparison_results.json
+evaluation/test_questions.json
