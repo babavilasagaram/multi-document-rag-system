@@ -1,103 +1,179 @@
 # Multi-Document RAG System
 
-A Retrieval-Augmented Generation (RAG) application that processes multiple PDF documents, stores their embeddings in PostgreSQL using pgvector, retrieves relevant document chunks, and generates context-grounded answers with source citations.
+A multi-document Retrieval-Augmented Generation (RAG) system built with Python, LangChain, PostgreSQL, pgvector and Groq.
+
+The project explores the complete RAG workflow: PDF processing, document chunking, embedding generation, vector storage, semantic retrieval, query expansion, Reciprocal Rank Fusion (RRF), grounded answer generation and citation validation.
+
+Rather than focusing only on building a working RAG pipeline, this project also investigates how retrieval strategies and generation prompts affect answer quality.
 
 ## 1. Project Overview
 
-This project explores the implementation and evaluation of a multi-document RAG pipeline.
+The system retrieves information from multiple PDF documents and generates answers grounded in the retrieved content.
 
-The system supports:
+### Key Features
 
-- PDF text extraction and document chunking.
-- Semantic embeddings using Hugging Face.
-- Vector storage using PostgreSQL and pgvector.
-- Document version identification using SHA-256 hashing.
+- Multi-document PDF ingestion.
+- PDF text extraction using PyMuPDF.
+- Wide-page PDF handling using separate left/right extraction.
+- Recursive text chunking with configurable overlap.
+- Semantic embeddings using Sentence Transformers.
+- PostgreSQL vector storage with pgvector.
+- SHA-256-based document version identification.
+- Extraction-version-aware re-ingestion.
 - Idempotent document ingestion.
-- Single-query and multi-query retrieval.
+- Single-query semantic retrieval.
+- Multi-query retrieval.
 - Reciprocal Rank Fusion (RRF).
 - LLM-based answer generation using Groq.
-- Citation validation and source formatting.
+- Numbered source citations with page references.
+- Citation reference validation.
 - Retrieval and generation evaluation experiments.
 
-## 2. Architecture
+## 2. System Architecture
 
-### Document Ingestion
+The project consists of two primary workflows.
 
-PDF → Text Extraction → Chunking → Embeddings → PostgreSQL/pgvector
+### A. Document Ingestion
+
+PDF Documents → Text Extraction → Chunking → Embedding Generation → PostgreSQL / pgvector
 
 The ingestion pipeline:
 
-1. Loads PDF documents.
-2. Extracts page content and metadata.
-3. Splits content using RecursiveCharacterTextSplitter.
-4. Generates embeddings using `all-MiniLM-L6-v2`.
-5. Stores document chunks and embeddings in PostgreSQL.
+1. Loads PDF documents using PyMuPDF.
+2. Extracts text page by page while preserving source and page metadata.
+3. Detects wide pages and extracts their left and right halves separately.
+4. Splits extracted text into smaller chunks.
+5. Generates 384-dimensional embeddings.
+6. Stores document information, chunks and embeddings in PostgreSQL.
 
-**Chunking configuration:**
-- Chunk size: 800 characters
-- Chunk overlap: 150 characters
-- Splitting strategy: Recursive character splitting
+**Chunking configuration**
 
-### Document Versioning
+| Parameter | Value |
+|---|---|
+| Chunk size | 800 characters |
+| Chunk overlap | 150 characters |
+| Chunking method | RecursiveCharacterTextSplitter |
+| Embedding model | all-MiniLM-L6-v2 |
+| Embedding dimensions | 384 |
 
-The ingestion pipeline calculates a SHA-256 hash for each PDF.
+### B. Question Answering
 
-This supports:
-- Identifying unchanged documents.
-- Skipping already-ingested document versions.
-- Replacing chunks when a document changes.
-- Maintaining document-level ingestion consistency.
+User Question → Query Embedding → Vector Retrieval → Context Preparation → LLM Generation → Citation Validation → Final Answer
 
-### Retrieval
+The question-answering pipeline:
 
-The system converts user questions into embeddings and searches PostgreSQL using pgvector's cosine-distance operator.
+1. Converts the user's question into an embedding.
+2. Retrieves relevant document chunks using vector similarity.
+3. Optionally retrieves results from multiple query variations.
+4. Combines rankings using Reciprocal Rank Fusion.
+5. Passes retrieved context to the language model.
+6. Generates an answer using the supplied document context.
+7. Validates citation references and formats source information.
 
-Two retrieval approaches are implemented:
+## 3. Document Ingestion and Versioning
 
-**Single-query retrieval**
+The ingestion pipeline uses SHA-256 hashing to identify document versions.
 
-Retrieves the top-ranked document chunks for one query.
+It combines the original PDF hash with an extraction version identifier.
 
-**Multi-query retrieval**
+- If the PDF and extraction version are unchanged, ingestion skips the document.
+- If the PDF changes, the document is reprocessed.
+- If the extraction logic version changes, the document is also reprocessed.
+- Existing chunks are replaced when a new version is ingested.
 
-Processes multiple query variations independently and combines their rankings using Reciprocal Rank Fusion (RRF).
+This helps prevent unnecessary embedding generation and keeps stored chunks consistent with the extraction logic.
 
-The RRF implementation uses a configurable constant, with a default value of 60.
+**Current extraction version:** `v2`
 
-### Answer Generation
+The current PDF extraction approach uses PyMuPDF. Wide pages are split into left and right extraction regions to improve reading order in two-page spreads.
 
-The generation pipeline uses:
-- Groq-hosted `openai/gpt-oss-120b`
-- LangChain prompt templates
-- LangChain output parsing
+## 4. Retrieval Strategies
 
-The model receives retrieved document context and generates an answer based on the provided material.
+The system implements two retrieval approaches.
+
+### Single-Query Retrieval
+
+The user's question is converted into an embedding, and PostgreSQL retrieves the most similar document chunks.
+
+The vector search uses pgvector's cosine-distance operator:
+
+`<=>`
+
+Similarity is calculated as:
+
+`Similarity = 1 - Cosine Distance`
+
+### Multi-Query Retrieval
+
+Instead of relying on a single formulation of a question, the system accepts multiple query variations.
+
+Each query independently retrieves relevant chunks. Their results are then combined using Reciprocal Rank Fusion.
+
+### Reciprocal Rank Fusion (RRF)
+
+RRF combines rankings from multiple retrieval results without requiring their similarity scores to be directly comparable.
+
+\[
+RRF(d)=\sum_{r \in R}\frac{1}{k+rank_r(d)}
+\]
+
+Where:
+
+- \(d\) is a document chunk.
+- \(R\) represents the retrieval rankings.
+- \(rank_r(d)\) is the position of the chunk in a ranking.
+- \(k\) is a configurable constant, defaulting to 60.
+
+The final results are ranked using their fused scores.
+
+## 5. Answer Generation and Citation Validation
+
+The generation component uses:
+
+- Groq-hosted `openai/gpt-oss-120b`.
+- LangChain prompt templates.
+- Context-grounded answer generation.
+- Configurable prompt templates.
+- Explicit abstention instructions.
+
+The model receives retrieved document chunks with numbered source references.
+
+The prompt instructs the model to:
+
+- Answer using the provided context.
+- Avoid inventing facts or references.
+- Abstain when the context does not contain the answer.
+- Use the supplied source references.
 
 ### Citation Validation
 
-Generated answers use numbered source references.
+The citation validator checks generated references before formatting them.
 
-The citation validator:
-- Checks whether citations exist.
-- Rejects invalid citation IDs.
-- Converts valid references into source and page information.
-- Preserves the configured abstention response when the answer is unavailable.
+It supports citation formats such as:
 
-## 3. Technology Stack
+- `[1]`
+- `【1】`
+- `【1†L1-L4】`
+
+Valid references are converted into source and page information.
+
+**Important limitation:** Citation validation checks reference presence and validity. It does not independently prove that a cited passage semantically supports the generated claim. Invalid or missing citations produce an error response; automatic regeneration is not implemented.
+
+## 6. Technology Stack
 
 | Technology | Purpose |
 |---|---|
 | Python | Main programming language |
-| LangChain | Prompt and model pipeline |
-| Hugging Face | Embedding generation |
+| LangChain | LLM prompt and generation pipeline |
+| Sentence Transformers | Embedding generation |
 | all-MiniLM-L6-v2 | Embedding model |
 | Groq | LLM inference |
 | PostgreSQL | Persistent storage |
 | pgvector | Vector similarity search |
-| PyMuPDF | PDF processing |
+| PyMuPDF | PDF text extraction |
 | pytest | Automated testing |
 
-## 4. Project Structure
+## 7. Project Structure
 
 ```text
 RAG/
@@ -122,21 +198,24 @@ RAG/
 │   └── retrieval/
 │       └── retriever.py
 │
+├── database/
+│   └── schema.sql
+│
 ├── data/
 │   ├── evaluation_dataset.json
 │   ├── evaluation_dataset_expansion_v1.json
-│   ├── generation_evaluation_dataset.json
 │   └── retrieval_comparison_results.json
 │
 ├── evaluation/
 │   ├── evaluate_retrieval.py
 │   ├── evaluate_multi_query.py
 │   ├── evaluate_multi_document_generation.py
-│   ├── test_questions.json
+│   ├── generation_evaluation_results.json
+│   ├── generation_quality_review.json
 │   └── ...
 │
 ├── experiments/
-│
+├── scripts/
 ├── tests/
 │
 ├── .env.example
@@ -144,16 +223,23 @@ RAG/
 └── requirements.txt
 ```
 
-## 5. Setup
+## 8. Installation and Configuration
 
-### Clone the repository
+### Prerequisites
+
+- Python 3.11 or compatible version.
+- PostgreSQL.
+- pgvector extension.
+- Groq API key.
+
+### Clone the Repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd RAG
+git clone https://github.com/babavilasagaram/multi-document-rag-system.git
+cd multi-document-rag-system
 ```
 
-### Create a virtual environment
+### Create a Virtual Environment
 
 ```bash
 python -m venv venv
@@ -165,70 +251,88 @@ Activate it on Windows PowerShell:
 .\venv\Scripts\Activate.ps1
 ```
 
-### Install dependencies
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Configure environment variables
+### Configure Environment Variables
 
 Create a `.env` file in the project root using `.env.example` as a reference.
 
-Required variables:
-
 ```env
-DATABASE_URL=postgresql://username:password@localhost:5432/database_name
-GROQ_API_KEY=your_groq_api_key_here
+DATABASE_URL=postgresql://username:password@localhost:5432/rag_db
+GROQ_API_KEY=your_groq_api_key
 ```
 
 Never commit your actual `.env` file or API keys.
 
+### Database Setup
 
-### Database setup
-
-This project requires PostgreSQL with the pgvector extension.
+The project requires PostgreSQL with the pgvector extension.
 
 1. Create a PostgreSQL database.
-2. Ensure pgvector is installed and available.
-3. Execute the schema file:
+2. Ensure pgvector is installed.
+3. Execute the database schema:
 
 ```bash
-psql -U postgres -d your_database -f database/schema.sql
+psql -U postgres -d rag_db -f database/schema.sql
 ```
 
-4. Configure the database connection in the root `.env` file.
+The schema defines:
 
-The schema creates:
+- `documents`: document source information and content hashes.
+- `document_chunks`: extracted text, metadata and 384-dimensional embeddings.
 
-- `documents`: stores document sources and SHA-256 hashes.
-- `document_chunks`: stores extracted chunks, metadata and 384-dimensional embeddings.
+Document chunks are linked to their parent documents using a foreign key.
 
-A foreign key connects chunks to their parent documents. Deleting a document also deletes its associated chunks.
+## 9. Supplying PDF Documents
 
-## 6. Running the Pipeline
+The original PDF documents used during development are intentionally not included in this GitHub repository.
 
-The ingestion pipeline exposes:
+Users must provide their own PDF documents before running the ingestion pipeline.
+
+1. Create the `data/` directory if it does not already exist.
+2. Place your PDF documents inside it.
+3. Run the ingestion pipeline on the supplied documents.
+
+Example:
+
+```text
+data/
+├── example_document_1.pdf
+├── example_document_2.pdf
+└── example_document_3.pdf
+```
+
+The project does not automatically download or provide the original development PDFs.
+
+**Important:** Do not commit private, copyrighted or sensitive documents to your own public repository unless you have permission to share them. Keep actual source documents out of Git unless redistribution is permitted.
+
+## 10. Running the Pipeline
+
+### Ingest a Single PDF
 
 ```python
-from app.ingestion.pipeline import ingest_pdf, ingest_directory
+from app.ingestion.pipeline import ingest_pdf
 
-result = ingest_pdf("data/example.pdf")
+result = ingest_pdf("data/example_document.pdf")
 print(result)
 ```
 
-For directory ingestion:
+### Ingest a Directory
 
 ```python
+from app.ingestion.pipeline import ingest_directory
+
 results = ingest_directory("data")
 print(results)
 ```
 
-Unchanged documents can be skipped based on their content hash.
+Unchanged document versions are skipped automatically.
 
-## 7. Retrieval
-
-Single-query retrieval:
+### Run Retrieval
 
 ```python
 from app.retrieval.retriever import retrieve_documents
@@ -239,7 +343,7 @@ results = retrieve_documents(
 )
 ```
 
-Multi-query retrieval:
+### Run Multi-Query Retrieval
 
 ```python
 from app.retrieval.retriever import retrieve_multi_query
@@ -256,15 +360,89 @@ results = retrieve_multi_query(
 )
 ```
 
-## 8. Testing
+## 11. Evaluation and Experimental Results
 
-Run automated tests:
+An important part of this project is evaluating retrieval and generation rather than assuming that a working pipeline produces reliable answers.
+
+### A. Retrieval Evaluation
+
+A manually judged dataset containing 20 questions about the original Transformer paper was used to compare retrieval approaches.
+
+**Historical retrieval results**
+
+| Strategy | Recall@5 | Precision@5 | MRR@5 | nDCG@5 |
+|---|---:|---:|---:|---:|
+| Baseline | 60.39% | 55.00% | 90.00% | 68.77% |
+| Candidate Pooling | 64.27% | 58.00% | **94.17%** | 72.35% |
+| RRF | **65.11%** | **59.00%** | 91.00% | **73.76%** |
+
+**Observations**
+
+- RRF achieved the highest Recall@5, Precision@5 and nDCG@5.
+- Candidate Pooling achieved the highest MRR@5.
+- Multi-query approaches improved retrieval coverage over the baseline in this experiment.
+
+**Evaluation limitations**
+
+- The dataset contains only 20 questions.
+- All questions focus on one research paper.
+- Relevance judgments were manually created using a pooled candidate set and are not exhaustive.
+- The comparison does not isolate the effect of fusion from query expansion.
+
+These results represent a historical experiment, not current retrieval performance after PDF extraction v2. Re-ingestion generated new chunk IDs, so the earlier relevance judgments cannot be used directly against the updated database without remapping and re-evaluation.
+
+### B. Generation Evaluation
+
+A manually reviewed evaluation set contained:
+
+- 16 questions.
+- 12 answerable questions.
+- 4 unanswerable questions.
+
+**Historical manual quality review**
+
+| Metric | Score |
+|---|---:|
+| Overall quality | 123/128 (96.09%) |
+| Answerable questions | 91/96 |
+| Unanswerable questions | 32/32 |
+
+The review considered:
+
+- Factual correctness.
+- Semantic faithfulness.
+- Completeness.
+- Citation accuracy.
+
+The unanswerable questions were correctly handled in all four reviewed cases.
+
+**Important:** These are manually assigned scores on a small curated evaluation set. They are not automated measures of general answer accuracy or proof of production reliability. The generation evaluation also predates the PDF extraction v2 update.
+
+The original generation evaluation dataset is not included in the tracked repository files. The reported historical results are retained for project documentation, but the experiment is not fully reproducible from the repository alone.
+
+### C. Prompt Experiments
+
+Additional experiments investigated:
+
+- Full prompt comparisons.
+- Completeness-focused instructions.
+- Context ordering.
+- Context additions.
+- Generalization of prompt changes.
+
+The experiments showed that adding more instructions does not necessarily improve answer quality. Some prompt changes improved individual responses, while others reduced the aggregate manual quality score.
+
+No experimental prompt modification was adopted into the production generator solely on the basis of an isolated improvement.
+
+## 12. Testing
+
+Run the automated test suite:
 
 ```bash
 python -m pytest -v
 ```
 
-The current verified automated test baseline contains six tests covering:
+The current verified baseline contains six automated tests covering:
 
 - Chunk generation.
 - Metadata preservation.
@@ -273,29 +451,32 @@ The current verified automated test baseline contains six tests covering:
 - Invalid citation rejection.
 - Missing citation rejection.
 
-These tests do not represent complete end-to-end RAG validation.
+Other scripts under `tests/` are used for manual checks, integration workflows, retrieval experiments and generation experiments.
 
-## 9. Evaluation and Experiments
+The six-test baseline does not represent comprehensive end-to-end validation.
 
-The repository contains evaluation datasets and scripts for investigating:
+## 13. Current Limitations
 
-- Retrieval performance.
-- Multi-query retrieval.
-- RRF ranking.
-- Prompt comparisons.
-- Generation quality.
-- Citation behavior.
-
-Performance claims should be based on the measured evaluation results, not simply on the presence of an implemented technique.
-
-## 10. Current Limitations
-
-- Automated unit-test coverage is currently limited.
+- Scanned PDFs are not supported through OCR.
+- Complex PDF layouts, tables, charts and diagrams may not be extracted accurately.
+- Wide-page extraction improves reading order for tested two-page spreads but is not a universal layout parser.
+- Citation validation does not establish semantic entailment between claims and cited passages.
+- The retrieval evaluation dataset is small and focused on one research paper.
+- Automated test coverage is limited.
 - Full clean-environment installation has not yet been verified.
-- Database-dependent integration tests require a configured PostgreSQL instance.
-- Production-scale performance and reliability have not been established.
-- Retrieval and generation quality should be assessed using the supplied evaluation methodology.
+- Production-scale performance, concurrency and reliability have not been established.
 
-## 11. Project Goal
+## 14. Project Objective
 
-The goal is to understand, implement, evaluate, and progressively improve a practical multi-document RAG system, with particular attention to retrieval quality, answer grounding, citation correctness, and reproducibility.
+The objective is to understand and implement a practical multi-document RAG system while developing the ability to evaluate its individual components.
+
+The project emphasizes:
+
+- Reliable document ingestion.
+- Retrieval quality and ranking.
+- Context-grounded answer generation.
+- Citation correctness.
+- Reproducible experiments.
+- Evidence-based engineering decisions.
+
+The focus is not simply to make a RAG application work, but to understand where it succeeds, where it fails and how its performance can be measured and improved.
