@@ -8,12 +8,13 @@
     "2": "Highly relevant; directly provides evidence needed to answer the query."
   },
   "notes": [
-    "Initial human-review draft based on the exported chunk text.",
-    "Unlisted chunk IDs have an implicit relevance grade of 0.",
-    "Review and correct these judgments before treating this dataset as ground truth.",
+    "Human relevance judgments for all 20 queries have been reviewed.",
+    "Judgments were assigned using the exported chunk text and the documented 0-2 relevance scale.",
+    "Unlisted chunk IDs are treated as grade 0 by the evaluator; not every unlisted chunk has been independently judged.",
+    "Recall and nDCG results should therefore be interpreted as provisional until unjudged candidate chunks are audited.",
     "Chunk IDs refer to the current PostgreSQL export and may change if the database is rebuilt.",
     "Query variants are manually authored, meaning-preserving paraphrases for a controlled query-expansion experiment.",
-    "The original query remains the canonical query; use the same variants for Candidate Pooling and RRF."
+    "The original query remains canonical; Candidate Pooling and RRF use the same query variants."
   ],
   "queries": [
     {
@@ -26,8 +27,19 @@
       "relevance": {
         "61": 2,
         "64": 2,
-        "60": 1 ,
-        "83" : 2
+        "60": 1,
+        "83": 2,
+        "66": 1,
+        "74": 0,
+        "100": 0,
+        "62": 1,
+        "65": 0,
+        "76": 0,
+        "81": 1,
+        "89": 0,
+        "90": 0,
+        "93": 0,
+        "101": 0
       }
     },
     {
@@ -40,7 +52,18 @@
       "relevance": {
         "60": 1,
         "81": 1,
-        "83": 2
+        "83": 2,
+        "61": 1,
+        "63": 1,
+        "74": 0,
+        "80": 0,
+        "64": 1,
+        "70": 2,
+        "71": 1,
+        "73": 1,
+        "82": 1,
+        "84": 0,
+        "106": 0
       }
     },
     {
@@ -50,12 +73,19 @@
         "How are self-attention, recurrent layers, and convolutional layers evaluated against one another?",
         "Which properties are considered when comparing different sequence-processing layers?"
       ],
-
       "relevance": {
-          "81": 2,
-          "82": 1,
-          "78": 2,
-          "83": 1
+        "81": 2,
+        "82": 1,
+        "78": 2,
+        "83": 2,
+        "63": 1,
+        "85": 1,
+        "80": 0,
+        "65": 0,
+        "74": 0,
+        "76": 0,
+        "86": 0,
+        "101": 1
       }
     },
     {
@@ -67,7 +97,16 @@
       ],
       "relevance": {
         "69": 2,
-        "70": 2
+        "70": 2,
+        "57": 0,
+        "71": 1,
+        "72": 0,
+        "56": 0,
+        "68": 1,
+        "73": 0,
+        "75": 1,
+        "80": 0,
+        "102": 0
       }
     },
     {
@@ -79,7 +118,20 @@
       ],
       "relevance": {
         "71": 2,
-        "70": 1
+        "70": 1,
+        "69": 1,
+        "57": 0,
+        "68": 0,
+        "72": 1,
+        "62": 0,
+        "73": 0,
+        "74": 0,
+        "80": 0,
+        "81": 0,
+        "88": 0,
+        "96": 0,
+        "102": 0,
+        "428": 0
       }
     },
     {
@@ -92,8 +144,17 @@
       "relevance": {
         "72": 2,
         "73": 2,
-        "71": 1 ,
-        "69" : 1
+        "71": 1,
+        "69": 1,
+        "66": 1,
+        "74": 1,
+        "63": 1,
+        "68": 1,
+        "114": 1,
+        "86": 1,
+        "102": 0,
+        "115": 1,
+        "116": 1
       }
     },
     {
@@ -105,7 +166,19 @@
       ],
       "relevance": {
         "73": 2,
-        "72": 1
+        "72": 1,
+        "63": 2,
+        "74": 0,
+        "71": 1,
+        "69": 0,
+        "67": 0,
+        "68": 0,
+        "70": 0,
+        "80": 0,
+        "83": 0,
+        "114": 1,
+        "115": 1,
+        "116": 1
       }
     },
     {
@@ -117,7 +190,19 @@
       ],
       "relevance": {
         "74": 2,
-        "75": 2
+        "75": 2,
+        "67": 1,
+        "68": 1,
+        "66": 1,
+        "102": 0,
+        "114": 0,
+        "56": 0,
+        "60": 0,
+        "76": 0,
+        "80": 0,
+        "81": 0,
+        "90": 0,
+        "99": 0
       }
     },
     {
@@ -129,7 +214,17 @@
       ],
       "relevance": {
         "68": 2,
-        "75": 2
+        "75": 2,
+        "67": 2,
+        "74": 0,
+        "81": 0,
+        "60": 0,
+        "63": 0,
+        "66": 0,
+        "80": 0,
+        "86": 0,
+        "101": 0,
+        "114": 0
       }
     },
     {
@@ -140,7 +235,20 @@
         "What operations and layers make up the Transformer's position-wise feed-forward network?"
       ],
       "relevance": {
-        "76": 2
+        "76": 2,
+        "66": 1,
+        "75": 1,
+        "82": 0,
+        "68": 0,
+        "74": 0,
+        "60": 0,
+        "65": 0,
+        "67": 0,
+        "70": 0,
+        "78": 0,
+        "81": 0,
+        "83": 0,
+        "85": 0
       }
     },
     {
@@ -151,7 +259,22 @@
         "How does the model obtain embeddings for source and target tokens?"
       ],
       "relevance": {
-        "77": 2
+        "77": 2,
+        "65": 0,
+        "76": 0,
+        "79": 0,
+        "87": 0,
+        "96": 0,
+        "59": 0,
+        "67": 0,
+        "68": 0,
+        "74": 0,
+        "86": 0,
+        "90": 0,
+        "93": 0,
+        "97": 0,
+        "98": 0,
+        "112": 0
       }
     },
     {
@@ -163,7 +286,21 @@
       ],
       "relevance": {
         "78": 2,
-        "79": 2
+        "79": 2,
+        "65": 0,
+        "66": 0,
+        "74": 0,
+        "90": 0,
+        "93": 0,
+        "94": 0,
+        "56": 0,
+        "61": 0,
+        "62": 0,
+        "68": 0,
+        "75": 0,
+        "76": 0,
+        "89": 0,
+        "102": 0
       }
     },
     {
@@ -174,7 +311,19 @@
         "What benefits motivated the choice of fixed sinusoidal position representations?"
       ],
       "relevance": {
-        "80": 2
+        "80": 2,
+        "79": 1,
+        "68": 0,
+        "74": 0,
+        "75": 0,
+        "297": 0,
+        "62": 0,
+        "65": 0,
+        "76": 0,
+        "89": 0,
+        "94": 0,
+        "96": 1,
+        "373": 0
       }
     },
     {
@@ -186,7 +335,18 @@
       ],
       "relevance": {
         "79": 2,
-        "80": 2
+        "80": 2,
+        "59": 0,
+        "65": 0,
+        "68": 0,
+        "75": 0,
+        "60": 0,
+        "74": 0,
+        "76": 0,
+        "77": 0,
+        "78": 1,
+        "81": 0,
+        "96": 0
       }
     },
     {
@@ -201,7 +361,16 @@
         "82": 2,
         "83": 2,
         "84": 1,
-        "85": 1
+        "85": 1,
+        "78": 2,
+        "81": 1,
+        "63": 1,
+        "74": 0,
+        "80": 0,
+        "86": 0,
+        "60": 1,
+        "68": 0,
+        "102": 0
       }
     },
     {
@@ -215,7 +384,17 @@
         "78": 2,
         "83": 2,
         "84": 1,
-        "85": 1
+        "85": 1,
+        "81": 1,
+        "80": 0,
+        "60": 1,
+        "62": 1,
+        "63": 0,
+        "70": 0,
+        "74": 0,
+        "82": 1,
+        "86": 0,
+        "106": 0
       }
     },
     {
@@ -227,7 +406,17 @@
       ],
       "relevance": {
         "86": 2,
-        "87": 2
+        "87": 2,
+        "55": 0,
+        "98": 0,
+        "91": 0,
+        "92": 0,
+        "112": 0,
+        "103": 0,
+        "113": 0,
+        "90": 0,
+        "101": 1,
+        "109": 0
       }
     },
     {
@@ -238,7 +427,21 @@
         "What optimization algorithm and learning-rate strategy were used?"
       ],
       "relevance": {
-        "88": 2
+        "88": 2,
+        "107": 0,
+        "87": 0,
+        "71": 0,
+        "91": 0,
+        "93": 0,
+        "89": 0,
+        "90": 0,
+        "92": 0,
+        "58": 0,
+        "66": 0,
+        "73": 0,
+        "74": 0,
+        "100": 0,
+        "377": 0
       }
     },
     {
@@ -251,7 +454,14 @@
       "relevance": {
         "89": 2,
         "91": 2,
-        "90": 2
+        "90": 2,
+        "55": 2,
+        "56": 1,
+        "93": 0,
+        "92": 0,
+        "94": 0,
+        "98": 0,
+        "101": 1
       }
     },
     {
@@ -264,7 +474,18 @@
       "relevance": {
         "80": 2,
         "95": 2,
-        "96": 2
+        "96": 2,
+        "79": 1,
+        "76": 0,
+        "77": 0,
+        "75": 0,
+        "68": 0,
+        "57": 0,
+        "65": 0,
+        "81": 0,
+        "89": 0,
+        "94": 1,
+        "112": 0
       }
     }
   ],
@@ -319,6 +540,972 @@
           "chunk_id": "80",
           "old_grade": 1,
           "new_grade": 2
+        }
+      ]
+    },
+    {
+      "batch": "Q1-Q5",
+      "decision": "User approved adding chunk 61 with grade 1 to Q02",
+      "changes": [
+        {
+          "qid": "q02",
+          "chunk_id": "61",
+          "old_grade": 0,
+          "new_grade": 1
+        }
+      ]
+    },
+    {
+      "batch": "Q11-Q15",
+      "decision": "User approved adding chunks 78 and 81 to Q15",
+      "changes": [
+        {
+          "qid": "q15",
+          "chunk_id": "78",
+          "old_grade": 0,
+          "new_grade": 2
+        },
+        {
+          "qid": "q15",
+          "chunk_id": "81",
+          "old_grade": 0,
+          "new_grade": 1
+        }
+      ]
+    },
+    {
+      "batch": "Retrieved candidate audit - 15 approved additions",
+      "decision": "User approved all 15 proposed relevance additions",
+      "changes": [
+        {
+          "qid": "q03",
+          "chunk_id": "63",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q03",
+          "chunk_id": "85",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q05",
+          "chunk_id": "69",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q06",
+          "chunk_id": "66",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q07",
+          "chunk_id": "63",
+          "old_grade": 0,
+          "new_grade": 2
+        },
+        {
+          "qid": "q08",
+          "chunk_id": "67",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q08",
+          "chunk_id": "68",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q09",
+          "chunk_id": "67",
+          "old_grade": 0,
+          "new_grade": 2
+        },
+        {
+          "qid": "q10",
+          "chunk_id": "66",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q15",
+          "chunk_id": "63",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q16",
+          "chunk_id": "81",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q17",
+          "chunk_id": "55",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q19",
+          "chunk_id": "55",
+          "old_grade": 0,
+          "new_grade": 2
+        },
+        {
+          "qid": "q19",
+          "chunk_id": "56",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q20",
+          "chunk_id": "79",
+          "old_grade": 0,
+          "new_grade": 1
+        }
+      ]
+    },
+    {
+      "batch": "Q01-Q05 retrieved candidate audit",
+      "decision": "User approved all 14 relevance judgements, including Q03 chunk 83 upgrade",
+      "changes": [
+        {
+          "qid": "q01",
+          "chunk_id": "66",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q01",
+          "chunk_id": "74",
+          "old_grade": 0,
+          "new_grade": 0
+        },
+        {
+          "qid": "q01",
+          "chunk_id": "100",
+          "old_grade": 0,
+          "new_grade": 0
+        },
+        {
+          "qid": "q02",
+          "chunk_id": "63",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q02",
+          "chunk_id": "74",
+          "old_grade": 0,
+          "new_grade": 0
+        },
+        {
+          "qid": "q02",
+          "chunk_id": "80",
+          "old_grade": 0,
+          "new_grade": 0
+        },
+        {
+          "qid": "q03",
+          "chunk_id": "80",
+          "old_grade": 0,
+          "new_grade": 0
+        },
+        {
+          "qid": "q03",
+          "chunk_id": "83",
+          "old_grade": 1,
+          "new_grade": 2
+        },
+        {
+          "qid": "q04",
+          "chunk_id": "57",
+          "old_grade": 0,
+          "new_grade": 0
+        },
+        {
+          "qid": "q04",
+          "chunk_id": "71",
+          "old_grade": 0,
+          "new_grade": 1
+        },
+        {
+          "qid": "q04",
+          "chunk_id": "72",
+          "old_grade": 0,
+          "new_grade": 0
+        },
+        {
+          "qid": "q05",
+          "chunk_id": "57",
+          "old_grade": 0,
+          "new_grade": 0
+        },
+        {
+          "qid": "q05",
+          "chunk_id": "68",
+          "old_grade": 0,
+          "new_grade": 0
+        },
+        {
+          "qid": "q05",
+          "chunk_id": "72",
+          "old_grade": 0,
+          "new_grade": 1
+        }
+      ]
+    },
+    {
+      "batch": "Q06-Q10 retrieved candidate audit",
+      "decision": "User approved all 17 relevance judgements",
+      "changes": [
+        {
+          "qid": "q06",
+          "chunk_id": "74",
+          "old_grade": null,
+          "new_grade": 1
+        },
+        {
+          "qid": "q06",
+          "chunk_id": "63",
+          "old_grade": null,
+          "new_grade": 1
+        },
+        {
+          "qid": "q06",
+          "chunk_id": "68",
+          "old_grade": null,
+          "new_grade": 1
+        },
+        {
+          "qid": "q06",
+          "chunk_id": "114",
+          "old_grade": null,
+          "new_grade": 1
+        },
+        {
+          "qid": "q07",
+          "chunk_id": "74",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q07",
+          "chunk_id": "71",
+          "old_grade": null,
+          "new_grade": 1
+        },
+        {
+          "qid": "q07",
+          "chunk_id": "69",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q07",
+          "chunk_id": "67",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q08",
+          "chunk_id": "66",
+          "old_grade": null,
+          "new_grade": 1
+        },
+        {
+          "qid": "q08",
+          "chunk_id": "102",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q08",
+          "chunk_id": "114",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q09",
+          "chunk_id": "74",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q09",
+          "chunk_id": "81",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q10",
+          "chunk_id": "75",
+          "old_grade": null,
+          "new_grade": 1
+        },
+        {
+          "qid": "q10",
+          "chunk_id": "82",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q10",
+          "chunk_id": "68",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q10",
+          "chunk_id": "74",
+          "old_grade": null,
+          "new_grade": 0
+        }
+      ]
+    },
+    {
+      "batch": "Q11-Q15 retrieved candidate audit",
+      "decision": "User approved all 23 relevance judgements",
+      "changes": [
+        {
+          "qid": "q11",
+          "chunk_id": "65",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q11",
+          "chunk_id": "76",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q11",
+          "chunk_id": "79",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q11",
+          "chunk_id": "87",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q11",
+          "chunk_id": "96",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q12",
+          "chunk_id": "65",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q12",
+          "chunk_id": "66",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q12",
+          "chunk_id": "74",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q12",
+          "chunk_id": "90",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q12",
+          "chunk_id": "93",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q12",
+          "chunk_id": "94",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q13",
+          "chunk_id": "79",
+          "old_grade": null,
+          "new_grade": 1
+        },
+        {
+          "qid": "q13",
+          "chunk_id": "68",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q13",
+          "chunk_id": "74",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q13",
+          "chunk_id": "75",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q13",
+          "chunk_id": "297",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q14",
+          "chunk_id": "59",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q14",
+          "chunk_id": "65",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q14",
+          "chunk_id": "68",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q14",
+          "chunk_id": "75",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q15",
+          "chunk_id": "74",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q15",
+          "chunk_id": "80",
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q15",
+          "chunk_id": "86",
+          "old_grade": null,
+          "new_grade": 0
+        }
+      ]
+    },
+    {
+      "batch": "Q16-Q20 candidate audit",
+      "timestamp": "2026-11-22T10:01:19",
+      "decision": "Applied approved candidate relevance judgements. Q17 chunk 55 changed from grade 1 to grade 0 because it mentions translation experiments but does not provide the dataset details required by Q17; evidence-focused relevance is the evaluation standard.",
+      "changes": [
+        {
+          "qid": "q16",
+          "chunk_id": 80,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q17",
+          "chunk_id": 98,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q17",
+          "chunk_id": 55,
+          "old_grade": 1,
+          "new_grade": 0
+        },
+        {
+          "qid": "q17",
+          "chunk_id": 91,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q17",
+          "chunk_id": 92,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q17",
+          "chunk_id": 112,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q17",
+          "chunk_id": 103,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q17",
+          "chunk_id": 113,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q18",
+          "chunk_id": 107,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q18",
+          "chunk_id": 87,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q18",
+          "chunk_id": 71,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q18",
+          "chunk_id": 91,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q18",
+          "chunk_id": 93,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q18",
+          "chunk_id": 89,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q18",
+          "chunk_id": 90,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q18",
+          "chunk_id": 92,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q19",
+          "chunk_id": 93,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q20",
+          "chunk_id": 76,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q20",
+          "chunk_id": 77,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q20",
+          "chunk_id": 75,
+          "old_grade": null,
+          "new_grade": 0
+        },
+        {
+          "qid": "q20",
+          "chunk_id": 68,
+          "old_grade": null,
+          "new_grade": 0
+        }
+      ]
+    },
+    {
+      "batch": "Q12 retrieved candidate audit",
+      "decision": "User approved all six proposed Q12 candidate judgments",
+      "changes": []
+    },
+    {
+      "batch": "Q02 candidate audit",
+      "decision": "User approved seven additional Q02 relevance judgments",
+      "changes": [
+        {
+          "qid": "q02",
+          "chunk_id": "64",
+          "old_grade": "unjudged",
+          "new_grade": 1
+        },
+        {
+          "qid": "q02",
+          "chunk_id": "70",
+          "old_grade": "unjudged",
+          "new_grade": 2
+        },
+        {
+          "qid": "q02",
+          "chunk_id": "71",
+          "old_grade": "unjudged",
+          "new_grade": 1
+        },
+        {
+          "qid": "q02",
+          "chunk_id": "73",
+          "old_grade": "unjudged",
+          "new_grade": 1
+        },
+        {
+          "qid": "q02",
+          "chunk_id": "82",
+          "old_grade": "unjudged",
+          "new_grade": 1
+        },
+        {
+          "qid": "q02",
+          "chunk_id": "84",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q02",
+          "chunk_id": "106",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        }
+      ]
+    },
+    {
+      "batch": "Q03 candidate audit",
+      "decision": "User approved five additional Q03 relevance judgments",
+      "changes": [
+        {
+          "qid": "q03",
+          "chunk_id": "65",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q03",
+          "chunk_id": "74",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q03",
+          "chunk_id": "76",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q03",
+          "chunk_id": "86",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q03",
+          "chunk_id": "101",
+          "old_grade": "unjudged",
+          "new_grade": 1
+        }
+      ]
+    },
+    {
+      "batch": "Q04 candidate audit",
+      "decision": "User approved six additional Q04 relevance judgments",
+      "changes": [
+        {
+          "qid": "q04",
+          "chunk_id": "56",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q04",
+          "chunk_id": "68",
+          "old_grade": "unjudged",
+          "new_grade": 1
+        },
+        {
+          "qid": "q04",
+          "chunk_id": "73",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q04",
+          "chunk_id": "75",
+          "old_grade": "unjudged",
+          "new_grade": 1
+        },
+        {
+          "qid": "q04",
+          "chunk_id": "80",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q04",
+          "chunk_id": "102",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        }
+      ]
+    },
+    {
+      "batch": "Q05-Q09 candidate audit",
+      "decision": "User approved all proposed relevance judgments.",
+      "changes": [
+        {
+          "qid": "q05",
+          "chunk_id": "62",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q05",
+          "chunk_id": "73",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q05",
+          "chunk_id": "74",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q05",
+          "chunk_id": "80",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q05",
+          "chunk_id": "81",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q05",
+          "chunk_id": "88",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q05",
+          "chunk_id": "96",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q05",
+          "chunk_id": "102",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q05",
+          "chunk_id": "428",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        }
+      ]
+    },
+    {
+      "batch": "Q05-Q09 candidate audit",
+      "decision": "User approved all proposed relevance judgments.",
+      "changes": [
+        {
+          "qid": "q06",
+          "chunk_id": "86",
+          "old_grade": "unjudged",
+          "new_grade": 1
+        },
+        {
+          "qid": "q06",
+          "chunk_id": "102",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q06",
+          "chunk_id": "115",
+          "old_grade": "unjudged",
+          "new_grade": 1
+        },
+        {
+          "qid": "q06",
+          "chunk_id": "116",
+          "old_grade": "unjudged",
+          "new_grade": 1
+        }
+      ]
+    },
+    {
+      "batch": "Q05-Q09 candidate audit",
+      "decision": "User approved all proposed relevance judgments.",
+      "changes": [
+        {
+          "qid": "q07",
+          "chunk_id": "68",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q07",
+          "chunk_id": "70",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q07",
+          "chunk_id": "80",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q07",
+          "chunk_id": "83",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q07",
+          "chunk_id": "114",
+          "old_grade": "unjudged",
+          "new_grade": 1
+        },
+        {
+          "qid": "q07",
+          "chunk_id": "115",
+          "old_grade": "unjudged",
+          "new_grade": 1
+        },
+        {
+          "qid": "q07",
+          "chunk_id": "116",
+          "old_grade": "unjudged",
+          "new_grade": 1
+        }
+      ]
+    },
+    {
+      "batch": "Q05-Q09 candidate audit",
+      "decision": "User approved all proposed relevance judgments.",
+      "changes": [
+        {
+          "qid": "q08",
+          "chunk_id": "56",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q08",
+          "chunk_id": "60",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q08",
+          "chunk_id": "76",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q08",
+          "chunk_id": "80",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q08",
+          "chunk_id": "81",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q08",
+          "chunk_id": "90",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q08",
+          "chunk_id": "99",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        }
+      ]
+    },
+    {
+      "batch": "Q05-Q09 candidate audit",
+      "decision": "User approved all proposed relevance judgments.",
+      "changes": [
+        {
+          "qid": "q09",
+          "chunk_id": "60",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q09",
+          "chunk_id": "63",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q09",
+          "chunk_id": "66",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q09",
+          "chunk_id": "80",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q09",
+          "chunk_id": "86",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q09",
+          "chunk_id": "101",
+          "old_grade": "unjudged",
+          "new_grade": 0
+        },
+        {
+          "qid": "q09",
+          "chunk_id": "114",
+          "old_grade": "unjudged",
+          "new_grade": 0
         }
       ]
     }
