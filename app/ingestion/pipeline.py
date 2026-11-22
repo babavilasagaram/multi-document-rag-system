@@ -9,7 +9,7 @@ from app.database.vector_store import store_embeddings
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-
+EXTRACTION_VERSION = "v2"
 
 def calculate_file_hash(file_path):
     """Calculate SHA-256 hash of the original PDF."""
@@ -38,7 +38,11 @@ def ingest_pdf(file_path):
         source = pdf_path.as_posix()
 
     # Identify the exact PDF version.
-    content_hash = calculate_file_hash(pdf_path)
+    pdf_hash = calculate_file_hash(pdf_path)
+
+    content_hash = hashlib.sha256(
+        f"{pdf_hash}:{EXTRACTION_VERSION}".encode()
+    ).hexdigest()
 
     # Load PDF.
     documents = load_pdf(str(pdf_path))

@@ -3,6 +3,42 @@ import pymupdf
 from pathlib import Path
 
 
+def extract_page_text(page):
+
+    width = page.rect.width
+    height = page.rect.height
+
+    if width / height > 1.2:
+
+        midpoint = width / 2
+
+        left_rect = pymupdf.Rect(
+            0, 0, midpoint, height
+        )
+
+        right_rect = pymupdf.Rect(
+            midpoint, 0, width, height
+        )
+
+        left_text = page.get_text(
+            "text",
+            clip=left_rect,
+            sort=True
+        ).strip()
+
+        right_text = page.get_text(
+            "text",
+            clip=right_rect,
+            sort=True
+        ).strip()
+
+        return "\n\n".join(
+            part for part in [left_text, right_text] if part
+        )
+
+    return page.get_text("text", sort=True)
+
+
 def load_pdf(file_path: str):
 
     documents = []
@@ -19,7 +55,7 @@ def load_pdf(file_path: str):
 
         for page_number, page in enumerate(pdf, start=1):
 
-            text = page.get_text("text")
+            text = extract_page_text(page)
 
             if text.strip():
 
