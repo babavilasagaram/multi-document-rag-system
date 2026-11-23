@@ -221,7 +221,7 @@ def test_new_upload_is_ingested(tmp_path):
     mock_ingest.assert_called_once()
 
     # Successfully uploaded file remains stored.
-    assert len(list(tmp_path.iterdir())) == 1
+    assert len(list(tmp_path.iterdir())) == 0
 
 
 # --------------------------------------------------

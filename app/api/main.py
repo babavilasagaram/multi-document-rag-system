@@ -1,8 +1,8 @@
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api.routes import documents, query
 
-from app.api.routes import documents
+from app.api.routes import documents, query
 
 
 app = FastAPI(
@@ -17,6 +17,7 @@ app.add_middleware(
         "http://localhost:8443",
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "https://multi-document-rag-system-puce.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -32,6 +33,5 @@ def health_check():
     }
 
 
-app.include_router(documents.router)
 app.include_router(documents.router)
 app.include_router(query.router)

@@ -1,8 +1,9 @@
+
 import hashlib
-from pathlib import Path
-from uuid import uuid4
 import logging
 import os
+from pathlib import Path
+from uuid import uuid4
 
 from fastapi import APIRouter, File, HTTPException, UploadFile
 
@@ -10,13 +11,14 @@ from app.database.connection import get_connection
 from app.ingestion.pipeline import (
     ingest_pdf,
     calculate_file_hash,
-    EXTRACTION_VERSION
+    EXTRACTION_VERSION,
 )
 from app.api.schemas.documents import (
     DocumentUploadResponse,
     DocumentItem,
-    DocumentListResponse
+    DocumentListResponse,
 )
+
 
 logger = logging.getLogger(__name__)
 
@@ -26,13 +28,11 @@ MAX_FILE_SIZE = int(
 
 router = APIRouter(
     prefix="/documents",
-    tags=["Documents"]
+    tags=["Documents"],
 )
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 UPLOAD_DIR = PROJECT_ROOT / "data" / "uploads"
-
-MAX_FILE_SIZE = 20 * 1024 * 1024  # 20 MB
 
 
 # --------------------------------------------------
@@ -40,36 +40,39 @@ MAX_FILE_SIZE = 20 * 1024 * 1024  # 20 MB
 # Upload and ingest a PDF
 # --------------------------------------------------
 
-
 @router.post(
     "/upload",
-    response_model=DocumentUploadResponse
+    response_model=DocumentUploadResponse,
 )
 def upload_document(file: UploadFile = File(...)):
 
     if not file.filename or Path(file.filename).suffix.lower() != ".pdf":
         raise HTTPException(
             status_code=400,
-            detail="Only PDF files are allowed."
+            detail="Only PDF files are allowed.",
         )
 
     if file.file.read(5) != b"%PDF-":
         raise HTTPException(
             status_code=400,
-            detail="Invalid PDF file."
+            detail="Invalid PDF file.",
         )
 
     file.file.seek(0)
 
-    UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
-
-    stored_filename = f"{uuid4().hex}.pdf"
-    file_path = UPLOAD_DIR / stored_filename
-
-    total_size = 0
+    file_path = None
 
     try:
+        UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+        stored_filename = f"{uuid4().hex}.pdf"
+        file_path = UPLOAD_DIR / stored_filename
+
+        total_size = 0
+
+        # Save the uploaded PDF in chunks.
         with file_path.open("wb") as destination:
+
             while True:
                 chunk = file.file.read(1024 * 1024)
 
@@ -81,7 +84,7 @@ def upload_document(file: UploadFile = File(...)):
                 if total_size > MAX_FILE_SIZE:
                     raise HTTPException(
                         status_code=413,
-                        detail="PDF exceeds the 20 MB limit."
+                        detail="PDF exceeds the upload size limit.",
                     )
 
                 destination.write(chunk)
@@ -96,6 +99,7 @@ def upload_document(file: UploadFile = File(...)):
         # Check whether this document is already indexed.
         with get_connection() as conn:
             with conn.cursor() as cursor:
+
                 cursor.execute(
                     """
                     SELECT
@@ -107,55 +111,44 @@ def upload_document(file: UploadFile = File(...)):
                     WHERE d.content_hash = %s
                     GROUP BY d.document_id, d.source;
                     """,
-                    (content_hash,)
+                    (content_hash,),
                 )
 
                 duplicate = cursor.fetchone()
 
         if duplicate:
-            file_path.unlink(missing_ok=True)
-
             return DocumentUploadResponse(
                 filename=Path(file.filename).name,
                 status="SKIPPED",
                 chunks=duplicate[1],
-                message="This document is already indexed."
+                message="This document is already indexed.",
             )
 
-        # Ingest only new documents.
+        # Ingest new documents.
         result = ingest_pdf(file_path)
 
         return DocumentUploadResponse(
             filename=Path(file.filename).name,
             status=result["status"],
             chunks=result["chunks"],
-            message="Document processed successfully."
+            message="Document processed successfully.",
         )
 
     except HTTPException:
-        file_path.unlink(missing_ok=True)
-        raise
-
-    except Exception:
-        file_path.unlink(missing_ok=True)
-
-        raise HTTPException(
-            status_code=500,
-            detail="Document ingestion failed."
-        )
-        
-    except HTTPException:
-        file_path.unlink(missing_ok=True)
         raise
 
     except Exception:
         logger.exception("Document upload or ingestion failed.")
-        file_path.unlink(missing_ok=True)
 
         raise HTTPException(
             status_code=500,
-            detail="Document ingestion failed."
+            detail="Document ingestion failed.",
         )
+
+    finally:
+        # Always remove the temporary PDF after processing.
+        if file_path is not None:
+            file_path.unlink(missing_ok=True)
 
 
 # --------------------------------------------------
@@ -165,7 +158,7 @@ def upload_document(file: UploadFile = File(...)):
 
 @router.get(
     "",
-    response_model=DocumentListResponse
+    response_model=DocumentListResponse,
 )
 def list_documents():
 
@@ -173,7 +166,8 @@ def list_documents():
         with get_connection() as conn:
             with conn.cursor() as cursor:
 
-                cursor.execute("""
+                cursor.execute(
+                    """
                     SELECT
                         d.source,
                         COUNT(c.id) AS chunks
@@ -185,27 +179,22 @@ def list_documents():
                         d.source,
                         d.updated_at
                     ORDER BY d.updated_at DESC;
-                """)
+                    """
+                )
 
                 rows = cursor.fetchall()
 
         documents = [
             DocumentItem(
                 filename=Path(source).name,
-                chunks=chunks
+                chunks=chunks,
             )
             for source, chunks in rows
         ]
 
         return DocumentListResponse(
             documents=documents,
-            total=len(documents)
-        )
-
-    except Exception:
-        raise HTTPException(
-            status_code=500,
-            detail="Could not retrieve documents."
+            total=len(documents),
         )
 
     except Exception:
@@ -213,5 +202,5 @@ def list_documents():
 
         raise HTTPException(
             status_code=500,
-            detail="Could not retrieve documents."
+            detail="Could not retrieve documents.",
         )

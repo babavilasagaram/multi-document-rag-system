@@ -76,3 +76,6 @@ build/
 
 # Temporary environments
 venv_audit/
+
+# Temporary evaluation backups
+evaluation/*backup*.json
