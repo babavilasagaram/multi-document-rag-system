@@ -1,0 +1,30 @@
+{
+    "id": "G09",
+    "question": "What are some helpful ways partners can improve their relationship according to the book?",
+    "experiment": "Additional context chunk",
+    "baseline_chunk_ids": [
+        219,
+        225,
+        239,
+        220,
+        324,
+        259
+    ],
+    "expanded_chunk_ids": [
+        219,
+        225,
+        239,
+        220,
+        324,
+        259,
+        231
+    ],
+    "baseline_answer": "The book suggests several practical actions that partners can take to strengthen their relationship, such as:\n\n- **Take a short reflection** – spend about five minutes thinking about a situation before responding, so you can choose a more productive reaction [Source: data/amity_relationship_care.pdf, Page: 4].  \n- **Acknowledge each other and show respect** – focus on respectful communication rather than criticism or blame [Source: data/amity_relationship_care.pdf, Page: 4].  \n- **Practice compassion, kindness and empathy** – actively try to see things from your partner’s perspective and respond with understanding [Source: data/amity_relationship_care.pdf, Page: 12].  \n- **Be kind in everyday interactions** – look for opportunities to say or do something kind [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Listen to learn, not just to respond** – listen with the intention of truly understanding your partner’s feelings [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Consider your partner’s love language** – tailor your actions to the ways they feel most loved and appreciated [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Repair conflicts** – engage in repair strategies after disagreements to help restore the connection [Source: data/amity_relationship_care.pdf, Page: 26].  \n\nThese steps together form a set of helpful ways partners can improve their relationship according to the booklet.",
+    "expanded_answer": "The book suggests several practical actions that partners can take to strengthen their relationship, such as:\n\n* **Take a short reflection** – spend about five minutes thinking about a situation before responding, focusing on acknowledgement and respect  [Source: data/amity_relationship_care.pdf, Page: 4].  \n* **Celebrate the relationship** and recognise that no partnership is perfect  [Source: data/amity_relationship_care.pdf, Page: 7].  \n* **Practice empathy, compassion and kindness** – try to see things from your partner’s perspective and act with understanding  [Source: data/amity_relationship_care.pdf, Page: 12].  \n* **Be kind in everyday interactions** – look for chances to say or do something kind  [Source: data/amity_relationship_care.pdf, Page: 26].  \n* **Listen to learn**, not just to reply, so your partner feels truly heard  [Source: data/amity_relationship_care.pdf, Page: 26].  \n* **Consider your partner’s love language** and act in ways that speak to it  [Source: data/amity_relationship_care.pdf, Page: 26].  \n* **Repair ruptures** when they occur, using repair strategies to restore connection  [Source: data/amity_relationship_care.pdf, Page: 26] [Source: data/amity_relationship_care.pdf, Page: 7].  \n\nThese steps are presented in the booklet as helpful ways for couples to improve their relationship.",
+    "controls": {
+        "same_question": true,
+        "same_prompt": true,
+        "baseline_chunks_preserved": true,
+        "one_additional_chunk": true
+    }
+}

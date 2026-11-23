@@ -48,3 +48,31 @@ data/generation_evaluation_dataset.json
 evaluation/generation_evaluation_results.json
 evaluation/prompt_comparison_results.json
 evaluation/test_questions.json
+
+# Additional local environments
+venv_audit/
+
+# Uploaded user documents
+data/uploads/
+
+# Temporary evaluation backups
+data/*.bak
+data/*backup*.json
+data/*.before_*.json
+
+# Temporary audit scripts
+update_q16_q20_candidate_audit*.py
+
+# Python cache
+**/__pycache__/
+
+# Frontend dependencies and build output
+node_modules/
+dist/
+build/
+
+# Duplicate frontend workspace
+/frontend/
+
+# Temporary environments
+venv_audit/

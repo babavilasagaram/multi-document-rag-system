@@ -1,7 +1,5 @@
 import re
 from pathlib import Path
-import logging
-
 
 from fastapi import APIRouter, HTTPException
 
@@ -14,14 +12,16 @@ from app.api.schemas.query import (
     SourceReference
 )
 
-logger = logging.getLogger(__name__)
-router = APIRouter(
-    prefix="/query",
-    tags=["Query"]
+
+router = APIRouter(tags=["Query"])
+
+
+CITATION_PATTERN = re.compile(
+    r"\[Source:\s*(.*?),\s*Page:\s*(\d+)\]"
 )
 
 
-@router.post("", response_model=QueryResponse)
+@router.post("/query", response_model=QueryResponse)
 def query_documents(request: QueryRequest):
 
     question = request.question.strip()
@@ -33,47 +33,40 @@ def query_documents(request: QueryRequest):
         )
 
     try:
-        # 1. Retrieve relevant chunks.
+        # 1. Retrieve relevant document chunks.
         retrieved_chunks = retrieve_documents(
             question,
             top_k=6
         )
 
-        # 2. Generate an answer using retrieved context.
+        # 2. Generate an answer using the existing RAG generator.
         answer = generate_answer(
             question,
             retrieved_chunks
         )
 
-        # 3. Extract citations from the formatted answer.
-        citation_pattern = (
-            r"\[Source:\s*(.*?),\s*Page:\s*(\d+)\]"
-        )
-
-        matches = re.findall(
-            citation_pattern,
-            answer
-        )
-
-        # 4. Build unique source references.
+        # 3. Extract sources actually cited in the answer.
         sources = []
-        seen = set()
+        seen_sources = set()
 
-        for source, page in matches:
+        for match in CITATION_PATTERN.finditer(answer):
 
-            key = (source, int(page))
+            source_path = match.group(1).strip()
+            page = int(match.group(2))
 
-            if key not in seen:
-                seen.add(key)
+            filename = Path(source_path).name
+            source_key = (filename, page)
 
+            if source_key not in seen_sources:
                 sources.append(
                     SourceReference(
-                        filename=Path(source).name,
-                        page=int(page)
+                        filename=filename,
+                        page=page
                     )
                 )
+                seen_sources.add(source_key)
 
-        # 5. Return the API response.
+        # 4. Return the frontend-compatible response.
         return QueryResponse(
             question=question,
             answer=answer,
@@ -81,9 +74,7 @@ def query_documents(request: QueryRequest):
         )
 
     except Exception:
-        logger.exception("Question processing failed.")
-
         raise HTTPException(
             status_code=500,
-            detail="Question processing failed."
+            detail="An error occurred while processing your question."
         )

@@ -1,0 +1,128 @@
+{
+    "id": "G09",
+    "question": "What are some helpful ways partners can improve their relationship according to the book?",
+    "experiment": "Context ordering only",
+    "prompt": "Original baseline prompt",
+    "original_chunks": [
+        {
+            "id": 219,
+            "text": "The \nlittle book of\nRelationship\nCare\nby Kate Nicolle and Emily Nickson Williams",
+            "metadata": {
+                "page": 1,
+                "source": "data/amity_relationship_care.pdf"
+            },
+            "similarity": 0.6705169877564012
+        },
+        {
+            "id": 225,
+            "text": "This booklet is going to help you to think about how you respond to each \nother when you argue and how you can influence in a positive way what \nhappens next. You get to choose what happens next by making better \ndecisions, by thinking about how you acknowledge each other and show \nrespect. \nThroughout the booklet there is a theme of 5. It can take 5 minutes to \nreflect on a situation and think about how to respond to it in a productive \nway. \nThis booklet is not about taking opportunities to criticise or blame each \nother, neither is it about establishing who is the better partner!\nSo start as you mean to go on and try to approach this time of reflection \nas a chance to take steps towards a healthier, stronger relationship. In",
+            "metadata": {
+                "page": 4,
+                "source": "data/amity_relationship_care.pdf"
+            },
+            "similarity": 0.5992472171783447
+        },
+        {
+            "id": 239,
+            "text": "Let’s have a think about what you might \nlike to do to improve your relationship\n5 things we would like to improve about our \nrelationship \nStrong healthy relationships are ones that are always changing along \nwith the changes we face in life. Relationships are about making \nprogress together not trying to create perfection. Perfect relationships \nare a myth. Couples who are able to feel content \ntogether have built into their relationship \ncompassion and kindness. \nWhat is your understanding and \nexperience of compassion and kindness? \nWhat difference do you think they make?\nWhat is empathy? Empathy is trying \nyour best to see things from another \nperson’s perspective, to stand in their \nshoes and try to respect, recognise \nand understand what it is they are \nexperiencing.",
+            "metadata": {
+                "page": 12,
+                "source": "data/amity_relationship_care.pdf"
+            },
+            "similarity": 0.592403769493103
+        },
+        {
+            "id": 220,
+            "text": "About us\nThis book has been written by us, Kate and Emily, we’re Amity and we are relationship \nexperts. We care A LOT about people having strong, thriving relationships.\nInfact, we believe that good quality relationships are a right not a privilege. We think \nthat relationships are the most important thing in the world because they can make us \nfeel happier, safer and more loved. They can also make us feel lonely, sad and some­\ntimes anxious. That’s why we think that relationship care is something we should all pay \nattention to.\nWhat is relationship care?\nIt’s simple really.  Relationship care is about looking after the relationships you have \nwith the people in your life who are important to you, in the same way that you might \nfocus on the care of your physical and mental health.",
+            "metadata": {
+                "page": 2,
+                "source": "data/amity_relationship_care.pdf"
+            },
+            "similarity": 0.5913493633270264
+        },
+        {
+            "id": 324,
+            "text": "partner in a way that avoids negative results. \nKey study: Gottman (2003)\n34.2.3  The role of listening\nAhmad and Reid (2008) argue it is necessary for partners to practise listening to \nunderstand how their partner feels and respond in a way that shows they have actually \nunderstood what has been communicated. They came to this conclusion while \nresearching traditional roles within marriage as they wanted to test whether couples \nwho believe in traditional roles in a marriage have less satisfaction. \n282\nPsychology of human relationships\nG",
+            "metadata": {
+                "page": 12,
+                "source": "data/psychology_human_relationships.pdf"
+            },
+            "similarity": 0.5794539106217687
+        },
+        {
+            "id": 259,
+            "text": "What do you need now because of it?\n•\t\nDo you need a hug?\n•\t\nSome time on your own?\n•\t\nPractical help with the things you’ve been struggling with?\n•\t\nTo hear an apology or acknowledgement?\n•\t\nDo you need them to do a specific task?\n•\t\nDo you need to hear “I love and appreciate you” more often?\nWhatever it is let your partner know. They can’t do it if they don’t know \nyou need it, they are not mind readers!\nHelpful things you can do for your relationship\n•\t\nBe kind. Simple, look for opportunities to say a kind thing or do \na kind thing.\n•\t\nShow you want to communicate in a positive way by actually \nlistening to learn not just listening so you can respond.\n•\t\nThink about your partners love language and activate your \nactions.\n•\t\nRepair as this helps you to prepare. Repairing",
+            "metadata": {
+                "page": 26,
+                "source": "data/amity_relationship_care.pdf"
+            },
+            "similarity": 0.565758995323305
+        }
+    ],
+    "grouped_chunks": [
+        {
+            "id": 219,
+            "text": "The \nlittle book of\nRelationship\nCare\nby Kate Nicolle and Emily Nickson Williams",
+            "metadata": {
+                "page": 1,
+                "source": "data/amity_relationship_care.pdf"
+            },
+            "similarity": 0.6705169877564012
+        },
+        {
+            "id": 220,
+            "text": "About us\nThis book has been written by us, Kate and Emily, we’re Amity and we are relationship \nexperts. We care A LOT about people having strong, thriving relationships.\nInfact, we believe that good quality relationships are a right not a privilege. We think \nthat relationships are the most important thing in the world because they can make us \nfeel happier, safer and more loved. They can also make us feel lonely, sad and some­\ntimes anxious. That’s why we think that relationship care is something we should all pay \nattention to.\nWhat is relationship care?\nIt’s simple really.  Relationship care is about looking after the relationships you have \nwith the people in your life who are important to you, in the same way that you might \nfocus on the care of your physical and mental health.",
+            "metadata": {
+                "page": 2,
+                "source": "data/amity_relationship_care.pdf"
+            },
+            "similarity": 0.5913493633270264
+        },
+        {
+            "id": 225,
+            "text": "This booklet is going to help you to think about how you respond to each \nother when you argue and how you can influence in a positive way what \nhappens next. You get to choose what happens next by making better \ndecisions, by thinking about how you acknowledge each other and show \nrespect. \nThroughout the booklet there is a theme of 5. It can take 5 minutes to \nreflect on a situation and think about how to respond to it in a productive \nway. \nThis booklet is not about taking opportunities to criticise or blame each \nother, neither is it about establishing who is the better partner!\nSo start as you mean to go on and try to approach this time of reflection \nas a chance to take steps towards a healthier, stronger relationship. In",
+            "metadata": {
+                "page": 4,
+                "source": "data/amity_relationship_care.pdf"
+            },
+            "similarity": 0.5992472171783447
+        },
+        {
+            "id": 239,
+            "text": "Let’s have a think about what you might \nlike to do to improve your relationship\n5 things we would like to improve about our \nrelationship \nStrong healthy relationships are ones that are always changing along \nwith the changes we face in life. Relationships are about making \nprogress together not trying to create perfection. Perfect relationships \nare a myth. Couples who are able to feel content \ntogether have built into their relationship \ncompassion and kindness. \nWhat is your understanding and \nexperience of compassion and kindness? \nWhat difference do you think they make?\nWhat is empathy? Empathy is trying \nyour best to see things from another \nperson’s perspective, to stand in their \nshoes and try to respect, recognise \nand understand what it is they are \nexperiencing.",
+            "metadata": {
+                "page": 12,
+                "source": "data/amity_relationship_care.pdf"
+            },
+            "similarity": 0.592403769493103
+        },
+        {
+            "id": 259,
+            "text": "What do you need now because of it?\n•\t\nDo you need a hug?\n•\t\nSome time on your own?\n•\t\nPractical help with the things you’ve been struggling with?\n•\t\nTo hear an apology or acknowledgement?\n•\t\nDo you need them to do a specific task?\n•\t\nDo you need to hear “I love and appreciate you” more often?\nWhatever it is let your partner know. They can’t do it if they don’t know \nyou need it, they are not mind readers!\nHelpful things you can do for your relationship\n•\t\nBe kind. Simple, look for opportunities to say a kind thing or do \na kind thing.\n•\t\nShow you want to communicate in a positive way by actually \nlistening to learn not just listening so you can respond.\n•\t\nThink about your partners love language and activate your \nactions.\n•\t\nRepair as this helps you to prepare. Repairing",
+            "metadata": {
+                "page": 26,
+                "source": "data/amity_relationship_care.pdf"
+            },
+            "similarity": 0.565758995323305
+        },
+        {
+            "id": 324,
+            "text": "partner in a way that avoids negative results. \nKey study: Gottman (2003)\n34.2.3  The role of listening\nAhmad and Reid (2008) argue it is necessary for partners to practise listening to \nunderstand how their partner feels and respond in a way that shows they have actually \nunderstood what has been communicated. They came to this conclusion while \nresearching traditional roles within marriage as they wanted to test whether couples \nwho believe in traditional roles in a marriage have less satisfaction. \n282\nPsychology of human relationships\nG",
+            "metadata": {
+                "page": 12,
+                "source": "data/psychology_human_relationships.pdf"
+            },
+            "similarity": 0.5794539106217687
+        }
+    ],
+    "original_order_answer": "The book suggests several practical actions that partners can take to strengthen their relationship, such as:\n\n- **Take a short reflection** – spend about five minutes thinking about a situation before responding, so you can choose a more productive reaction [Source: data/amity_relationship_care.pdf, Page: 4].  \n- **Acknowledge each other and show respect** – focus on respectful communication rather than criticism or blame [Source: data/amity_relationship_care.pdf, Page: 4].  \n- **Practice compassion, kindness and empathy** – actively try to see things from your partner’s perspective and respond with understanding [Source: data/amity_relationship_care.pdf, Page: 12].  \n- **Be kind in everyday interactions** – look for opportunities to say or do something kind [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Listen to learn, not just to respond** – listen with the intention of truly understanding your partner’s feelings [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Consider your partner’s love language** – tailor your actions to the ways they feel most loved and appreciated [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Repair conflicts** – engage in repair strategies after disagreements to help restore the connection [Source: data/amity_relationship_care.pdf, Page: 26].  \n\nThese steps together form a set of helpful ways partners can improve their relationship according to the booklet.",
+    "grouped_order_answer": "The book suggests several practical actions that partners can take to strengthen their relationship, such as:\n\n* **Take a short reflection** – spend about five minutes thinking about a recent situation and how you might respond in a productive way rather than blaming or criticizing  [Source: data/amity_relationship_care.pdf, Page: 4].\n* **Acknowledge each other and show respect** – choose to make better decisions by actively recognizing your partner’s feelings and treating them with respect  [Source: data/amity_relationship_care.pdf, Page: 4].\n* **Practice compassion, kindness and empathy** – view the relationship as a joint effort of progress, and try to understand your partner’s perspective  [Source: data/amity_relationship_care.pdf, Page: 12].\n* **Be kind in everyday interactions** – look for opportunities to say or do something kind  [Source: data/amity_relationship_care.pdf, Page: 26].\n* **Listen to learn, not just to respond** – focus on truly understanding what your partner is communicating before you reply  [Source: data/amity_relationship_care.pdf, Page: 26] (also supported by research on listening in relationships  [Source: data/psychology_human_relationships.pdf, Page: 12]).\n* **Consider your partner’s love language** and act on it  [Source: data/amity_relationship_care.pdf, Page: 26].\n* **Repair after conflict** – take steps to mend the interaction, which helps prevent negative outcomes  [Source: data/amity_relationship_care.pdf, Page: 26].\n\nThese strategies together help partners communicate positively, meet each other’s needs, and build a healthier, stronger relationship  [Source: data/amity_relationship_care.pdf, Page: 4] [Source: data/amity_relationship_care.pdf, Page: 12] [Source: data/amity_relationship_care.pdf, Page: 26].",
+    "controls": {
+        "same_question": true,
+        "same_chunk_ids": true,
+        "same_chunk_text": true,
+        "same_prompt": true,
+        "retrieval_repeated": false,
+        "only_order_changed": true
+    }
+}

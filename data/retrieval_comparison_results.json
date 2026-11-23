@@ -6,208 +6,208 @@
     "strategies": {
         "Baseline": {
             "average_metrics": {
-                "recall": 0.6039285714285715,
-                "precision": 0.55,
-                "mrr": 0.9,
-                "hit": 0.95,
-                "ndcg": 0.6876837535422082
+                "recall": 0.0,
+                "precision": 0.0,
+                "mrr": 0.0,
+                "hit": 0.0,
+                "ndcg": 0.0
             },
             "per_question": [
                 {
                     "qid": "q01",
                     "retrieved_ids": [
-                        74,
-                        61,
-                        66,
-                        64,
-                        100
+                        759,
+                        1231,
+                        1314,
+                        1397,
+                        772
                     ],
                     "metrics": {
-                        "recall": 0.42857142857142855,
-                        "precision": 0.6,
-                        "mrr": 0.5,
-                        "hit": 1,
-                        "ndcg": 0.5110480030155539
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q02",
                     "retrieved_ids": [
-                        81,
-                        63,
-                        60,
-                        74,
-                        80
+                        757,
+                        1229,
+                        1312,
+                        1395,
+                        782
                     ],
                     "metrics": {
-                        "recall": 0.3,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.3431272824944109
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q03",
                     "retrieved_ids": [
-                        83,
-                        81,
-                        85,
-                        80,
-                        63
+                        782,
+                        1254,
+                        1337,
+                        1420,
+                        780
                     ],
                     "metrics": {
-                        "recall": 0.5714285714285714,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.8015792876461758
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q04",
                     "retrieved_ids": [
-                        69,
-                        71,
-                        70,
-                        57,
-                        72
+                        765,
+                        1237,
+                        1320,
+                        1403,
+                        768
                     ],
                     "metrics": {
-                        "recall": 0.6,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.8261942844722937
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q05",
                     "retrieved_ids": [
-                        72,
-                        71,
-                        69,
-                        70,
-                        57
+                        769,
+                        1241,
+                        1324,
+                        1407,
+                        768
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.8381840863879982
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q06",
                     "retrieved_ids": [
-                        74,
-                        73,
-                        63,
-                        68,
-                        114
+                        757,
+                        1229,
+                        1312,
+                        1395,
+                        771
                     ],
                     "metrics": {
-                        "recall": 0.4166666666666667,
-                        "precision": 1.0,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.6779553320147448
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q07",
                     "retrieved_ids": [
-                        73,
-                        74,
-                        71,
-                        63,
-                        69
+                        757,
+                        1229,
+                        1312,
+                        1395,
+                        771
                     ],
                     "metrics": {
-                        "recall": 0.42857142857142855,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.7716238027048642
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q08",
                     "retrieved_ids": [
-                        74,
-                        66,
-                        102,
-                        114,
-                        68
+                        772,
+                        1244,
+                        1327,
+                        1410,
+                        759
                     ],
                     "metrics": {
-                        "recall": 0.6,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.6469527254158582
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q09",
                     "retrieved_ids": [
-                        68,
-                        75,
-                        74,
-                        67,
-                        81
+                        763,
+                        1235,
+                        1318,
+                        1401,
+                        774
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.9674679834891694
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q10",
                     "retrieved_ids": [
-                        75,
-                        82,
-                        66,
-                        76,
-                        68
+                        774,
+                        1246,
+                        1329,
+                        1412,
+                        775
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.6758840844016503
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q11",
                     "retrieved_ids": [
-                        77,
-                        76,
-                        65,
-                        96,
-                        79
+                        776,
+                        1248,
+                        1331,
+                        1414,
+                        778
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.2,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 1.0
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q12",
                     "retrieved_ids": [
-                        74,
-                        66,
-                        90,
-                        93,
-                        94
+                        761,
+                        1233,
+                        1316,
+                        1399,
+                        772
                     ],
                     "metrics": {
                         "recall": 0.0,
@@ -220,839 +220,839 @@
                 {
                     "qid": "q13",
                     "retrieved_ids": [
-                        79,
-                        80,
-                        68,
-                        75,
-                        74
+                        799,
+                        1271,
+                        1354,
+                        1437,
+                        778
                     ],
                     "metrics": {
-                        "recall": 0.6666666666666666,
-                        "precision": 0.4,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.7002755876478819
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q14",
                     "retrieved_ids": [
-                        79,
-                        80,
-                        68,
-                        65,
-                        75
+                        778,
+                        1250,
+                        1333,
+                        1416,
+                        799
                     ],
                     "metrics": {
-                        "recall": 0.6666666666666666,
-                        "precision": 0.4,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.9072836011519267
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q15",
                     "retrieved_ids": [
-                        82,
-                        81,
-                        80,
-                        86,
-                        85
+                        785,
+                        1257,
+                        1340,
+                        1423,
+                        822
                     ],
                     "metrics": {
-                        "recall": 0.3333333333333333,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.5572267702991202
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q16",
                     "retrieved_ids": [
-                        81,
-                        83,
-                        78,
-                        85,
-                        80
+                        782,
+                        1254,
+                        1337,
+                        1420,
+                        780
                     ],
                     "metrics": {
-                        "recall": 0.5,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.7766857240748665
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q17",
                     "retrieved_ids": [
-                        98,
-                        86,
-                        55,
-                        91,
-                        92
+                        786,
+                        1258,
+                        1341,
+                        1424,
+                        794
                     ],
                     "metrics": {
-                        "recall": 0.3333333333333333,
-                        "precision": 0.2,
-                        "mrr": 0.5,
-                        "hit": 1,
-                        "ndcg": 0.35098520806348704
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q18",
                     "retrieved_ids": [
-                        88,
-                        107,
-                        87,
-                        71,
-                        91
+                        787,
+                        1259,
+                        1342,
+                        1425,
+                        788
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.2,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 1.0
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q19",
                     "retrieved_ids": [
-                        91,
-                        90,
-                        89,
-                        55,
-                        56
+                        793,
+                        1265,
+                        1348,
+                        1431,
+                        748
                     ],
                     "metrics": {
-                        "recall": 0.8333333333333334,
-                        "precision": 1.0,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 1.0
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q20",
                     "retrieved_ids": [
-                        79,
-                        80,
-                        76,
-                        77,
-                        75
+                        778,
+                        1250,
+                        1333,
+                        1416,
+                        799
                     ],
                     "metrics": {
-                        "recall": 0.4,
-                        "precision": 0.4,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.4012013075641607
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 }
             ]
         },
         "Candidate Pooling": {
             "average_metrics": {
-                "recall": 0.6427380952380952,
-                "precision": 0.58,
-                "mrr": 0.9416666666666668,
-                "hit": 1.0,
-                "ndcg": 0.723472465606869
+                "recall": 0.0,
+                "precision": 0.0,
+                "mrr": 0.0,
+                "hit": 0.0,
+                "ndcg": 0.0
             },
             "per_question": [
                 {
                     "qid": "q01",
                     "retrieved_ids": [
-                        66,
-                        83,
-                        74,
-                        64,
-                        61
+                        759,
+                        1231,
+                        1314,
+                        1397,
+                        761
                     ],
                     "metrics": {
-                        "recall": 0.5714285714285714,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.74135106004144
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q02",
                     "retrieved_ids": [
-                        63,
-                        81,
-                        60,
-                        83,
-                        74
+                        782,
+                        1254,
+                        1337,
+                        1420,
+                        780
                     ],
                     "metrics": {
-                        "recall": 0.4,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.5511729162250785
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q03",
                     "retrieved_ids": [
-                        83,
-                        81,
-                        85,
-                        80,
-                        63
+                        782,
+                        1254,
+                        1337,
+                        1420,
+                        780
                     ],
                     "metrics": {
-                        "recall": 0.5714285714285714,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.8015792876461758
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q04",
                     "retrieved_ids": [
-                        69,
-                        71,
-                        70,
-                        72,
-                        57
+                        765,
+                        1237,
+                        1320,
+                        1403,
+                        768
                     ],
                     "metrics": {
-                        "recall": 0.6,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.8261942844722937
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q05",
                     "retrieved_ids": [
-                        71,
-                        72,
-                        69,
-                        70,
-                        68
+                        764,
+                        1236,
+                        1319,
+                        1402,
+                        769
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 1.0
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q06",
                     "retrieved_ids": [
-                        74,
-                        73,
-                        66,
-                        63,
-                        69
+                        757,
+                        1229,
+                        1312,
+                        1395,
+                        771
                     ],
                     "metrics": {
-                        "recall": 0.4166666666666667,
-                        "precision": 1.0,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.6779553320147448
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q07",
                     "retrieved_ids": [
-                        73,
-                        74,
-                        71,
-                        63,
-                        69
+                        757,
+                        1229,
+                        1312,
+                        1395,
+                        771
                     ],
                     "metrics": {
-                        "recall": 0.42857142857142855,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.7716238027048642
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q08",
                     "retrieved_ids": [
-                        68,
-                        74,
-                        102,
-                        66,
-                        67
+                        772,
+                        1244,
+                        1327,
+                        1410,
+                        773
                     ],
                     "metrics": {
-                        "recall": 0.8,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.597444165018431
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q09",
                     "retrieved_ids": [
-                        68,
-                        75,
-                        74,
-                        81,
-                        67
+                        763,
+                        1235,
+                        1318,
+                        1401,
+                        774
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.9469024295259745
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q10",
                     "retrieved_ids": [
-                        66,
-                        82,
-                        75,
-                        74,
-                        76
+                        761,
+                        1233,
+                        1316,
+                        1399,
+                        774
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.6440580160927207
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q11",
                     "retrieved_ids": [
-                        77,
-                        65,
-                        76,
-                        87,
-                        96
+                        776,
+                        1248,
+                        1331,
+                        1414,
+                        760
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.2,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 1.0
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q12",
                     "retrieved_ids": [
-                        74,
-                        79,
-                        66,
-                        65,
-                        90
+                        778,
+                        1250,
+                        1333,
+                        1416,
+                        772
                     ],
                     "metrics": {
-                        "recall": 0.5,
-                        "precision": 0.2,
-                        "mrr": 0.5,
-                        "hit": 1,
-                        "ndcg": 0.3868528072345416
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q13",
                     "retrieved_ids": [
-                        79,
-                        80,
-                        297,
-                        68,
-                        75
+                        778,
+                        1250,
+                        1333,
+                        1416,
+                        799
                     ],
                     "metrics": {
-                        "recall": 0.6666666666666666,
-                        "precision": 0.4,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.7002755876478819
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q14",
                     "retrieved_ids": [
-                        79,
-                        80,
-                        68,
-                        65,
-                        75
+                        778,
+                        1250,
+                        1333,
+                        1416,
+                        799
                     ],
                     "metrics": {
-                        "recall": 0.6666666666666666,
-                        "precision": 0.4,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.9072836011519267
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q15",
                     "retrieved_ids": [
-                        82,
-                        81,
-                        80,
-                        63,
-                        74
+                        785,
+                        1257,
+                        1340,
+                        1423,
+                        822
                     ],
                     "metrics": {
-                        "recall": 0.3333333333333333,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.5633046918323918
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q16",
                     "retrieved_ids": [
-                        81,
-                        83,
-                        80,
-                        85,
-                        78
+                        782,
+                        1254,
+                        1337,
+                        1420,
+                        780
                     ],
                     "metrics": {
-                        "recall": 0.5,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.7220280488834429
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q17",
                     "retrieved_ids": [
-                        98,
-                        112,
-                        86,
-                        103,
-                        113
+                        786,
+                        1258,
+                        1341,
+                        1424,
+                        794
                     ],
                     "metrics": {
-                        "recall": 0.3333333333333333,
-                        "precision": 0.2,
-                        "mrr": 0.3333333333333333,
-                        "hit": 1,
-                        "ndcg": 0.2781491965442198
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q18",
                     "retrieved_ids": [
-                        88,
-                        93,
-                        89,
-                        90,
-                        92
+                        789,
+                        1261,
+                        1344,
+                        1427,
+                        787
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.2,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 1.0
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q19",
                     "retrieved_ids": [
-                        90,
-                        91,
-                        89,
-                        55,
-                        93
+                        793,
+                        1265,
+                        1348,
+                        1431,
+                        748
                     ],
                     "metrics": {
-                        "recall": 0.6666666666666666,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.9520727775370875
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q20",
                     "retrieved_ids": [
-                        79,
-                        80,
-                        76,
-                        77,
-                        68
+                        780,
+                        1252,
+                        1335,
+                        1418,
+                        778
                     ],
                     "metrics": {
-                        "recall": 0.4,
-                        "precision": 0.4,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.4012013075641607
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 }
             ]
         },
         "RRF": {
             "average_metrics": {
-                "recall": 0.6510714285714286,
-                "precision": 0.59,
-                "mrr": 0.9099999999999999,
-                "hit": 1.0,
-                "ndcg": 0.7376330819513509
+                "recall": 0.0,
+                "precision": 0.0,
+                "mrr": 0.0,
+                "hit": 0.0,
+                "ndcg": 0.0
             },
             "per_question": [
                 {
                     "qid": "q01",
                     "retrieved_ids": [
-                        74,
-                        66,
-                        61,
-                        64,
-                        83
+                        759,
+                        1231,
+                        1314,
+                        1397,
+                        761
                     ],
                     "metrics": {
-                        "recall": 0.5714285714285714,
-                        "precision": 0.8,
-                        "mrr": 0.5,
-                        "hit": 1,
-                        "ndcg": 0.6356886688686928
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q02",
                     "retrieved_ids": [
-                        63,
-                        81,
-                        60,
-                        74,
-                        83
+                        782,
+                        772,
+                        757,
+                        1254,
+                        1244
                     ],
                     "metrics": {
-                        "recall": 0.4,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.5300031082919288
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q03",
                     "retrieved_ids": [
-                        83,
-                        81,
-                        85,
-                        80,
-                        78
+                        782,
+                        1254,
+                        1337,
+                        1420,
+                        780
                     ],
                     "metrics": {
-                        "recall": 0.5714285714285714,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.9088846169386638
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q04",
                     "retrieved_ids": [
-                        69,
-                        71,
-                        70,
-                        72,
-                        57
+                        765,
+                        768,
+                        1237,
+                        1320,
+                        1403
                     ],
                     "metrics": {
-                        "recall": 0.6,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.8261942844722937
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q05",
                     "retrieved_ids": [
-                        71,
-                        72,
-                        69,
-                        70,
-                        57
+                        769,
+                        768,
+                        764,
+                        1236,
+                        1240
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 1.0
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q06",
                     "retrieved_ids": [
-                        74,
-                        73,
-                        68,
-                        114,
-                        66
+                        771,
+                        757,
+                        1229,
+                        1312,
+                        1395
                     ],
                     "metrics": {
-                        "recall": 0.4166666666666667,
-                        "precision": 1.0,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.6779553320147448
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q07",
                     "retrieved_ids": [
-                        73,
-                        74,
-                        71,
-                        63,
-                        67
+                        771,
+                        757,
+                        1229,
+                        1312,
+                        1395
                     ],
                     "metrics": {
-                        "recall": 0.42857142857142855,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.7716238027048642
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q08",
                     "retrieved_ids": [
-                        74,
-                        66,
-                        68,
-                        102,
-                        67
+                        772,
+                        1244,
+                        1327,
+                        1410,
+                        773
                     ],
                     "metrics": {
-                        "recall": 0.8,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.727463892412172
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q09",
                     "retrieved_ids": [
-                        68,
-                        75,
-                        74,
-                        81,
-                        67
+                        763,
+                        1235,
+                        1318,
+                        1401,
+                        774
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.9469024295259745
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q10",
                     "retrieved_ids": [
-                        75,
-                        66,
-                        76,
-                        82,
-                        74
+                        774,
+                        1246,
+                        1329,
+                        1412,
+                        761
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.7579237460681981
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q11",
                     "retrieved_ids": [
-                        77,
-                        65,
-                        76,
-                        96,
-                        79
+                        776,
+                        1248,
+                        778,
+                        1331,
+                        1414
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.2,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 1.0
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q12",
                     "retrieved_ids": [
-                        74,
-                        66,
-                        90,
-                        93,
-                        79
+                        772,
+                        778,
+                        750,
+                        761,
+                        1250
                     ],
                     "metrics": {
-                        "recall": 0.5,
-                        "precision": 0.2,
-                        "mrr": 0.2,
-                        "hit": 1,
-                        "ndcg": 0.23719771276929622
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q13",
                     "retrieved_ids": [
-                        79,
-                        80,
-                        75,
-                        68,
-                        74
+                        799,
+                        1271,
+                        778,
+                        1354,
+                        1437
                     ],
                     "metrics": {
-                        "recall": 0.6666666666666666,
-                        "precision": 0.4,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.7002755876478819
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q14",
                     "retrieved_ids": [
-                        79,
-                        80,
-                        65,
-                        68,
-                        59
+                        778,
+                        1250,
+                        1333,
+                        1416,
+                        799
                     ],
                     "metrics": {
-                        "recall": 0.6666666666666666,
-                        "precision": 0.4,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.9072836011519267
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q15",
                     "retrieved_ids": [
-                        82,
-                        80,
-                        81,
-                        86,
-                        63
+                        822,
+                        780,
+                        785,
+                        1257,
+                        1252
                     ],
                     "metrics": {
-                        "recall": 0.3333333333333333,
-                        "precision": 0.6,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.5390681062563235
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q16",
                     "retrieved_ids": [
-                        83,
-                        81,
-                        78,
-                        80,
-                        85
+                        782,
+                        1254,
+                        1337,
+                        1420,
+                        780
                     ],
                     "metrics": {
-                        "recall": 0.5,
-                        "precision": 0.8,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.8884862264047996
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q17",
                     "retrieved_ids": [
-                        98,
-                        86,
-                        55,
-                        91,
-                        112
+                        793,
+                        1265,
+                        1348,
+                        1431,
+                        786
                     ],
                     "metrics": {
-                        "recall": 0.3333333333333333,
-                        "precision": 0.2,
-                        "mrr": 0.5,
-                        "hit": 1,
-                        "ndcg": 0.35098520806348704
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q18",
                     "retrieved_ids": [
-                        88,
-                        107,
-                        71,
-                        93,
-                        89
+                        788,
+                        789,
+                        787,
+                        1261,
+                        1259
                     ],
                     "metrics": {
-                        "recall": 1.0,
-                        "precision": 0.2,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 1.0
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q19",
                     "retrieved_ids": [
-                        91,
-                        55,
-                        90,
-                        89,
-                        56
+                        793,
+                        748,
+                        789,
+                        1265,
+                        1220
                     ],
                     "metrics": {
-                        "recall": 0.8333333333333334,
-                        "precision": 1.0,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 1.0
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 },
                 {
                     "qid": "q20",
                     "retrieved_ids": [
-                        79,
-                        75,
-                        80,
-                        76,
-                        77
+                        778,
+                        1250,
+                        1333,
+                        1416,
+                        799
                     ],
                     "metrics": {
-                        "recall": 0.4,
-                        "precision": 0.4,
-                        "mrr": 1.0,
-                        "hit": 1,
-                        "ndcg": 0.3467253154357711
+                        "recall": 0.0,
+                        "precision": 0.0,
+                        "mrr": 0.0,
+                        "hit": 0,
+                        "ndcg": 0.0
                     }
                 }
             ]

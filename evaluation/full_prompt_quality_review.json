@@ -1,0 +1,1339 @@
+{
+    "experiment": "Full paired manual prompt quality review",
+    "source_experiment": "evaluation/full_prompt_comparison_results.json",
+    "review_status": "COMPLETED",
+    "scoring_rubric": {
+        "factual_correctness": {
+            "0": "Incorrect or substantially wrong",
+            "1": "Partially correct",
+            "2": "Correct"
+        },
+        "semantic_faithfulness": {
+            "0": "Contains unsupported claims",
+            "1": "Mostly supported, with some unsupported details",
+            "2": "Claims are supported by retrieved context"
+        },
+        "completeness": {
+            "0": "Major relevant information is missing",
+            "1": "Some relevant information is missing",
+            "2": "Important relevant information is covered"
+        },
+        "citation_accuracy": {
+            "0": "Citations are missing, invalid, or unsupported",
+            "1": "Some citations are appropriate, others are weak",
+            "2": "Citations support their associated claims"
+        },
+        "total_maximum_per_answer": 8
+    },
+    "summary": {
+        "total_questions": 16,
+        "answerable_questions": 12,
+        "unanswerable_questions": 4,
+        "original_correct_abstentions": 4,
+        "coverage_correct_abstentions": 4,
+        "maximum_answerable_score_per_prompt": 96,
+        "original_manual_quality_score": 92,
+        "original_manual_quality_maximum": 96,
+        "original_manual_quality_percentage": 95.83,
+        "coverage_manual_quality_score": 91,
+        "coverage_manual_quality_maximum": 96,
+        "coverage_manual_quality_percentage": 94.79,
+        "original_correct_abstention_rate": "4/4 (100%)",
+        "coverage_correct_abstention_rate": "4/4 (100%)",
+        "manual_review_scope": "G01-G12 answerable questions; unanswerable G13-G16 assessed by exact abstention checks."
+    },
+    "results": [
+        {
+            "id": "G01",
+            "type": "answerable",
+            "question": "How many attention heads does the original Transformer use?",
+            "expected_answer": "The original Transformer uses 8 parallel attention heads.",
+            "key_facts": [
+                "8 attention heads"
+            ],
+            "expected_source": "NIPS-2017-attention-is-all-you-need-Paper.pdf",
+            "expected_pages": [
+                5
+            ],
+            "original_prompt": {
+                "answer": "The original Transformer uses eight parallel attention heads  [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 5].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Correct: eight parallel attention heads; page 5 directly supports the answer.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "The original Transformer uses **8 parallel attention heads** [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 5].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Correct: eight parallel attention heads; page 5 directly supports the answer.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "frozen_chunks": [
+                {
+                    "id": 74,
+                    "text": "is similar to that of single-head attention with full dimensionality.\n3.2.3\nApplications of Attention in our Model\nThe Transformer uses multi-head attention in three different ways:\n• In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer,\nand the memory keys and values come from the output of the encoder. This allows every\nposition in the decoder to attend over all positions in the input sequence. This mimics the\ntypical encoder-decoder attention mechanisms in sequence-to-sequence models such as\n[38, 2, 9].\n• The encoder contains self-attention layers. In a self-attention layer all of the keys, values\nand queries come from the same place, in this case, the output of the previous layer in the",
+                    "metadata": {
+                        "page": 5,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.5579179192830382
+                },
+                {
+                    "id": 66,
+                    "text": "Figure 1: The Transformer - model architecture.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1\nEncoder and Decoder Stacks\nEncoder:\nThe encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-\nwise fully connected feed-forward network. We employ a residual connection [11] around each of\nthe two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer",
+                    "metadata": {
+                        "page": 3,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.45955002307891846
+                },
+                {
+                    "id": 73,
+                    "text": "output values. These are concatenated and once again projected, resulting in the final values, as\ndepicted in Figure 2.\nMulti-head attention allows the model to jointly attend to information from different representation\nsubspaces at different positions. With a single attention head, averaging inhibits this.\nMultiHead(Q, K, V ) = Concat(head1, ..., headh)W O\nwhere headi = Attention(QW Q\ni , KW K\ni , V W V\ni )\nWhere the projections are parameter matrices W Q\ni\n∈Rdmodel×dk, W K\ni\n∈Rdmodel×dk, W V\ni\n∈Rdmodel×dv\nand W O ∈Rhdv×dmodel.\nIn this work we employ h = 8 parallel attention layers, or heads. For each of these we use\ndk = dv = dmodel/h = 64. Due to the reduced dimension of each head, the total computational cost\nis similar to that of single-head attention with full dimensionality.\n3.2.3",
+                    "metadata": {
+                        "page": 5,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.3942224383354187
+                },
+                {
+                    "id": 56,
+                    "text": "our model establishes a new single-model state-of-the-art BLEU score of 41.8 after\ntraining for 3.5 days on eight GPUs, a small fraction of the training costs of the\nbest models from the literature. We show that the Transformer generalizes well to\nother tasks by applying it successfully to English constituency parsing both with\nlarge and limited training data.\n∗Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started\nthe effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and\nhas been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head",
+                    "metadata": {
+                        "page": 1,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.3881206512451172
+                },
+                {
+                    "id": 102,
+                    "text": "We are excited about the future of attention-based models and plan to apply them to other tasks. We\nplan to extend the Transformer to problems involving input and output modalities other than text and\nto investigate local, restricted attention mechanisms to efficiently handle large inputs and outputs\nsuch as images, audio and video. Making generation less sequential is another research goals of ours.\nThe code we used to train and evaluate our models is available at https://github.com/\ntensorflow/tensor2tensor.\nAcknowledgements\nWe are grateful to Nal Kalchbrenner and Stephan Gouws for their fruitful\ncomments, corrections and inspiration.\nReferences\n[1] Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint\narXiv:1607.06450, 2016.",
+                    "metadata": {
+                        "page": 10,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.38471112342410607
+                },
+                {
+                    "id": 93,
+                    "text": "architectures from the literature. We estimate the number of floating point operations used to train a\nmodel by multiplying the training time, the number of GPUs used, and an estimate of the sustained\nsingle-precision floating-point capacity of each GPU 5.\n6.2\nModel Variations\nTo evaluate the importance of different components of the Transformer, we varied our base model\nin different ways, measuring the change in performance on English-to-German translation on the\n5We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively.\n8",
+                    "metadata": {
+                        "page": 8,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.37134347132781387
+                }
+            ]
+        },
+        {
+            "id": "G02",
+            "type": "answerable",
+            "question": "How does scaled dot-product attention calculate the attention weights?",
+            "expected_answer": "It calculates dot products between queries and keys, divides them by the square root of the key dimension, and applies softmax to obtain weights for the values.",
+            "key_facts": [
+                "query-key dot products",
+                "division by square root of key dimension",
+                "softmax"
+            ],
+            "expected_source": "NIPS-2017-attention-is-all-you-need-Paper.pdf",
+            "expected_pages": [
+                4
+            ],
+            "original_prompt": {
+                "answer": "Scaled dot‑product attention first computes the dot product between each query vector and all key vectors. Each resulting dot product is then divided by the square‑root of the key dimension \\(d_k\\) to counteract large magnitude values. Finally, a softmax is applied to these scaled scores, producing the attention weights that are used to weight the corresponding values [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 4] [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 4].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Correctly explains query-key dot products, scaling by square root of key dimension, and softmax. Duplicate page citation is redundant.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "Scaled dot‑product attention computes the weights by first taking the dot product between each query vector **q** and all key vectors **k**, then scaling those dot products by the factor \\(1/\\sqrt{d_k}\\) (where \\(d_k\\) is the dimensionality of the keys). A softmax function is applied to the scaled dot products, producing a probability distribution that serves as the attention weights for the corresponding values  [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 4] [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 4].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Correctly explains query-key dot products, scaling by square root of key dimension, and softmax. Duplicate page citation is redundant.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "frozen_chunks": [
+                {
+                    "id": 69,
+                    "text": "Scaled Dot-Product Attention\nMulti-Head Attention\nFigure 2: (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several\nattention layers running in parallel.\nof the values, where the weight assigned to each value is computed by a compatibility function of the\nquery with the corresponding key.\n3.2.1\nScaled Dot-Product Attention\nWe call our particular attention \"Scaled Dot-Product Attention\" (Figure 2). The input consists of\nqueries and keys of dimension dk, and values of dimension dv. We compute the dot products of the\nquery with all keys, divide each by √dk, and apply a softmax function to obtain the weights on the\nvalues.\nIn practice, we compute the attention function on a set of queries simultaneously, packed together",
+                    "metadata": {
+                        "page": 4,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.7085575635100876
+                },
+                {
+                    "id": 71,
+                    "text": "much faster and more space-efficient in practice, since it can be implemented using highly optimized\nmatrix multiplication code.\nWhile for small values of dk the two mechanisms perform similarly, additive attention outperforms\ndot product attention without scaling for larger values of dk [3]. We suspect that for large values of\ndk, the dot products grow large in magnitude, pushing the softmax function into regions where it has\nextremely small gradients 4. To counteract this effect, we scale the dot products by\n1\n√dk .\n3.2.2\nMulti-Head Attention\nInstead of performing a single attention function with dmodel-dimensional keys, values and queries,\nwe found it beneficial to linearly project the queries, keys and values h times with different, learned",
+                    "metadata": {
+                        "page": 4,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.6207759832410876
+                },
+                {
+                    "id": 70,
+                    "text": "values.\nIn practice, we compute the attention function on a set of queries simultaneously, packed together\ninto a matrix Q. The keys and values are also packed together into matrices K and V . We compute\nthe matrix of outputs as:\nAttention(Q, K, V ) = softmax(QKT\n√dk\n)V\n(1)\nThe two most commonly used attention functions are additive attention [2], and dot-product (multi-\nplicative) attention. Dot-product attention is identical to our algorithm, except for the scaling factor\nof\n1\n√dk . Additive attention computes the compatibility function using a feed-forward network with\na single hidden layer. While the two are similar in theoretical complexity, dot-product attention is\nmuch faster and more space-efficient in practice, since it can be implemented using highly optimized",
+                    "metadata": {
+                        "page": 4,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.6095382803953729
+                },
+                {
+                    "id": 57,
+                    "text": "has been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head\nattention and the parameter-free position representation and became the other person involved in nearly every\ndetail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and\ntensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and\nefficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and\nimplementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating\nour research.\n†Work performed while at Google Brain.\n‡Work performed while at Google Research.",
+                    "metadata": {
+                        "page": 1,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.5378063321113586
+                },
+                {
+                    "id": 72,
+                    "text": "we found it beneficial to linearly project the queries, keys and values h times with different, learned\nlinear projections to dk, dk and dv dimensions, respectively. On each of these projected versions of\nqueries, keys and values we then perform the attention function in parallel, yielding dv-dimensional\n4To illustrate why the dot products get large, assume that the components of q and k are independent random\nvariables with mean 0 and variance 1. Then their dot product, q · k = Pdk\ni=1 qiki, has mean 0 and variance dk.\n4",
+                    "metadata": {
+                        "page": 4,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.49525168538093567
+                },
+                {
+                    "id": 56,
+                    "text": "our model establishes a new single-model state-of-the-art BLEU score of 41.8 after\ntraining for 3.5 days on eight GPUs, a small fraction of the training costs of the\nbest models from the literature. We show that the Transformer generalizes well to\nother tasks by applying it successfully to English constituency parsing both with\nlarge and limited training data.\n∗Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started\nthe effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and\nhas been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head",
+                    "metadata": {
+                        "page": 1,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.47344693541526794
+                }
+            ]
+        },
+        {
+            "id": "G03",
+            "type": "answerable",
+            "question": "Why does the Transformer use positional encoding?",
+            "expected_answer": "Because the Transformer does not use recurrence or convolution, it needs positional information to represent the order of tokens in a sequence. The paper uses sine and cosine functions of different frequencies.",
+            "key_facts": [
+                "information about token positions",
+                "sequence order",
+                "sine and cosine functions"
+            ],
+            "expected_source": "NIPS-2017-attention-is-all-you-need-Paper.pdf",
+            "expected_pages": [
+                6
+            ],
+            "original_prompt": {
+                "answer": "The Transformer has no recurrence or convolution to capture token order, so it must inject explicit information about where each token appears in the sequence. Positional encodings are added to the input embeddings to provide relative or absolute position information to the model  [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 6].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 1,
+                    "citation_accuracy": 2,
+                    "total_score": 7,
+                    "notes": "Correctly explains that positional encoding supplies token-position information because the architecture lacks recurrence or convolution; omits the retrieved sine/cosine implementation detail.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "The Transformer adds positional encodings to the input embeddings so that the model can know the relative or absolute positions of tokens in a sequence. Because the architecture itself (self‑attention) has no inherent notion of order, injecting positional information is necessary to represent sequence order.  [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 6]",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 1,
+                    "citation_accuracy": 2,
+                    "total_score": 7,
+                    "notes": "Correctly explains that positional encoding supplies token-position information because self-attention has no inherent order; omits the retrieved sine/cosine implementation detail.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "frozen_chunks": [
+                {
+                    "id": 74,
+                    "text": "is similar to that of single-head attention with full dimensionality.\n3.2.3\nApplications of Attention in our Model\nThe Transformer uses multi-head attention in three different ways:\n• In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer,\nand the memory keys and values come from the output of the encoder. This allows every\nposition in the decoder to attend over all positions in the input sequence. This mimics the\ntypical encoder-decoder attention mechanisms in sequence-to-sequence models such as\n[38, 2, 9].\n• The encoder contains self-attention layers. In a self-attention layer all of the keys, values\nand queries come from the same place, in this case, the output of the previous layer in the",
+                    "metadata": {
+                        "page": 5,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.5220219466660087
+                },
+                {
+                    "id": 66,
+                    "text": "Figure 1: The Transformer - model architecture.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1\nEncoder and Decoder Stacks\nEncoder:\nThe encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-\nwise fully connected feed-forward network. We employ a residual connection [11] around each of\nthe two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer",
+                    "metadata": {
+                        "page": 3,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.4676473160000263
+                },
+                {
+                    "id": 90,
+                    "text": "3.3 · 1018\nTransformer (big)\n28.4\n41.8\n2.3 · 1019\nResidual Dropout\nWe apply dropout [33] to the output of each sub-layer, before it is added to the\nsub-layer input and normalized. In addition, we apply dropout to the sums of the embeddings and the\npositional encodings in both the encoder and decoder stacks. For the base model, we use a rate of\nPdrop = 0.1.\nLabel Smoothing\nDuring training, we employed label smoothing of value ϵls = 0.1 [36]. This\nhurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.\n6\nResults\n6.1\nMachine Translation\nOn the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)\nin Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0",
+                    "metadata": {
+                        "page": 8,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.4332457522603429
+                },
+                {
+                    "id": 94,
+                    "text": "Table 3: Variations on the Transformer architecture. Unlisted values are identical to those of the base\nmodel. All metrics are on the English-to-German translation development set, newstest2013. Listed\nperplexities are per-wordpiece, according to our byte-pair encoding, and should not be compared to\nper-word perplexities.\nN\ndmodel\ndff\nh\ndk\ndv\nPdrop\nϵls\ntrain\nPPL\nBLEU\nparams\nsteps\n(dev)\n(dev)\n×106\nbase\n6\n512\n2048\n8\n64\n64\n0.1\n0.1\n100K\n4.92\n25.8\n65\n(A)\n1\n512\n512\n5.29\n24.9\n4\n128\n128\n5.00\n25.5\n16\n32\n32\n4.91\n25.8\n32\n16\n16\n5.01\n25.4\n(B)\n16\n5.16\n25.1\n58\n32\n5.01\n25.4\n60\n(C)\n2\n6.11\n23.7\n36\n4\n5.19\n25.3\n50\n8\n4.88\n25.5\n80\n256\n32\n32\n5.75\n24.5\n28\n1024\n128\n128\n4.66\n26.0\n168\n1024\n5.12\n25.4\n53\n4096\n4.75\n26.2\n90\n(D)\n0.0\n5.77\n24.6\n0.2\n4.95\n25.5\n0.0\n4.67\n25.3\n0.2\n5.47\n25.7\n(E)",
+                    "metadata": {
+                        "page": 9,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.4224276416770343
+                },
+                {
+                    "id": 68,
+                    "text": "sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This\nmasking, combined with fact that the output embeddings are offset by one position, ensures that the\npredictions for position i can depend only on the known outputs at positions less than i.\n3.2\nAttention\nAn attention function can be described as mapping a query and a set of key-value pairs to an output,\nwhere the query, keys, values, and output are all vectors. The output is computed as a weighted sum\n3",
+                    "metadata": {
+                        "page": 3,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.39481256039067814
+                },
+                {
+                    "id": 79,
+                    "text": "order of the sequence, we must inject some information about the relative or absolute position of the\ntokens in the sequence. To this end, we add \"positional encodings\" to the input embeddings at the\nbottoms of the encoder and decoder stacks. The positional encodings have the same dimension dmodel\nas the embeddings, so that the two can be summed. There are many choices of positional encodings,\nlearned and fixed [9].\nIn this work, we use sine and cosine functions of different frequencies:\nPE(pos,2i) = sin(pos/100002i/dmodel)\nPE(pos,2i+1) = cos(pos/100002i/dmodel)\nwhere pos is the position and i is the dimension. That is, each dimension of the positional encoding\ncorresponds to a sinusoid. The wavelengths form a geometric progression from 2π to 10000 · 2π. We",
+                    "metadata": {
+                        "page": 6,
+                        "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                    },
+                    "similarity": 0.39428643022260557
+                }
+            ]
+        },
+        {
+            "id": "G04",
+            "type": "answerable",
+            "question": "How many items did independent sellers in the United States sell in 2023?",
+            "expected_answer": "They sold more than 4.5 billion items, averaging approximately 8,600 items every minute.",
+            "key_facts": [
+                "more than 4.5 billion items",
+                "8,600 every minute"
+            ],
+            "expected_source": "amazon_small_business_report_2023.pdf",
+            "expected_pages": [
+                2,
+                3
+            ],
+            "original_prompt": {
+                "answer": "Independent sellers in the United States sold more than 4.5 billion items in 2023 [Source: data/amazon_small_business_report_2023.pdf, Page: 3].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Correctly states more than 4.5 billion items; page 3 supports the claim.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "Independent sellers in the United States sold **more than 4.5 billion items** in 2023 [Source: data/amazon_small_business_report_2023.pdf, Page: 3] [Source: data/amazon_small_business_report_2023.pdf, Page: 2].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Correctly states more than 4.5 billion items; page 3 supports the claim. Extra page 2 citation is also relevant.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "frozen_chunks": [
+                {
+                    "id": 119,
+                    "text": "4. Grocery\n5. Apparel\nitems through the Fulfillment By Amazon (FBA)  \nDonations program\nan average of 8,600 every minute\nPEOPLE IN THE U.S.\nITEMS\nBRAND OWNERS GREW \nSALES MORE THAN\nYEAR-OVER-YEAR\n22%\n1.8 million\n4.5 billion\n$250,000\n$1 million\n160 million\nThe 5\n70%\nSPACE USED FOR SELLER INVENTORY IN \nAMAZON’S WAREHOUSES INCREASED BY OVER\nCUBIC FEET\n55 million\nIN AMAZON’S STORE ARE FROM INDEPENDENT \nSELLERS—MOST OF WHICH ARE SMALL AND \nMEDIUM-SIZED BUSINESSES\nMore than 60% of sales\nTable of contents\nAt a glance: Selling in \nAmazon’s store in 2023 \nAt a glance: Selling in Amazon’s store in 2023\nMeet the seller: A business built on a social media \nfollowing now uses Amazon to find new customers \nMeet the seller: An Oprah’s ‘Favorite’ athleisure brand",
+                    "metadata": {
+                        "page": 2,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.5941230058670044
+                },
+                {
+                    "id": 126,
+                    "text": "of individuals across the country. By providing avenues for upward mobility and skill \ndevelopment, small businesses play a pivotal role in promoting economic vitality and \ninclusion, spanning a range of industries from manufacturing to technology.\nCustomer needs and shopping habits have evolved significantly over the past 24 years, \nand Amazon’s continued investment and support has helped independent sellers, who \nare located across all 50 states, to advance further and drive greater success. Independent \nsellers in the U.S. continue to thrive, selling more than 4.5 billion items—or 8,600 every \nminute—and averaging more than $250,000 in annual sales in Amazon’s store in 2023. With \nthis year’s report, we are excited to share more stories of small business success throughout",
+                    "metadata": {
+                        "page": 3,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.5818796157836914
+                },
+                {
+                    "id": 118,
+                    "text": "OVER \nitems were exported by U.S.-based sellers \nto customers in over 130 countries globally\n330 million\nINDEPENDENT SELLERS \nEMPLOYED OVER \nINDEPENDENT SELLERS IN  \nTHE U.S. SOLD MORE THAN\nINDEPENDENT SELLERS IN THE \nU.S. AVERAGED MORE THAN\nMORE THAN 10,000 \nINDEPENDENT SELLERS \nSURPASSED\nMOST SHOPPED \nCATEGORIES\nSHIPPING WITH \nFBA COSTS \nLESS PER UNIT\nIN SALES FOR THE FIRST TIME\nINDEPENDENT SELLERS, TOGETHER \nWITH AMAZON, DONATED OVER \nin annual sales in Amazon’s store\nfrom U.S. independent sellers \nin Amazon’s store were\nthan comparable  \npremium options  \noffered by other U.S.  \nfulfillment services\n1. Health & Personal Care\n2. Beauty\n3. Home\n4. Grocery\n5. Apparel\nitems through the Fulfillment By Amazon (FBA)  \nDonations program\nan average of 8,600 every minute\nPEOPLE IN THE U.S.\nITEMS",
+                    "metadata": {
+                        "page": 2,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.5593550205230713
+                },
+                {
+                    "id": 217,
+                    "text": "including parts of North Dakota, Kansas, Alaska, \nUtah, and Florida, collectively achieved more than \nSellers in rural areas\n60% year-over-year \nsales growth\nIN AMAZON’S \nSTORE\nSee Amazon’s interactive map for \nmore seller stories and state-level \nimpact data. \n31\n32\nAMAZON | 2023 SMALL BUSINESS EMPOWERMENT REPORT",
+                    "metadata": {
+                        "page": 17,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.5312504768371582
+                },
+                {
+                    "id": 122,
+                    "text": "3\n4\nAMAZON | 2023 SMALL BUSINESS EMPOWERMENT REPORT\nIntroduction\nTwenty-four years ago, Amazon embarked on a journey welcoming independent sellers \nto sell in our store. This transformative partnership unleashed the uniquely innovative \nspirit of U.S. small and medium-sized business owners. As a result, more than 60% of the \nsales in Amazon’s store now come from independent sellers—most of which are small and \nmedium-sized businesses. The small businesses selling and thriving in Amazon’s store are at \nthe heart of their local communities, and they include many women, military family, Black, \nand Hispanic-owned businesses as well as artisans who create handcrafted goods. They are \nneighborhood shop owners, innovators who have created entirely new brands and types",
+                    "metadata": {
+                        "page": 3,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.5147088170051575
+                },
+                {
+                    "id": 164,
+                    "text": "can sell more with less time and effort.\n•\t\nAmazon Business helps sellers identify business-\nto-business (B2B) customers who are looking for \nbusiness-specific products and connects them \nwith relevant offers from various sellers. Sellers \ncan use tools to discover B2B needs, respond to \nbusiness-specific customer quote requests, and \nsell items in bulk.\n•\t\nA business profile and certifications (e.g., small \nbusiness) can help a seller’s products stand out \nto procurement decision-makers and other B2B \ncustomers with Amazon Business.\nIN 2023, INDEPENDENT SELLERS \nAVERAGED MORE THAN\nin annual sales in \nAmazon’s store\n$250,000\n“With Amazon Business we have exposure to buyers and \nprocurement managers looking for alternatives to lanyards.",
+                    "metadata": {
+                        "page": 8,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.4758793257438938
+                }
+            ]
+        },
+        {
+            "id": "G05",
+            "type": "answerable",
+            "question": "What percentage of sales in Amazon's store came from independent sellers?",
+            "expected_answer": "More than 60% of sales in Amazon's store came from independent sellers.",
+            "key_facts": [
+                "more than 60%",
+                "independent sellers"
+            ],
+            "expected_source": "amazon_small_business_report_2023.pdf",
+            "expected_pages": [
+                2,
+                3
+            ],
+            "original_prompt": {
+                "answer": "More than 60 % of the sales in Amazon’s store came from independent sellers [Source: data/amazon_small_business_report_2023.pdf, Page: 3] [Source: data/amazon_small_business_report_2023.pdf, Page: 2].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Correctly states more than 60%; both cited pages support the claim, though the second citation is redundant.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "More than 60 % of the sales in Amazon’s store come from independent sellers [Source: data/amazon_small_business_report_2023.pdf, Page: 3].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Correctly states more than 60%; page 3 directly supports the claim.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "frozen_chunks": [
+                {
+                    "id": 126,
+                    "text": "of individuals across the country. By providing avenues for upward mobility and skill \ndevelopment, small businesses play a pivotal role in promoting economic vitality and \ninclusion, spanning a range of industries from manufacturing to technology.\nCustomer needs and shopping habits have evolved significantly over the past 24 years, \nand Amazon’s continued investment and support has helped independent sellers, who \nare located across all 50 states, to advance further and drive greater success. Independent \nsellers in the U.S. continue to thrive, selling more than 4.5 billion items—or 8,600 every \nminute—and averaging more than $250,000 in annual sales in Amazon’s store in 2023. With \nthis year’s report, we are excited to share more stories of small business success throughout",
+                    "metadata": {
+                        "page": 3,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.6902693510055542
+                },
+                {
+                    "id": 119,
+                    "text": "4. Grocery\n5. Apparel\nitems through the Fulfillment By Amazon (FBA)  \nDonations program\nan average of 8,600 every minute\nPEOPLE IN THE U.S.\nITEMS\nBRAND OWNERS GREW \nSALES MORE THAN\nYEAR-OVER-YEAR\n22%\n1.8 million\n4.5 billion\n$250,000\n$1 million\n160 million\nThe 5\n70%\nSPACE USED FOR SELLER INVENTORY IN \nAMAZON’S WAREHOUSES INCREASED BY OVER\nCUBIC FEET\n55 million\nIN AMAZON’S STORE ARE FROM INDEPENDENT \nSELLERS—MOST OF WHICH ARE SMALL AND \nMEDIUM-SIZED BUSINESSES\nMore than 60% of sales\nTable of contents\nAt a glance: Selling in \nAmazon’s store in 2023 \nAt a glance: Selling in Amazon’s store in 2023\nMeet the seller: A business built on a social media \nfollowing now uses Amazon to find new customers \nMeet the seller: An Oprah’s ‘Favorite’ athleisure brand",
+                    "metadata": {
+                        "page": 2,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.6698780059814453
+                },
+                {
+                    "id": 118,
+                    "text": "OVER \nitems were exported by U.S.-based sellers \nto customers in over 130 countries globally\n330 million\nINDEPENDENT SELLERS \nEMPLOYED OVER \nINDEPENDENT SELLERS IN  \nTHE U.S. SOLD MORE THAN\nINDEPENDENT SELLERS IN THE \nU.S. AVERAGED MORE THAN\nMORE THAN 10,000 \nINDEPENDENT SELLERS \nSURPASSED\nMOST SHOPPED \nCATEGORIES\nSHIPPING WITH \nFBA COSTS \nLESS PER UNIT\nIN SALES FOR THE FIRST TIME\nINDEPENDENT SELLERS, TOGETHER \nWITH AMAZON, DONATED OVER \nin annual sales in Amazon’s store\nfrom U.S. independent sellers \nin Amazon’s store were\nthan comparable  \npremium options  \noffered by other U.S.  \nfulfillment services\n1. Health & Personal Care\n2. Beauty\n3. Home\n4. Grocery\n5. Apparel\nitems through the Fulfillment By Amazon (FBA)  \nDonations program\nan average of 8,600 every minute\nPEOPLE IN THE U.S.\nITEMS",
+                    "metadata": {
+                        "page": 2,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.6430400609970093
+                },
+                {
+                    "id": 217,
+                    "text": "including parts of North Dakota, Kansas, Alaska, \nUtah, and Florida, collectively achieved more than \nSellers in rural areas\n60% year-over-year \nsales growth\nIN AMAZON’S \nSTORE\nSee Amazon’s interactive map for \nmore seller stories and state-level \nimpact data. \n31\n32\nAMAZON | 2023 SMALL BUSINESS EMPOWERMENT REPORT",
+                    "metadata": {
+                        "page": 17,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.6225330233573914
+                },
+                {
+                    "id": 122,
+                    "text": "3\n4\nAMAZON | 2023 SMALL BUSINESS EMPOWERMENT REPORT\nIntroduction\nTwenty-four years ago, Amazon embarked on a journey welcoming independent sellers \nto sell in our store. This transformative partnership unleashed the uniquely innovative \nspirit of U.S. small and medium-sized business owners. As a result, more than 60% of the \nsales in Amazon’s store now come from independent sellers—most of which are small and \nmedium-sized businesses. The small businesses selling and thriving in Amazon’s store are at \nthe heart of their local communities, and they include many women, military family, Black, \nand Hispanic-owned businesses as well as artisans who create handcrafted goods. They are \nneighborhood shop owners, innovators who have created entirely new brands and types",
+                    "metadata": {
+                        "page": 3,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.6213011145591736
+                },
+                {
+                    "id": 123,
+                    "text": "neighborhood shop owners, innovators who have created entirely new brands and types \nof products, rural business owners who are now able to reach customers around the world, \nemployers providing great jobs in their local communities, builders of economic opportunity, \nthe backbone of support for non-profit organizations, and so much more.\n“Amazon is small business-friendly and perfect for inventive \npeople. In the Amazon store, even if you only have one good \nproduct, you can immediately sell globally. If people like your \nproduct, you sell, make a profit and then invest that profit in \nmore products. Our potential for business growth matches that \nof well-established corporations.”\n“I’ve heard testimonials from people on our staff who have said",
+                    "metadata": {
+                        "page": 3,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.5741647481918335
+                }
+            ]
+        },
+        {
+            "id": "G06",
+            "type": "answerable",
+            "question": "How many people did independent sellers in Amazon's store employ in the United States in 2023?",
+            "expected_answer": "Independent sellers employed more than 1.8 million people in the United States in 2023.",
+            "key_facts": [
+                "more than 1.8 million people",
+                "United States",
+                "2023"
+            ],
+            "expected_source": "amazon_small_business_report_2023.pdf",
+            "expected_pages": [
+                2,
+                3
+            ],
+            "original_prompt": {
+                "answer": "Independent sellers in Amazon’s store employed **more than 1.8 million people in the United States in 2023** [Source: data/amazon_small_business_report_2023.pdf, Page: 3].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "All required facts—more than 1.8 million people, United States, and 2023—are supported by page 3.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "Independent sellers in Amazon’s store employed **more than 1.8 million people in the United States in 2023** [Source: data/amazon_small_business_report_2023.pdf, Page: 3].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "All required facts—more than 1.8 million people, United States, and 2023—are supported by page 3.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "frozen_chunks": [
+                {
+                    "id": 119,
+                    "text": "4. Grocery\n5. Apparel\nitems through the Fulfillment By Amazon (FBA)  \nDonations program\nan average of 8,600 every minute\nPEOPLE IN THE U.S.\nITEMS\nBRAND OWNERS GREW \nSALES MORE THAN\nYEAR-OVER-YEAR\n22%\n1.8 million\n4.5 billion\n$250,000\n$1 million\n160 million\nThe 5\n70%\nSPACE USED FOR SELLER INVENTORY IN \nAMAZON’S WAREHOUSES INCREASED BY OVER\nCUBIC FEET\n55 million\nIN AMAZON’S STORE ARE FROM INDEPENDENT \nSELLERS—MOST OF WHICH ARE SMALL AND \nMEDIUM-SIZED BUSINESSES\nMore than 60% of sales\nTable of contents\nAt a glance: Selling in \nAmazon’s store in 2023 \nAt a glance: Selling in Amazon’s store in 2023\nMeet the seller: A business built on a social media \nfollowing now uses Amazon to find new customers \nMeet the seller: An Oprah’s ‘Favorite’ athleisure brand",
+                    "metadata": {
+                        "page": 2,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.7208029198167981
+                },
+                {
+                    "id": 126,
+                    "text": "of individuals across the country. By providing avenues for upward mobility and skill \ndevelopment, small businesses play a pivotal role in promoting economic vitality and \ninclusion, spanning a range of industries from manufacturing to technology.\nCustomer needs and shopping habits have evolved significantly over the past 24 years, \nand Amazon’s continued investment and support has helped independent sellers, who \nare located across all 50 states, to advance further and drive greater success. Independent \nsellers in the U.S. continue to thrive, selling more than 4.5 billion items—or 8,600 every \nminute—and averaging more than $250,000 in annual sales in Amazon’s store in 2023. With \nthis year’s report, we are excited to share more stories of small business success throughout",
+                    "metadata": {
+                        "page": 3,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.6901783531797926
+                },
+                {
+                    "id": 125,
+                    "text": "President and CEO,  \nCompac Industries  \nTucker, Georgia\nRebecca Hamilton\nCo-CEO, Badger  \nGilsum, New Hampshire\nDharmesh M. Mehta \nVice President \nWorldwide Selling Partner Services \nAmazon\nIn 2023, hundreds of millions of customers purchased from the small and medium-sized \nbusinesses that sell in Amazon’s store, fueling the growth of these businesses and directly \nbenefiting their communities. In fact, independent sellers in Amazon’s store employed \nmore than 1.8 million people in the U.S. in 2023. Independent sellers serve as important \naccelerants, offering a diverse array of jobs that cater to the unique talents and aspirations \nof individuals across the country. By providing avenues for upward mobility and skill",
+                    "metadata": {
+                        "page": 3,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.6750548869305983
+                },
+                {
+                    "id": 122,
+                    "text": "3\n4\nAMAZON | 2023 SMALL BUSINESS EMPOWERMENT REPORT\nIntroduction\nTwenty-four years ago, Amazon embarked on a journey welcoming independent sellers \nto sell in our store. This transformative partnership unleashed the uniquely innovative \nspirit of U.S. small and medium-sized business owners. As a result, more than 60% of the \nsales in Amazon’s store now come from independent sellers—most of which are small and \nmedium-sized businesses. The small businesses selling and thriving in Amazon’s store are at \nthe heart of their local communities, and they include many women, military family, Black, \nand Hispanic-owned businesses as well as artisans who create handcrafted goods. They are \nneighborhood shop owners, innovators who have created entirely new brands and types",
+                    "metadata": {
+                        "page": 3,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.6703186827708087
+                },
+                {
+                    "id": 217,
+                    "text": "including parts of North Dakota, Kansas, Alaska, \nUtah, and Florida, collectively achieved more than \nSellers in rural areas\n60% year-over-year \nsales growth\nIN AMAZON’S \nSTORE\nSee Amazon’s interactive map for \nmore seller stories and state-level \nimpact data. \n31\n32\nAMAZON | 2023 SMALL BUSINESS EMPOWERMENT REPORT",
+                    "metadata": {
+                        "page": 17,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.6309907656317504
+                },
+                {
+                    "id": 123,
+                    "text": "neighborhood shop owners, innovators who have created entirely new brands and types \nof products, rural business owners who are now able to reach customers around the world, \nemployers providing great jobs in their local communities, builders of economic opportunity, \nthe backbone of support for non-profit organizations, and so much more.\n“Amazon is small business-friendly and perfect for inventive \npeople. In the Amazon store, even if you only have one good \nproduct, you can immediately sell globally. If people like your \nproduct, you sell, make a profit and then invest that profit in \nmore products. Our potential for business growth matches that \nof well-established corporations.”\n“I’ve heard testimonials from people on our staff who have said",
+                    "metadata": {
+                        "page": 3,
+                        "source": "data/amazon_small_business_report_2023.pdf"
+                    },
+                    "similarity": 0.6247942671302409
+                }
+            ]
+        },
+        {
+            "id": "G07",
+            "type": "answerable",
+            "question": "Why is acknowledging a partner's feelings important after an argument?",
+            "expected_answer": "Acknowledging a partner's feelings shows respect, helps them feel heard, and demonstrates an effort to repair the situation.",
+            "key_facts": [
+                "respect",
+                "partner feels heard",
+                "repair the situation"
+            ],
+            "expected_source": "amity_relationship_care.pdf",
+            "expected_pages": [
+                23
+            ],
+            "original_prompt": {
+                "answer": "Acknowledging a partner’s feelings after an argument shows respect and lets them know they have been heard.  When you recognize that something you said or did upset them and offer an apology, it makes the other person feel respected, heard, and reassured that you are trying to repair the situation, which in turn strengthens the relationship [Source: data/amity_relationship_care.pdf, Page: 23].  This act of acknowledgment is described as a “communication super‑power” that helps move the couple toward repair and rebuilding trust [Source: data/amity_relationship_care.pdf, Page: 23].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 1,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 7,
+                    "notes": "Complete answer, but the claim about rebuilding trust is not directly supported by the frozen retrieved context.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "Acknowledging a partner’s feelings after an argument is important because it shows respect, makes the partner feel heard, and signals that you are trying to repair the situation. When you acknowledge how the other person is feeling, they experience respect and the sense that you care enough to recognize their hurt, which helps strengthen the relationship and move toward resolution [Source: data/amity_relationship_care.pdf, Page: 23] [Source: data/amity_relationship_care.pdf, Page: 23]",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Covers respect, feeling heard, and repair while staying within the retrieved evidence; duplicate citation is redundant but valid.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "frozen_chunks": [
+                {
+                    "id": 253,
+                    "text": "need.\nThis can cause conflict as your partner may feel offended as you don’t \nshow you are grateful.\nWhen we understand love languages, we recognise that some arguments \nhappen because we don’t know how the other person needs to feel loved.\n22\nLittle Book of Relationship Care",
+                    "metadata": {
+                        "page": 22,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.6165998806595885
+                },
+                {
+                    "id": 260,
+                    "text": "•\t\nThink about your partners love language and activate your \nactions.\n•\t\nRepair as this helps you to prepare. Repairing \n(acknowledging/apologising) the damage done by arguments \nmeans you will be better prepared to communicate more \npositively the next time you clash.\n•\t\nTry to understand your partners point of view. What matters \nto them may not matter to you and visa versa. However, if you \ndon’t make the effort to appreciate each other’s perspective \non something you can be sure that you will stay stuck. Both of \nyou making your points over and over again with no resolve.\n•\t\nLearn to move on. It’s easy to dwell on an issue or bring up \nthe past but this will weaken your bond and trust. Learning \n26\nLittle Book of Relationship Care",
+                    "metadata": {
+                        "page": 26,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.6089621056363457
+                },
+                {
+                    "id": 254,
+                    "text": "What you can do differently next time \nyou argue \nHere’s what everyone in a relationship needs to try to \ndo to make next time better.\nAcknowledge\nShow your partner respect by acknowledging that you may have said \nsomething that upset them or did something that hurt their feelings. \nShowing that you care enough to recognise that and offer an apology will \nstrengthen your relationship. As soon as you acknowledge how the other \nperson is feeling they feel heard, feel the respect you are showing them \nand will see that you are trying to repair the situation.\nAs soon as you acknowledge how the other person is feeling they feel \nheard, feel the respect you are showing them and can start to see that \nyou are trying to repair the situation.",
+                    "metadata": {
+                        "page": 23,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.6000603675806314
+                },
+                {
+                    "id": 324,
+                    "text": "partner in a way that avoids negative results. \nKey study: Gottman (2003)\n34.2.3  The role of listening\nAhmad and Reid (2008) argue it is necessary for partners to practise listening to \nunderstand how their partner feels and respond in a way that shows they have actually \nunderstood what has been communicated. They came to this conclusion while \nresearching traditional roles within marriage as they wanted to test whether couples \nwho believe in traditional roles in a marriage have less satisfaction. \n282\nPsychology of human relationships\nG",
+                    "metadata": {
+                        "page": 12,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.5819547674709835
+                },
+                {
+                    "id": 247,
+                    "text": "Why did our argument happen? \nWe are moving on to why did it happen. Why did it spiral into a clash \nrather than managing to calmly talk the issue through?\nThere are some obvious things here like, you were tired, had a bad day \netc.\nBut there are often more complex things that can be the reason.\nHere are things couples often say about why it happens….\n•\t\nBecause my partner wasn’t listening to me\n•\t\nBecause they don’t understand\n•\t\nBecause they think they know what I am thinking and feeling    \nbut don’t\n•\t\nBecause neither of us will take responsibility for our actions and \nare keen to blame the other\n•\t\nBecause they always think they are right\n19\nLittle Book of Relationship Care",
+                    "metadata": {
+                        "page": 19,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.5772224664688151
+                },
+                {
+                    "id": 255,
+                    "text": "heard, feel the respect you are showing them and can start to see that \nyou are trying to repair the situation.\nAcknowledging their perspective on the situation and why they might \nhave behaved the way they did.\nAcknowledging is a \ncommunication super power!\n23\nLittle Book of Relationship Care",
+                    "metadata": {
+                        "page": 23,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.5731119767956758
+                }
+            ]
+        },
+        {
+            "id": "G08",
+            "type": "answerable",
+            "question": "Why does the Relationship Care book recommend using 'I' instead of 'You' during disagreements?",
+            "expected_answer": "Starting with 'You' can make the other person feel criticised and blamed. Using 'I' helps someone own and share their feelings in a less confrontational way.",
+            "key_facts": [
+                "'You' can sound blaming",
+                "'I' expresses one's own feelings",
+                "less confrontational communication"
+            ],
+            "expected_source": "amity_relationship_care.pdf",
+            "expected_pages": [
+                24
+            ],
+            "original_prompt": {
+                "answer": "The book advises using “I” statements because beginning a remark with “You” tends to put the other person on the defensive— they feel criticised and blamed, which often leads to a negative, unproductive conversation.  By contrast, an “I” statement lets you own your own feelings and share them in a non‑confrontational way, making it more likely that both partners will listen and have a positive dialogue [Source: data/amity_relationship_care.pdf, Page: 24].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Accurately explains that You-statements can trigger defensiveness and I-statements own and share feelings non-confrontationally; page 24 supports it.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "The book advises using “I” statements because “you” statements tend to put the partner on the defensive— they are perceived as criticism or blame and usually lead to a negative, unproductive conversation. In contrast, “I” statements let you own and share your own feelings in a non‑confrontational way, which makes a positive, listening‑oriented dialogue more likely and helps build a kinder, healthier relationship [Source: data/amity_relationship_care.pdf, Page: 24] [Source: data/amity_relationship_care.pdf, Page: 24].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Accurate explanation; the additional kinder/healthier relationship benefit is supported by another retrieved page-24 chunk. Duplicate citation is redundant.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "frozen_chunks": [
+                {
+                    "id": 256,
+                    "text": "Use ‘I’ rather than ‘You’\n“You never help me tidy the house!”\n“I could really do with some help with the tidying”\nWhich of these would make you feel defensive if said to you?\nWhen we say things that begin with ‘You’ the other person is \nautomatically on the defensive; they feel criticised and blamed. What \nfollows is unlikely to be a positive conversation. If you use ‘I’ however, \nyou are owning your feelings and sharing them with the other person \nin a non-confrontational way.You are more likely to have a positive \nconversation where you both listen to each other rather than get into the \nToxic Tennis game.\nMake a note to yourself to try and notice\nhow often you say ‘You’ at the start of a \nsentence to your partner and how often \nwhat follows is positive and how often it\nis negative.",
+                    "metadata": {
+                        "page": 24,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.4932947750863308
+                },
+                {
+                    "id": 253,
+                    "text": "need.\nThis can cause conflict as your partner may feel offended as you don’t \nshow you are grateful.\nWhen we understand love languages, we recognise that some arguments \nhappen because we don’t know how the other person needs to feel loved.\n22\nLittle Book of Relationship Care",
+                    "metadata": {
+                        "page": 22,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.45884048693421486
+                },
+                {
+                    "id": 334,
+                    "text": "Zimmerman (1987) \nsupported? \nDiscuss explanations for why relationships change or end.\nContent focus\n34.3.1  Communication changes\nKnapp et al. (2014) proposed a model (See Figure 34.1) to describe the stages that \npeople go through from the beginning to the end of a relationship. For example: \nat the start, people become closer by using ‘we’ instead of ‘I’ when talking to other \npeople, in order to emphasize their status as a partner. In the later stages, there is less \ncommunication between the partners and the ‘I’ is used more often. This is a sign that \nthe relationship might end.\n284\nPsychology of human relationships\nG",
+                    "metadata": {
+                        "page": 14,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.44480910897255255
+                },
+                {
+                    "id": 257,
+                    "text": "how often you say ‘You’ at the start of a \nsentence to your partner and how often \nwhat follows is positive and how often it\nis negative.\nThis is another small win. If you \nnotice that you do a lot of negative \n‘You’s’ try to change that. This will \nhelp you to start to build a kinder, \nmore compassionate, healthy \nrelationship. And remember your \nchildren will be watching and learning \nfrom this too.\nHere are some examples:\n“You always leave the parenting to \nme!”\n24\nLittle Book of Relationship Care",
+                    "metadata": {
+                        "page": 24,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.44348197838556724
+                },
+                {
+                    "id": 331,
+                    "text": "34.3  Why relationships change or end \n•\t\nmen see negative feelings as a complaint about a problem and so set about trying \nto solve it. For example, a woman may complain about weight gain during \npregnancy. Another woman would say, ‘It feels bad because you feel like you \nhave lost control of your body.’ A man might say, ‘Don’t worry. You can join a \ngym.’ In this scenario, the woman feels like her feelings have not been dealt with, \nwhereas the man feels like he has solved a problem and cannot understand why \nhis solution is not appreciated.\n•\t\nwomen use more language ‘tags’ (yup, uh huh, right, yeah). This happens in \nconjunction with the main speaker, serving as ‘support’ in the form of overlapping \nspeech. So, when a man says, ‘I want to buy a new motorbike,’ and the wife says,",
+                    "metadata": {
+                        "page": 14,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.44334834476401563
+                },
+                {
+                    "id": 267,
+                    "text": "the little book of\nRelationship\nCare\nby\nwww.amityrelationshipsolutions.org\nAll content copyright Amity Relationship Solutions© 2023 No part of this publication \nmay be reproduced, distributed, or transmitted in any form or by any means, including \nphotocopying, recording, or other electronic or mechanical methods, without the prior \nwritten permission of the publisher, except in the case of brief quotations embodied in \nreviews and certain other non-commercial uses permitted by copyright law. All licence \nenquiries office@amityrelationshipsolutions.org",
+                    "metadata": {
+                        "page": 30,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.43256231740488593
+                }
+            ]
+        },
+        {
+            "id": "G09",
+            "type": "answerable",
+            "question": "What are some helpful ways partners can improve their relationship according to the book?",
+            "expected_answer": "Partners can listen to understand, communicate kindly, acknowledge and apologise for hurtful behaviour, understand each other's perspectives, and communicate their needs honestly.",
+            "key_facts": [
+                "listening to understand",
+                "acknowledging and apologising",
+                "understanding perspectives",
+                "sharing needs"
+            ],
+            "expected_source": "amity_relationship_care.pdf",
+            "expected_pages": [
+                26,
+                27
+            ],
+            "original_prompt": {
+                "answer": "The book suggests several practical actions that partners can take to strengthen their relationship, such as:\n\n- **Take a short reflection** – spend about five minutes thinking about a situation before responding, so you can choose a more productive reaction [Source: data/amity_relationship_care.pdf, Page: 4].  \n- **Acknowledge each other and show respect** – focus on respectful communication rather than criticism or blame [Source: data/amity_relationship_care.pdf, Page: 4].  \n- **Practice compassion, kindness and empathy** – actively try to see things from your partner’s perspective and respond with understanding [Source: data/amity_relationship_care.pdf, Page: 12].  \n- **Be kind in everyday interactions** – look for opportunities to say or do something kind [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Listen to learn, not just to respond** – listen with the intention of truly understanding your partner’s feelings [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Consider your partner’s love language** – tailor your actions to the ways they feel most loved and appreciated [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Repair conflicts** – engage in repair strategies after disagreements to help restore the connection [Source: data/amity_relationship_care.pdf, Page: 26].  \n\nThese steps together form a set of helpful ways partners can improve their relationship according to the booklet.",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 1,
+                    "completeness": 1,
+                    "citation_accuracy": 2,
+                    "total_score": 6,
+                    "notes": "Provides several useful recommendations but misses explicit communication of needs and apology; repair wording is somewhat interpretive. Cited Amity pages support the listed recommendations.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "**Helpful ways partners can improve their relationship (as described in the book)**  \n\n- **Take a brief pause to reflect** – Spend about 5 minutes thinking about a situation before responding, so you can choose a more productive reaction [Source: data/amity_relationship_care.pdf, Page: 4].  \n- **Make better decisions and show respect** – Focus on acknowledging each other and treating one another with respect during disagreements [Source: data/amity_relationship_care.pdf, Page: 4].  \n- **Practice compassion and kindness** – Build the relationship on compassion and kindness, which are essential for feeling content together [Source: data/amity_relationship_care.pdf, Page: 12].  \n- **Develop empathy** – Try to see things from your partner’s perspective, “stand in their shoes,” and understand what they are experiencing [Source: data/amity_relationship_care.pdf, Page: 12].  \n- **Listen to understand** – Listen with the goal of truly understanding your partner’s feelings and then respond in a way that shows you have grasped what was communicated [Source: data/psychology_human_relationships.pdf, Page: 12].  \n- **Be kind in everyday actions** – Look for opportunities to say something kind or do a kind gesture [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Communicate positively** – Listen to learn, not just to reply, demonstrating a desire for positive communication [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Consider your partner’s love language** – Identify and act on the ways your partner feels loved (their love language) [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Engage in repair after conflict** – Use repair strategies to help restore the connection after a disagreement [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Clearly express your current needs** – Tell your partner what you need (e.g., a hug, alone time, an apology, practical help) so they can respond appropriately [Source: data/amity_relationship_care.pdf, Page: 26].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 1,
+                    "completeness": 2,
+                    "citation_accuracy": 1,
+                    "total_score": 6,
+                    "notes": "Recovers explicit communication of needs and improves completeness, but mixes in listening evidence from a second book despite the question asking what the Relationship Care book recommends; source scope and citation handling are imperfect.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "frozen_chunks": [
+                {
+                    "id": 219,
+                    "text": "The \nlittle book of\nRelationship\nCare\nby Kate Nicolle and Emily Nickson Williams",
+                    "metadata": {
+                        "page": 1,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.6705169877564012
+                },
+                {
+                    "id": 225,
+                    "text": "This booklet is going to help you to think about how you respond to each \nother when you argue and how you can influence in a positive way what \nhappens next. You get to choose what happens next by making better \ndecisions, by thinking about how you acknowledge each other and show \nrespect. \nThroughout the booklet there is a theme of 5. It can take 5 minutes to \nreflect on a situation and think about how to respond to it in a productive \nway. \nThis booklet is not about taking opportunities to criticise or blame each \nother, neither is it about establishing who is the better partner!\nSo start as you mean to go on and try to approach this time of reflection \nas a chance to take steps towards a healthier, stronger relationship. In",
+                    "metadata": {
+                        "page": 4,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.5992472171783447
+                },
+                {
+                    "id": 239,
+                    "text": "Let’s have a think about what you might \nlike to do to improve your relationship\n5 things we would like to improve about our \nrelationship \nStrong healthy relationships are ones that are always changing along \nwith the changes we face in life. Relationships are about making \nprogress together not trying to create perfection. Perfect relationships \nare a myth. Couples who are able to feel content \ntogether have built into their relationship \ncompassion and kindness. \nWhat is your understanding and \nexperience of compassion and kindness? \nWhat difference do you think they make?\nWhat is empathy? Empathy is trying \nyour best to see things from another \nperson’s perspective, to stand in their \nshoes and try to respect, recognise \nand understand what it is they are \nexperiencing.",
+                    "metadata": {
+                        "page": 12,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.592403769493103
+                },
+                {
+                    "id": 220,
+                    "text": "About us\nThis book has been written by us, Kate and Emily, we’re Amity and we are relationship \nexperts. We care A LOT about people having strong, thriving relationships.\nInfact, we believe that good quality relationships are a right not a privilege. We think \nthat relationships are the most important thing in the world because they can make us \nfeel happier, safer and more loved. They can also make us feel lonely, sad and some­\ntimes anxious. That’s why we think that relationship care is something we should all pay \nattention to.\nWhat is relationship care?\nIt’s simple really.  Relationship care is about looking after the relationships you have \nwith the people in your life who are important to you, in the same way that you might \nfocus on the care of your physical and mental health.",
+                    "metadata": {
+                        "page": 2,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.5913493633270264
+                },
+                {
+                    "id": 324,
+                    "text": "partner in a way that avoids negative results. \nKey study: Gottman (2003)\n34.2.3  The role of listening\nAhmad and Reid (2008) argue it is necessary for partners to practise listening to \nunderstand how their partner feels and respond in a way that shows they have actually \nunderstood what has been communicated. They came to this conclusion while \nresearching traditional roles within marriage as they wanted to test whether couples \nwho believe in traditional roles in a marriage have less satisfaction. \n282\nPsychology of human relationships\nG",
+                    "metadata": {
+                        "page": 12,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.5794539106217687
+                },
+                {
+                    "id": 259,
+                    "text": "What do you need now because of it?\n•\t\nDo you need a hug?\n•\t\nSome time on your own?\n•\t\nPractical help with the things you’ve been struggling with?\n•\t\nTo hear an apology or acknowledgement?\n•\t\nDo you need them to do a specific task?\n•\t\nDo you need to hear “I love and appreciate you” more often?\nWhatever it is let your partner know. They can’t do it if they don’t know \nyou need it, they are not mind readers!\nHelpful things you can do for your relationship\n•\t\nBe kind. Simple, look for opportunities to say a kind thing or do \na kind thing.\n•\t\nShow you want to communicate in a positive way by actually \nlistening to learn not just listening so you can respond.\n•\t\nThink about your partners love language and activate your \nactions.\n•\t\nRepair as this helps you to prepare. Repairing",
+                    "metadata": {
+                        "page": 26,
+                        "source": "data/amity_relationship_care.pdf"
+                    },
+                    "similarity": 0.565758995323305
+                }
+            ]
+        },
+        {
+            "id": "G10",
+            "type": "answerable",
+            "question": "What do group dynamics refer to?",
+            "expected_answer": "Group dynamics refer to a system of behaviours and psychological processes occurring within a social ingroup or between social outgroups.",
+            "key_facts": [
+                "system of behaviours",
+                "psychological processes",
+                "intragroup dynamics",
+                "intergroup dynamics"
+            ],
+            "expected_source": "psychology_human_relationships.pdf",
+            "expected_pages": [
+                20
+            ],
+            "original_prompt": {
+                "answer": "Group dynamics refer to a system of behaviours and psychological processes that occur within a social ingroup (intragroup dynamics) or between social outgroups (intergroup dynamics) [Source: data/psychology_human_relationships.pdf, Page: 20].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Accurately defines group dynamics and distinguishes intragroup from intergroup dynamics; page 20 directly supports it.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "Group dynamics refer to the system of behaviours and psychological processes that occur *within* a social ingroup (intragroup dynamics) *or* *between* social outgroups (intergroup dynamics) [Source: data/psychology_human_relationships.pdf, Page: 20].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Accurately defines group dynamics and distinguishes intragroup from intergroup dynamics; page 20 directly supports it.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "frozen_chunks": [
+                {
+                    "id": 361,
+                    "text": "outgroups, are linked to social identity processes. Therefore, stereotypes cannot be \nunderstood by considering them solely as cognitive devices to simplify thinking, \nbut also the product of sociocultural processes that are ongoing and affect people’s \nthinking. \nGroup dynamics refer to a system of behaviours and psychological processes that \noccur within a social ingroup (intragroup dynamics) or between social outgroups \n(intergroup dynamics). Ingroups and outgroups are defined in terms of comparisons \nand contrasts with outgroups (Yuki, 2003). The study of group dynamics can be useful \nin understanding prosocial behaviour,  prejudice, discrimination, and violence. \nCooperation refers to \na prosocial process of \nindividuals working \nor acting in a way that \nleads to mutual benefit.",
+                    "metadata": {
+                        "page": 20,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.7156583409716677
+                },
+                {
+                    "id": 353,
+                    "text": "35\nGroup dynamics\nDiscuss factors influencing group dynamics. \nTopic focus\n35.1  Theoretical foundations\n35.1.1  Biological influences\nInclusive fitness refers to the ability of an individual organism to pass on its genes \nto the next generation. The notion takes into account the direct descendants of the \nindividual as well as the shared genes of close relatives. It can be used to explain how \na gene can increase its chances of evolutionary success by indirectly promoting the \nreproduction and survival of other individuals who share the same genes. \nInclusive fitness can be used to explain why individuals engage in behaviour that \nhelps their ingroup (sometimes at a cost to themselves) while competing with their",
+                    "metadata": {
+                        "page": 19,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.576327732047113
+                },
+                {
+                    "id": 354,
+                    "text": "helps their ingroup (sometimes at a cost to themselves) while competing with their \noutgroup. It is the main assumption underpinning kin selection theory, which suggests \nintragroup cooperation behaviour is an adaptation as organisms are motivated to \nhelp others who are genetically similar to themselves.\nHowever, it can also be assumed that intergroup competitiveness can be considered \nan adaptation. For example, non-human primates appear to be sensitive and react to \nthe rankings of other individuals within groups (Sapolsky, 2005) as well as to social \ncategory fault lines, distinguishing between the ingroup and outgroups (Bergman \net al., 2003). However, competitiveness can also be seen in more primitive species who",
+                    "metadata": {
+                        "page": 19,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.507769375576415
+                },
+                {
+                    "id": 270,
+                    "text": "relationships concentrates on the role of hormones and genetics. However, this gives \na limited understanding of how relationships develop. Cognitive theorists have also \ncontributed to the understanding of relationships by applying schema theory, while \nsocial psychologists have focused on beliefs, social identity theory and the role of \nculture. The notion of an ingroup (‘us’) being contrasted with an outgroup (‘them’ \nor ‘the other’) is a key notion underpinning social psychology (see p. 88 for more \ndetails). \nHowever, it should be noted that groups are dynamic and represent social and personal \nconstructions. For instance, an individual may perceive someone as belonging to \nseveral groups (e.g. ‘black’, ‘female’, ‘lesbian’ or ‘white’, ‘male’, ‘heterosexual’), whereas",
+                    "metadata": {
+                        "page": 2,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.5007728039757735
+                },
+                {
+                    "id": 363,
+                    "text": "individuals work toward a selfish goal that cannot be shared by the competing parties. \nCooperation usually occurs within ingroups as an intragroup process; competition \nusually occurs between outgroups as an intergroup process. \n35.2.1  Cooperation\nMere knowledge of shared group identity increases cooperative behaviour (Brewer, \n2008). The viability of organized groups is increased when their members behave in \nways that help the group to function more effectively (Tyler and Blader, 2000). \nTyler and Blader (2001) identified three types of cooperation within ingroups: \n•\t\nthe following of group rules\n•\t\nconducting work on behalf of the group\n•\t\nan intention to stay within the group. \nHowever, while intention is primarily cognitive in nature, there is also a social element.",
+                    "metadata": {
+                        "page": 21,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.49165889670497886
+                },
+                {
+                    "id": 399,
+                    "text": "group conflict. The \noverall aim is to work \ntoward sustainable peace \nthrough non-violent \nmethods. \n35.4.1  Origins of conflict\nThe previous pages have demonstrated how the origins of conflict between groups can \nbe explained from biological, sociocultural, and cognitive perspectives. They are not \nmutually exclusive to one another. They can be summarized as follows.\n•\t\nEvolutionary explanations such as inclusive fitness and kin selection theory show \nhow individuals are instinctively driven to favour ingroups at the expense of \noutgroups. Therefore, intergroup competition and intragroup cooperation can be \nseen as adaptations. \n•\t\nSIT was developed by Tajfel and his colleagues and assumes humans naturally",
+                    "metadata": {
+                        "page": 29,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.4898878354034727
+                }
+            ]
+        },
+        {
+            "id": "G11",
+            "type": "answerable",
+            "question": "What is the difference between cooperation and competition in group dynamics?",
+            "expected_answer": "Cooperation involves individuals working towards mutual benefit, while competition involves individuals pursuing goals that cannot be shared by the competing parties.",
+            "key_facts": [
+                "cooperation",
+                "mutual benefit",
+                "competition",
+                "conflicting or unshared goals"
+            ],
+            "expected_source": "psychology_human_relationships.pdf",
+            "expected_pages": [
+                20,
+                21
+            ],
+            "original_prompt": {
+                "answer": "Cooperation is a prosocial process in which individuals work or act together so that everyone gains a mutual benefit, and it typically takes place **within** an ingroup (an intragroup process). Competition is the opposite: individuals pursue a selfish, non‑shared goal, and it usually occurs **between** different outgroups (an intergroup process) [Source: data/psychology_human_relationships.pdf, Page: 20] [Source: data/psychology_human_relationships.pdf, Page: 20].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Concise and accurate distinction between mutual-benefit cooperation and non-shared-goal competition; page 20 supports the claims. Duplicate citation is redundant.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "**Cooperation vs. competition in group dynamics**\n\n| Aspect | Cooperation | Competition |\n|--------|-------------|-------------|\n| **Basic nature** | A prosocial process in which individuals work or act so that the outcome benefits all involved. | The direct opposite of cooperation; individuals pursue a selfish goal that cannot be shared with others. |\n| **Typical group context** | Occurs mainly **within ingroups** (intragroup process). | Occurs mainly **between outgroups** (intergroup process). |\n| **Psychological drivers** | Enhanced by a shared group identity; people follow group rules, perform work on behalf of the group, and develop an intention to stay in the group. | Triggered by the existence of socially comparative groups; driven by social‑comparison motives to improve one’s performance and reduce discrepancies with others. |\n| **Function for the group** | Increases the viability and effectiveness of the organized group. | Manifests as competitive behaviour that seeks advantage over other groups. |\n| **Examples of behaviours** | Following group norms, contributing effort to group tasks, maintaining commitment to the group. | Pursuing goals that benefit only oneself or one’s own group at the expense of another group. |\n\n**Sources**: Cooperation defined as a prosocial process leading to mutual benefit and typically intragroup [1, 6]; competition defined as the opposite, selfish and typically intergroup [1, 6]; cooperation boosted by shared identity and expressed through rule‑following, group work, and intention to stay  [Source: data/psychology_human_relationships.pdf, Page: 21]; competition arising from social comparison and the drive to outperform others  [Source: data/psychology_human_relationships.pdf, Page: 22].",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 1,
+                    "completeness": 2,
+                    "citation_accuracy": 1,
+                    "total_score": 6,
+                    "notes": "Adds detail, but some elaboration is interpretive and the combined [1, 6] citation is not in the expected mapped source format; formatted page citations do not clearly support every associated claim.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "frozen_chunks": [
+                {
+                    "id": 362,
+                    "text": "Cooperation refers to \na prosocial process of \nindividuals working \nor acting in a way that \nleads to mutual benefit. \nCompetition is the direct \nopposite of cooperation \nwhere individuals work \ntoward a selfish goal \nthat cannot be shared \nby the competing \nparties. Cooperation \nusually occurs within \ningroups as an intragroup \nprocess; competition \nusually occurs between \noutgroups as an \nintergroup process. \n35.2  Cooperation and competition \nContrast cooperation and competition in relation to group dynamics. \nContent focus\nCooperation refers to a prosocial process of individuals working or acting in a way \nthat leads to mutual benefit. Competition is the direct opposite of cooperation where \n290\nPsychology of human relationships\nG",
+                    "metadata": {
+                        "page": 20,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.755413680623331
+                },
+                {
+                    "id": 363,
+                    "text": "individuals work toward a selfish goal that cannot be shared by the competing parties. \nCooperation usually occurs within ingroups as an intragroup process; competition \nusually occurs between outgroups as an intergroup process. \n35.2.1  Cooperation\nMere knowledge of shared group identity increases cooperative behaviour (Brewer, \n2008). The viability of organized groups is increased when their members behave in \nways that help the group to function more effectively (Tyler and Blader, 2000). \nTyler and Blader (2001) identified three types of cooperation within ingroups: \n•\t\nthe following of group rules\n•\t\nconducting work on behalf of the group\n•\t\nan intention to stay within the group. \nHowever, while intention is primarily cognitive in nature, there is also a social element.",
+                    "metadata": {
+                        "page": 21,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.6305905204659401
+                },
+                {
+                    "id": 372,
+                    "text": "to maintain their close connection with the group and therefore maintain the group’s \nexistence. The higher the status of the group, the more important it is to the individual \nfor the group to succeed to maintain their positive self-identity.  \n35.2.2  Competition \nThe mere existence of socially comparative groups leads to competitive behaviour \n(Festinger, 1954). According to social comparison theory, individuals are propelled by \na basic drive to improve their performance and minimize discrepancies between their \nand other individuals’ performance. Thus, competitiveness is one manifestation of the \nsocial comparison process. \n292\nPsychology of human relationships\nG",
+                    "metadata": {
+                        "page": 22,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.6125248305484764
+                },
+                {
+                    "id": 354,
+                    "text": "helps their ingroup (sometimes at a cost to themselves) while competing with their \noutgroup. It is the main assumption underpinning kin selection theory, which suggests \nintragroup cooperation behaviour is an adaptation as organisms are motivated to \nhelp others who are genetically similar to themselves.\nHowever, it can also be assumed that intergroup competitiveness can be considered \nan adaptation. For example, non-human primates appear to be sensitive and react to \nthe rankings of other individuals within groups (Sapolsky, 2005) as well as to social \ncategory fault lines, distinguishing between the ingroup and outgroups (Bergman \net al., 2003). However, competitiveness can also be seen in more primitive species who",
+                    "metadata": {
+                        "page": 19,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.5900243765101219
+                },
+                {
+                    "id": 399,
+                    "text": "group conflict. The \noverall aim is to work \ntoward sustainable peace \nthrough non-violent \nmethods. \n35.4.1  Origins of conflict\nThe previous pages have demonstrated how the origins of conflict between groups can \nbe explained from biological, sociocultural, and cognitive perspectives. They are not \nmutually exclusive to one another. They can be summarized as follows.\n•\t\nEvolutionary explanations such as inclusive fitness and kin selection theory show \nhow individuals are instinctively driven to favour ingroups at the expense of \noutgroups. Therefore, intergroup competition and intragroup cooperation can be \nseen as adaptations. \n•\t\nSIT was developed by Tajfel and his colleagues and assumes humans naturally",
+                    "metadata": {
+                        "page": 29,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.532536888264975
+                },
+                {
+                    "id": 361,
+                    "text": "outgroups, are linked to social identity processes. Therefore, stereotypes cannot be \nunderstood by considering them solely as cognitive devices to simplify thinking, \nbut also the product of sociocultural processes that are ongoing and affect people’s \nthinking. \nGroup dynamics refer to a system of behaviours and psychological processes that \noccur within a social ingroup (intragroup dynamics) or between social outgroups \n(intergroup dynamics). Ingroups and outgroups are defined in terms of comparisons \nand contrasts with outgroups (Yuki, 2003). The study of group dynamics can be useful \nin understanding prosocial behaviour,  prejudice, discrimination, and violence. \nCooperation refers to \na prosocial process of \nindividuals working \nor acting in a way that \nleads to mutual benefit.",
+                    "metadata": {
+                        "page": 20,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.5318823418757508
+                }
+            ]
+        },
+        {
+            "id": "G12",
+            "type": "answerable",
+            "question": "What three types of cooperation within ingroups were identified by Tyler and Blader?",
+            "expected_answer": "They identified following group rules, conducting work on behalf of the group, and intending to stay within the group.",
+            "key_facts": [
+                "following group rules",
+                "working on behalf of the group",
+                "intention to stay within the group"
+            ],
+            "expected_source": "psychology_human_relationships.pdf",
+            "expected_pages": [
+                21
+            ],
+            "original_prompt": {
+                "answer": "Tyler and Blader (2001) identified three types of cooperation within ingroups:\n\n1. **Following the group’s rules**  \n2. **Conducting work on behalf of the group**  \n3. **An intention to stay within the group**  \n\n [Source: data/psychology_human_relationships.pdf, Page: 21]",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Correctly identifies all three types of ingroup cooperation and cites page 21.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "Tyler and Blader (2001) identified three forms of ingroup cooperation:\n\n1. **Following the group’s rules**  \n2. **Carrying out work on behalf of the group**  \n3. **Intending to remain a member of the group**  \n\n [Source: data/psychology_human_relationships.pdf, Page: 21]",
+                "manual_review": {
+                    "factual_correctness": 2,
+                    "semantic_faithfulness": 2,
+                    "completeness": 2,
+                    "citation_accuracy": 2,
+                    "total_score": 8,
+                    "notes": "Correctly identifies all three types of ingroup cooperation and cites page 21.",
+                    "review_status": "COMPLETED"
+                }
+            },
+            "frozen_chunks": [
+                {
+                    "id": 363,
+                    "text": "individuals work toward a selfish goal that cannot be shared by the competing parties. \nCooperation usually occurs within ingroups as an intragroup process; competition \nusually occurs between outgroups as an intergroup process. \n35.2.1  Cooperation\nMere knowledge of shared group identity increases cooperative behaviour (Brewer, \n2008). The viability of organized groups is increased when their members behave in \nways that help the group to function more effectively (Tyler and Blader, 2000). \nTyler and Blader (2001) identified three types of cooperation within ingroups: \n•\t\nthe following of group rules\n•\t\nconducting work on behalf of the group\n•\t\nan intention to stay within the group. \nHowever, while intention is primarily cognitive in nature, there is also a social element.",
+                    "metadata": {
+                        "page": 21,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.6253607719706613
+                },
+                {
+                    "id": 371,
+                    "text": "engage in discretionary behaviours, even when they are not being observed. \nKey study: Tyler and Blader (2001)\nThe mere existence of \nsocially comparative \ngroups leads to \ncompetitive behaviour \n(Festinger, 1954).\nIdentity itself is also influenced by perception. For example, the perceived status of \nthe group will influence the degree to which people receive a positive social identity \nas a result of being a member of a group. If groups serve an important function in \nthe creation and maintenance of a positive social identity, then members of groups \nperceived as having high status should cooperate more because the person will want \nto maintain their close connection with the group and therefore maintain the group’s",
+                    "metadata": {
+                        "page": 22,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.5306873564683167
+                },
+                {
+                    "id": 364,
+                    "text": "•\t\nan intention to stay within the group. \nHowever, while intention is primarily cognitive in nature, there is also a social element. \nIf intention is not signalled clearly enough, it might be assumed that the individual \nlacks motivation to cooperate within the group.\nThey also distinguish between two types of basic cooperative behaviour: \n•\t\nmandatory (or required) behaviours, which are specified to be part of particular \nroles in a group; they originate in the group or from the group leader.  \n•\t\ndiscretionary (or non-required) behaviours, which go beyond what is required; \nthey originate in a group member, not the group. \nSIT can be used to explain ingroup cooperation. For example, it can be assumed people",
+                    "metadata": {
+                        "page": 21,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.5161095530790899
+                },
+                {
+                    "id": 366,
+                    "text": "group, because the group’s success can bring about benefits for their self-identity. \nTherefore, there is a clear link between the success of the group and the maintenance \nof a positive sense of self. \nTyler and Blader (2001) argue the extent to which an individual identifies with the \ngroup will directly affect ingroup cooperation. Identification refers to the degree to \nwhich people cognitively merge their sense of self and the group. It can be expected \nthat when people identify more with their group, they will be more willing to act \ncooperatively. For example, they will invest more time and energy in working toward \nthe group succeeding, in terms of mandatory but also discretionary behaviour. The",
+                    "metadata": {
+                        "page": 21,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.5155518036423
+                },
+                {
+                    "id": 354,
+                    "text": "helps their ingroup (sometimes at a cost to themselves) while competing with their \noutgroup. It is the main assumption underpinning kin selection theory, which suggests \nintragroup cooperation behaviour is an adaptation as organisms are motivated to \nhelp others who are genetically similar to themselves.\nHowever, it can also be assumed that intergroup competitiveness can be considered \nan adaptation. For example, non-human primates appear to be sensitive and react to \nthe rankings of other individuals within groups (Sapolsky, 2005) as well as to social \ncategory fault lines, distinguishing between the ingroup and outgroups (Bergman \net al., 2003). However, competitiveness can also be seen in more primitive species who",
+                    "metadata": {
+                        "page": 19,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.49764966992740156
+                },
+                {
+                    "id": 361,
+                    "text": "outgroups, are linked to social identity processes. Therefore, stereotypes cannot be \nunderstood by considering them solely as cognitive devices to simplify thinking, \nbut also the product of sociocultural processes that are ongoing and affect people’s \nthinking. \nGroup dynamics refer to a system of behaviours and psychological processes that \noccur within a social ingroup (intragroup dynamics) or between social outgroups \n(intergroup dynamics). Ingroups and outgroups are defined in terms of comparisons \nand contrasts with outgroups (Yuki, 2003). The study of group dynamics can be useful \nin understanding prosocial behaviour,  prejudice, discrimination, and violence. \nCooperation refers to \na prosocial process of \nindividuals working \nor acting in a way that \nleads to mutual benefit.",
+                    "metadata": {
+                        "page": 20,
+                        "source": "data/psychology_human_relationships.pdf"
+                    },
+                    "similarity": 0.4935573052959501
+                }
+            ]
+        },
+        {
+            "id": "G13",
+            "type": "unanswerable",
+            "question": "Who invented the Python programming language?",
+            "expected_answer": null,
+            "key_facts": [],
+            "expected_source": null,
+            "expected_pages": [],
+            "original_prompt": {
+                "answer": "I cannot find the answer in the provided documents.",
+                "manual_review": {
+                    "factual_correctness": null,
+                    "semantic_faithfulness": null,
+                    "completeness": null,
+                    "citation_accuracy": null,
+                    "total_score": null,
+                    "notes": "",
+                    "review_status": "PENDING"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "I cannot find the answer in the provided documents.",
+                "manual_review": {
+                    "factual_correctness": null,
+                    "semantic_faithfulness": null,
+                    "completeness": null,
+                    "citation_accuracy": null,
+                    "total_score": null,
+                    "notes": "",
+                    "review_status": "PENDING"
+                }
+            },
+            "abstention_check": {
+                "original_correct": true,
+                "coverage_correct": true
+            }
+        },
+        {
+            "id": "G14",
+            "type": "unanswerable",
+            "question": "What was Amazon's total worldwide net revenue in 2023?",
+            "expected_answer": null,
+            "key_facts": [],
+            "expected_source": null,
+            "expected_pages": [],
+            "original_prompt": {
+                "answer": "I cannot find the answer in the provided documents.",
+                "manual_review": {
+                    "factual_correctness": null,
+                    "semantic_faithfulness": null,
+                    "completeness": null,
+                    "citation_accuracy": null,
+                    "total_score": null,
+                    "notes": "",
+                    "review_status": "PENDING"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "I cannot find the answer in the provided documents.",
+                "manual_review": {
+                    "factual_correctness": null,
+                    "semantic_faithfulness": null,
+                    "completeness": null,
+                    "citation_accuracy": null,
+                    "total_score": null,
+                    "notes": "",
+                    "review_status": "PENDING"
+                }
+            },
+            "abstention_check": {
+                "original_correct": true,
+                "coverage_correct": true
+            }
+        },
+        {
+            "id": "G15",
+            "type": "unanswerable",
+            "question": "Which country won the 2023 FIFA Women's World Cup?",
+            "expected_answer": null,
+            "key_facts": [],
+            "expected_source": null,
+            "expected_pages": [],
+            "original_prompt": {
+                "answer": "I cannot find the answer in the provided documents.",
+                "manual_review": {
+                    "factual_correctness": null,
+                    "semantic_faithfulness": null,
+                    "completeness": null,
+                    "citation_accuracy": null,
+                    "total_score": null,
+                    "notes": "",
+                    "review_status": "PENDING"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "I cannot find the answer in the provided documents.",
+                "manual_review": {
+                    "factual_correctness": null,
+                    "semantic_faithfulness": null,
+                    "completeness": null,
+                    "citation_accuracy": null,
+                    "total_score": null,
+                    "notes": "",
+                    "review_status": "PENDING"
+                }
+            },
+            "abstention_check": {
+                "original_correct": true,
+                "coverage_correct": true
+            }
+        },
+        {
+            "id": "G16",
+            "type": "unanswerable",
+            "question": "What is the capital city of Japan?",
+            "expected_answer": null,
+            "key_facts": [],
+            "expected_source": null,
+            "expected_pages": [],
+            "original_prompt": {
+                "answer": "I cannot find the answer in the provided documents.",
+                "manual_review": {
+                    "factual_correctness": null,
+                    "semantic_faithfulness": null,
+                    "completeness": null,
+                    "citation_accuracy": null,
+                    "total_score": null,
+                    "notes": "",
+                    "review_status": "PENDING"
+                }
+            },
+            "coverage_prompt": {
+                "answer": "I cannot find the answer in the provided documents.",
+                "manual_review": {
+                    "factual_correctness": null,
+                    "semantic_faithfulness": null,
+                    "completeness": null,
+                    "citation_accuracy": null,
+                    "total_score": null,
+                    "notes": "",
+                    "review_status": "PENDING"
+                }
+            },
+            "abstention_check": {
+                "original_correct": true,
+                "coverage_correct": true
+            }
+        }
+    ]
+}

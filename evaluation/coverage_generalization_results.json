@@ -1,0 +1,191 @@
+[
+    {
+        "id": "G03",
+        "question": "Why does the Transformer use positional encoding?",
+        "retrieval_method": "Frozen previous retrieval context",
+        "retrieved_chunks": [
+            {
+                "id": 74,
+                "text": "is similar to that of single-head attention with full dimensionality.\n3.2.3\nApplications of Attention in our Model\nThe Transformer uses multi-head attention in three different ways:\n• In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer,\nand the memory keys and values come from the output of the encoder. This allows every\nposition in the decoder to attend over all positions in the input sequence. This mimics the\ntypical encoder-decoder attention mechanisms in sequence-to-sequence models such as\n[38, 2, 9].\n• The encoder contains self-attention layers. In a self-attention layer all of the keys, values\nand queries come from the same place, in this case, the output of the previous layer in the",
+                "metadata": {
+                    "page": 5,
+                    "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                },
+                "similarity": 0.5220219466660087
+            },
+            {
+                "id": 66,
+                "text": "Figure 1: The Transformer - model architecture.\nThe Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1,\nrespectively.\n3.1\nEncoder and Decoder Stacks\nEncoder:\nThe encoder is composed of a stack of N = 6 identical layers. Each layer has two\nsub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-\nwise fully connected feed-forward network. We employ a residual connection [11] around each of\nthe two sub-layers, followed by layer normalization [1]. That is, the output of each sub-layer is\nLayerNorm(x + Sublayer(x)), where Sublayer(x) is the function implemented by the sub-layer",
+                "metadata": {
+                    "page": 3,
+                    "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                },
+                "similarity": 0.4676473160000263
+            },
+            {
+                "id": 90,
+                "text": "3.3 · 1018\nTransformer (big)\n28.4\n41.8\n2.3 · 1019\nResidual Dropout\nWe apply dropout [33] to the output of each sub-layer, before it is added to the\nsub-layer input and normalized. In addition, we apply dropout to the sums of the embeddings and the\npositional encodings in both the encoder and decoder stacks. For the base model, we use a rate of\nPdrop = 0.1.\nLabel Smoothing\nDuring training, we employed label smoothing of value ϵls = 0.1 [36]. This\nhurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.\n6\nResults\n6.1\nMachine Translation\nOn the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)\nin Table 2) outperforms the best previously reported models (including ensembles) by more than 2.0",
+                "metadata": {
+                    "page": 8,
+                    "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                },
+                "similarity": 0.4332457522603429
+            },
+            {
+                "id": 94,
+                "text": "Table 3: Variations on the Transformer architecture. Unlisted values are identical to those of the base\nmodel. All metrics are on the English-to-German translation development set, newstest2013. Listed\nperplexities are per-wordpiece, according to our byte-pair encoding, and should not be compared to\nper-word perplexities.\nN\ndmodel\ndff\nh\ndk\ndv\nPdrop\nϵls\ntrain\nPPL\nBLEU\nparams\nsteps\n(dev)\n(dev)\n×106\nbase\n6\n512\n2048\n8\n64\n64\n0.1\n0.1\n100K\n4.92\n25.8\n65\n(A)\n1\n512\n512\n5.29\n24.9\n4\n128\n128\n5.00\n25.5\n16\n32\n32\n4.91\n25.8\n32\n16\n16\n5.01\n25.4\n(B)\n16\n5.16\n25.1\n58\n32\n5.01\n25.4\n60\n(C)\n2\n6.11\n23.7\n36\n4\n5.19\n25.3\n50\n8\n4.88\n25.5\n80\n256\n32\n32\n5.75\n24.5\n28\n1024\n128\n128\n4.66\n26.0\n168\n1024\n5.12\n25.4\n53\n4096\n4.75\n26.2\n90\n(D)\n0.0\n5.77\n24.6\n0.2\n4.95\n25.5\n0.0\n4.67\n25.3\n0.2\n5.47\n25.7\n(E)",
+                "metadata": {
+                    "page": 9,
+                    "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                },
+                "similarity": 0.4224276416770343
+            },
+            {
+                "id": 68,
+                "text": "sub-layer in the decoder stack to prevent positions from attending to subsequent positions. This\nmasking, combined with fact that the output embeddings are offset by one position, ensures that the\npredictions for position i can depend only on the known outputs at positions less than i.\n3.2\nAttention\nAn attention function can be described as mapping a query and a set of key-value pairs to an output,\nwhere the query, keys, values, and output are all vectors. The output is computed as a weighted sum\n3",
+                "metadata": {
+                    "page": 3,
+                    "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                },
+                "similarity": 0.39481256039067814
+            },
+            {
+                "id": 79,
+                "text": "order of the sequence, we must inject some information about the relative or absolute position of the\ntokens in the sequence. To this end, we add \"positional encodings\" to the input embeddings at the\nbottoms of the encoder and decoder stacks. The positional encodings have the same dimension dmodel\nas the embeddings, so that the two can be summed. There are many choices of positional encodings,\nlearned and fixed [9].\nIn this work, we use sine and cosine functions of different frequencies:\nPE(pos,2i) = sin(pos/100002i/dmodel)\nPE(pos,2i+1) = cos(pos/100002i/dmodel)\nwhere pos is the position and i is the dimension. That is, each dimension of the positional encoding\ncorresponds to a sinusoid. The wavelengths form a geometric progression from 2π to 10000 · 2π. We",
+                "metadata": {
+                    "page": 6,
+                    "source": "data/NIPS-2017-attention-is-all-you-need-Paper.pdf"
+                },
+                "similarity": 0.39428643022260557
+            }
+        ],
+        "original_prompt_answer": "The Transformer adds positional encodings to its input embeddings so that the model receives information about the relative or absolute positions of tokens in a sequence, thereby providing the necessary order information that the architecture itself does not capture  [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 6].",
+        "refined_coverage_answer": "The Transformer adds positional encodings to the input embeddings so that the model receives information about the **relative or absolute positions of tokens in a sequence**—a necessary step because the architecture itself (which relies on self‑attention rather than recurrence or convolution) has no inherent notion of token order [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 6]."
+    },
+    {
+        "id": "G04",
+        "question": "How many items did independent sellers in the United States sell in 2023?",
+        "retrieval_method": "Frozen previous retrieval context",
+        "retrieved_chunks": [
+            {
+                "id": 119,
+                "text": "4. Grocery\n5. Apparel\nitems through the Fulfillment By Amazon (FBA)  \nDonations program\nan average of 8,600 every minute\nPEOPLE IN THE U.S.\nITEMS\nBRAND OWNERS GREW \nSALES MORE THAN\nYEAR-OVER-YEAR\n22%\n1.8 million\n4.5 billion\n$250,000\n$1 million\n160 million\nThe 5\n70%\nSPACE USED FOR SELLER INVENTORY IN \nAMAZON’S WAREHOUSES INCREASED BY OVER\nCUBIC FEET\n55 million\nIN AMAZON’S STORE ARE FROM INDEPENDENT \nSELLERS—MOST OF WHICH ARE SMALL AND \nMEDIUM-SIZED BUSINESSES\nMore than 60% of sales\nTable of contents\nAt a glance: Selling in \nAmazon’s store in 2023 \nAt a glance: Selling in Amazon’s store in 2023\nMeet the seller: A business built on a social media \nfollowing now uses Amazon to find new customers \nMeet the seller: An Oprah’s ‘Favorite’ athleisure brand",
+                "metadata": {
+                    "page": 2,
+                    "source": "data/amazon_small_business_report_2023.pdf"
+                },
+                "similarity": 0.5941230058670044
+            },
+            {
+                "id": 126,
+                "text": "of individuals across the country. By providing avenues for upward mobility and skill \ndevelopment, small businesses play a pivotal role in promoting economic vitality and \ninclusion, spanning a range of industries from manufacturing to technology.\nCustomer needs and shopping habits have evolved significantly over the past 24 years, \nand Amazon’s continued investment and support has helped independent sellers, who \nare located across all 50 states, to advance further and drive greater success. Independent \nsellers in the U.S. continue to thrive, selling more than 4.5 billion items—or 8,600 every \nminute—and averaging more than $250,000 in annual sales in Amazon’s store in 2023. With \nthis year’s report, we are excited to share more stories of small business success throughout",
+                "metadata": {
+                    "page": 3,
+                    "source": "data/amazon_small_business_report_2023.pdf"
+                },
+                "similarity": 0.5818796157836914
+            },
+            {
+                "id": 118,
+                "text": "OVER \nitems were exported by U.S.-based sellers \nto customers in over 130 countries globally\n330 million\nINDEPENDENT SELLERS \nEMPLOYED OVER \nINDEPENDENT SELLERS IN  \nTHE U.S. SOLD MORE THAN\nINDEPENDENT SELLERS IN THE \nU.S. AVERAGED MORE THAN\nMORE THAN 10,000 \nINDEPENDENT SELLERS \nSURPASSED\nMOST SHOPPED \nCATEGORIES\nSHIPPING WITH \nFBA COSTS \nLESS PER UNIT\nIN SALES FOR THE FIRST TIME\nINDEPENDENT SELLERS, TOGETHER \nWITH AMAZON, DONATED OVER \nin annual sales in Amazon’s store\nfrom U.S. independent sellers \nin Amazon’s store were\nthan comparable  \npremium options  \noffered by other U.S.  \nfulfillment services\n1. Health & Personal Care\n2. Beauty\n3. Home\n4. Grocery\n5. Apparel\nitems through the Fulfillment By Amazon (FBA)  \nDonations program\nan average of 8,600 every minute\nPEOPLE IN THE U.S.\nITEMS",
+                "metadata": {
+                    "page": 2,
+                    "source": "data/amazon_small_business_report_2023.pdf"
+                },
+                "similarity": 0.5593550205230713
+            },
+            {
+                "id": 217,
+                "text": "including parts of North Dakota, Kansas, Alaska, \nUtah, and Florida, collectively achieved more than \nSellers in rural areas\n60% year-over-year \nsales growth\nIN AMAZON’S \nSTORE\nSee Amazon’s interactive map for \nmore seller stories and state-level \nimpact data. \n31\n32\nAMAZON | 2023 SMALL BUSINESS EMPOWERMENT REPORT",
+                "metadata": {
+                    "page": 17,
+                    "source": "data/amazon_small_business_report_2023.pdf"
+                },
+                "similarity": 0.5312504768371582
+            },
+            {
+                "id": 122,
+                "text": "3\n4\nAMAZON | 2023 SMALL BUSINESS EMPOWERMENT REPORT\nIntroduction\nTwenty-four years ago, Amazon embarked on a journey welcoming independent sellers \nto sell in our store. This transformative partnership unleashed the uniquely innovative \nspirit of U.S. small and medium-sized business owners. As a result, more than 60% of the \nsales in Amazon’s store now come from independent sellers—most of which are small and \nmedium-sized businesses. The small businesses selling and thriving in Amazon’s store are at \nthe heart of their local communities, and they include many women, military family, Black, \nand Hispanic-owned businesses as well as artisans who create handcrafted goods. They are \nneighborhood shop owners, innovators who have created entirely new brands and types",
+                "metadata": {
+                    "page": 3,
+                    "source": "data/amazon_small_business_report_2023.pdf"
+                },
+                "similarity": 0.5147088170051575
+            },
+            {
+                "id": 164,
+                "text": "can sell more with less time and effort.\n•\t\nAmazon Business helps sellers identify business-\nto-business (B2B) customers who are looking for \nbusiness-specific products and connects them \nwith relevant offers from various sellers. Sellers \ncan use tools to discover B2B needs, respond to \nbusiness-specific customer quote requests, and \nsell items in bulk.\n•\t\nA business profile and certifications (e.g., small \nbusiness) can help a seller’s products stand out \nto procurement decision-makers and other B2B \ncustomers with Amazon Business.\nIN 2023, INDEPENDENT SELLERS \nAVERAGED MORE THAN\nin annual sales in \nAmazon’s store\n$250,000\n“With Amazon Business we have exposure to buyers and \nprocurement managers looking for alternatives to lanyards.",
+                "metadata": {
+                    "page": 8,
+                    "source": "data/amazon_small_business_report_2023.pdf"
+                },
+                "similarity": 0.4758793257438938
+            }
+        ],
+        "original_prompt_answer": "Independent sellers in the United States sold **more than 4.5 billion items** in 2023 [Source: data/amazon_small_business_report_2023.pdf, Page: 3] [Source: data/amazon_small_business_report_2023.pdf, Page: 2].",
+        "refined_coverage_answer": "Independent sellers in the United States sold **more than 4.5 billion items** in 2023 [Source: data/amazon_small_business_report_2023.pdf, Page: 3]."
+    },
+    {
+        "id": "G07",
+        "question": "Why is acknowledging a partner's feelings important after an argument?",
+        "retrieval_method": "Frozen previous retrieval context",
+        "retrieved_chunks": [
+            {
+                "id": 253,
+                "text": "need.\nThis can cause conflict as your partner may feel offended as you don’t \nshow you are grateful.\nWhen we understand love languages, we recognise that some arguments \nhappen because we don’t know how the other person needs to feel loved.\n22\nLittle Book of Relationship Care",
+                "metadata": {
+                    "page": 22,
+                    "source": "data/amity_relationship_care.pdf"
+                },
+                "similarity": 0.6165998806595885
+            },
+            {
+                "id": 260,
+                "text": "•\t\nThink about your partners love language and activate your \nactions.\n•\t\nRepair as this helps you to prepare. Repairing \n(acknowledging/apologising) the damage done by arguments \nmeans you will be better prepared to communicate more \npositively the next time you clash.\n•\t\nTry to understand your partners point of view. What matters \nto them may not matter to you and visa versa. However, if you \ndon’t make the effort to appreciate each other’s perspective \non something you can be sure that you will stay stuck. Both of \nyou making your points over and over again with no resolve.\n•\t\nLearn to move on. It’s easy to dwell on an issue or bring up \nthe past but this will weaken your bond and trust. Learning \n26\nLittle Book of Relationship Care",
+                "metadata": {
+                    "page": 26,
+                    "source": "data/amity_relationship_care.pdf"
+                },
+                "similarity": 0.6089621056363457
+            },
+            {
+                "id": 254,
+                "text": "What you can do differently next time \nyou argue \nHere’s what everyone in a relationship needs to try to \ndo to make next time better.\nAcknowledge\nShow your partner respect by acknowledging that you may have said \nsomething that upset them or did something that hurt their feelings. \nShowing that you care enough to recognise that and offer an apology will \nstrengthen your relationship. As soon as you acknowledge how the other \nperson is feeling they feel heard, feel the respect you are showing them \nand will see that you are trying to repair the situation.\nAs soon as you acknowledge how the other person is feeling they feel \nheard, feel the respect you are showing them and can start to see that \nyou are trying to repair the situation.",
+                "metadata": {
+                    "page": 23,
+                    "source": "data/amity_relationship_care.pdf"
+                },
+                "similarity": 0.6000603675806314
+            },
+            {
+                "id": 324,
+                "text": "partner in a way that avoids negative results. \nKey study: Gottman (2003)\n34.2.3  The role of listening\nAhmad and Reid (2008) argue it is necessary for partners to practise listening to \nunderstand how their partner feels and respond in a way that shows they have actually \nunderstood what has been communicated. They came to this conclusion while \nresearching traditional roles within marriage as they wanted to test whether couples \nwho believe in traditional roles in a marriage have less satisfaction. \n282\nPsychology of human relationships\nG",
+                "metadata": {
+                    "page": 12,
+                    "source": "data/psychology_human_relationships.pdf"
+                },
+                "similarity": 0.5819547674709835
+            },
+            {
+                "id": 247,
+                "text": "Why did our argument happen? \nWe are moving on to why did it happen. Why did it spiral into a clash \nrather than managing to calmly talk the issue through?\nThere are some obvious things here like, you were tired, had a bad day \netc.\nBut there are often more complex things that can be the reason.\nHere are things couples often say about why it happens….\n•\t\nBecause my partner wasn’t listening to me\n•\t\nBecause they don’t understand\n•\t\nBecause they think they know what I am thinking and feeling    \nbut don’t\n•\t\nBecause neither of us will take responsibility for our actions and \nare keen to blame the other\n•\t\nBecause they always think they are right\n19\nLittle Book of Relationship Care",
+                "metadata": {
+                    "page": 19,
+                    "source": "data/amity_relationship_care.pdf"
+                },
+                "similarity": 0.5772224664688151
+            },
+            {
+                "id": 255,
+                "text": "heard, feel the respect you are showing them and can start to see that \nyou are trying to repair the situation.\nAcknowledging their perspective on the situation and why they might \nhave behaved the way they did.\nAcknowledging is a \ncommunication super power!\n23\nLittle Book of Relationship Care",
+                "metadata": {
+                    "page": 23,
+                    "source": "data/amity_relationship_care.pdf"
+                },
+                "similarity": 0.5731119767956758
+            }
+        ],
+        "original_prompt_answer": "Acknowledging a partner’s feelings after an argument shows respect and lets them know they have been heard.  When you recognize that something you said or did upset them and offer an apology, it makes the other person feel respected, heard, and reassured that you are trying to repair the situation, which in turn strengthens the relationship [Source: data/amity_relationship_care.pdf, Page: 23].  This act of acknowledgment is described as a “communication super‑power” that helps move the couple toward repair and rebuilding trust [Source: data/amity_relationship_care.pdf, Page: 23].",
+        "refined_coverage_answer": "Acknowledging a partner’s feelings after an argument is important because it shows respect, makes the partner feel heard, and signals that you are trying to repair the situation. When you acknowledge how the other person is feeling, they experience respect and the sense that you care enough to recognize their hurt, which helps strengthen the relationship and move toward resolution [Source: data/amity_relationship_care.pdf, Page: 23] [Source: data/amity_relationship_care.pdf, Page: 23]"
+    }
+]

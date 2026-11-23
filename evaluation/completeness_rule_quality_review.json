@@ -1,0 +1,272 @@
+{
+    "experiment": "Single completeness rule manual quality review",
+    "source_experiment": "evaluation\\completeness_rule_experiment_results.json",
+    "baseline_review": "evaluation\\generation_quality_review.json",
+    "review_status": "COMPLETED",
+    "scoring_rubric": null,
+    "summary": {
+        "total_questions": 16,
+        "answerable_questions": 12,
+        "unanswerable_questions": 4,
+        "candidate_manual_quality_score": 90,
+        "candidate_manual_quality_maximum": 96,
+        "candidate_manual_quality_percentage": 93.75,
+        "dimension_scores": {
+            "factual_correctness": {
+                "score": 24,
+                "maximum": 24,
+                "percentage": 100.0
+            },
+            "semantic_faithfulness": {
+                "score": 22,
+                "maximum": 24,
+                "percentage": 91.67
+            },
+            "completeness": {
+                "score": 21,
+                "maximum": 24,
+                "percentage": 87.5
+            },
+            "citation_accuracy": {
+                "score": 23,
+                "maximum": 24,
+                "percentage": 95.83
+            }
+        },
+        "candidate_correct_abstentions": "4/4"
+    },
+    "results": [
+        {
+            "id": "G01",
+            "type": "answerable",
+            "question": "How many attention heads does the original Transformer use?",
+            "original_prompt_answer": "The original Transformer uses eight parallel attention heads  [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 5].",
+            "candidate_prompt_answer": "The original Transformer uses 8 parallel attention heads [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 5].",
+            "candidate_manual_review": {
+                "factual_correctness": 2,
+                "semantic_faithfulness": 2,
+                "completeness": 2,
+                "citation_accuracy": 2,
+                "total_score": 8,
+                "notes": "Correct, complete answer with appropriate supporting citation.",
+                "review_status": "COMPLETED"
+            }
+        },
+        {
+            "id": "G02",
+            "type": "answerable",
+            "question": "How does scaled dot-product attention calculate the attention weights?",
+            "original_prompt_answer": "Scaled dot‑product attention first computes the dot product between each query vector and all key vectors. Each resulting dot product is then divided by the square‑root of the key dimension \\(d_k\\) to counteract large magnitude values. Finally, a softmax is applied to these scaled scores, producing the attention weights that are used to weight the corresponding values [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 4] [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 4].",
+            "candidate_prompt_answer": "Scaled dot‑product attention first computes the dot product between each query vector and all key vectors. Each resulting dot product is then divided by the square‑root of the key dimension \\(d_k\\) to scale it, and finally a softmax function is applied to these scaled scores to produce the attention weights that are used to weight the values [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 4] [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 4].",
+            "candidate_manual_review": {
+                "factual_correctness": 2,
+                "semantic_faithfulness": 2,
+                "completeness": 2,
+                "citation_accuracy": 2,
+                "total_score": 8,
+                "notes": "Correct explanation of scaled dot-product attention. Duplicate citation is redundant but valid.",
+                "review_status": "COMPLETED"
+            }
+        },
+        {
+            "id": "G03",
+            "type": "answerable",
+            "question": "Why does the Transformer use positional encoding?",
+            "original_prompt_answer": "The Transformer has no recurrence or convolution to capture token order, so it must inject explicit information about where each token appears in the sequence. Positional encodings are added to the input embeddings to provide relative or absolute position information to the model  [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 6].",
+            "candidate_prompt_answer": "The Transformer has no recurrence or convolution to convey token order, so it must inject explicit information about where each token appears in the sequence. Positional encodings are added to the input embeddings to provide relative or absolute position information, enabling the model to distinguish the order of tokens  [Source: data/NIPS-2017-attention-is-all-you-need-Paper.pdf, Page: 6].",
+            "candidate_manual_review": {
+                "factual_correctness": 2,
+                "semantic_faithfulness": 2,
+                "completeness": 1,
+                "citation_accuracy": 2,
+                "total_score": 7,
+                "notes": "Explains positional information and sequence order, but omits the sine/cosine implementation detail present in the retrieved context.",
+                "review_status": "COMPLETED"
+            }
+        },
+        {
+            "id": "G04",
+            "type": "answerable",
+            "question": "How many items did independent sellers in the United States sell in 2023?",
+            "original_prompt_answer": "Independent sellers in the United States sold more than 4.5 billion items in 2023 [Source: data/amazon_small_business_report_2023.pdf, Page: 3].",
+            "candidate_prompt_answer": "Independent sellers in the United States sold **more than 4.5 billion items** in 2023 [Source: data/amazon_small_business_report_2023.pdf, Page: 3] [Source: data/amazon_small_business_report_2023.pdf, Page: 2]",
+            "candidate_manual_review": {
+                "factual_correctness": 2,
+                "semantic_faithfulness": 2,
+                "completeness": 1,
+                "citation_accuracy": 2,
+                "total_score": 7,
+                "notes": "States more than 4.5 billion items but omits the approximately 8,600 items per minute detail present in the retrieved context.",
+                "review_status": "COMPLETED"
+            }
+        },
+        {
+            "id": "G05",
+            "type": "answerable",
+            "question": "What percentage of sales in Amazon's store came from independent sellers?",
+            "original_prompt_answer": "More than 60 % of the sales in Amazon’s store came from independent sellers [Source: data/amazon_small_business_report_2023.pdf, Page: 3] [Source: data/amazon_small_business_report_2023.pdf, Page: 2].",
+            "candidate_prompt_answer": "More than 60 % of the sales in Amazon’s store came from independent sellers [Source: data/amazon_small_business_report_2023.pdf, Page: 3] [Source: data/amazon_small_business_report_2023.pdf, Page: 2]",
+            "candidate_manual_review": {
+                "factual_correctness": 2,
+                "semantic_faithfulness": 2,
+                "completeness": 2,
+                "citation_accuracy": 2,
+                "total_score": 8,
+                "notes": "Correct, complete answer with appropriate supporting citation.",
+                "review_status": "COMPLETED"
+            }
+        },
+        {
+            "id": "G06",
+            "type": "answerable",
+            "question": "How many people did independent sellers in Amazon's store employ in the United States in 2023?",
+            "original_prompt_answer": "Independent sellers in Amazon’s store employed **more than 1.8 million people in the United States in 2023** [Source: data/amazon_small_business_report_2023.pdf, Page: 3].",
+            "candidate_prompt_answer": "Independent sellers in Amazon’s store employed more than 1.8 million people in the United States in 2023 [Source: data/amazon_small_business_report_2023.pdf, Page: 3].",
+            "candidate_manual_review": {
+                "factual_correctness": 2,
+                "semantic_faithfulness": 2,
+                "completeness": 2,
+                "citation_accuracy": 2,
+                "total_score": 8,
+                "notes": "Correct, complete answer with appropriate supporting citation.",
+                "review_status": "COMPLETED"
+            }
+        },
+        {
+            "id": "G07",
+            "type": "answerable",
+            "question": "Why is acknowledging a partner's feelings important after an argument?",
+            "original_prompt_answer": "Acknowledging a partner’s feelings after an argument shows respect and lets them know they have been heard.  When you recognize that something you said or did upset them and offer an apology, it makes the other person feel respected, heard, and reassured that you are trying to repair the situation, which in turn strengthens the relationship [Source: data/amity_relationship_care.pdf, Page: 23].  This act of acknowledgment is described as a “communication super‑power” that helps move the couple toward repair and rebuilding trust [Source: data/amity_relationship_care.pdf, Page: 23].",
+            "candidate_prompt_answer": "Acknowledging a partner’s feelings after an argument shows respect and lets them feel heard, which helps them see that you are trying to repair the situation and strengthens the relationship [Source: data/amity_relationship_care.pdf, Page: 23]. It is described as a “communication super‑power” that promotes repair and trust [Source: data/amity_relationship_care.pdf, Page: 23].",
+            "candidate_manual_review": {
+                "factual_correctness": 2,
+                "semantic_faithfulness": 1,
+                "completeness": 2,
+                "citation_accuracy": 1,
+                "total_score": 6,
+                "notes": "Core explanation is supported, but the claim about promoting trust is not clearly established by the retrieved context; citation precision is weakened.",
+                "review_status": "COMPLETED"
+            }
+        },
+        {
+            "id": "G08",
+            "type": "answerable",
+            "question": "Why does the Relationship Care book recommend using 'I' instead of 'You' during disagreements?",
+            "original_prompt_answer": "The book advises using “I” statements because beginning a remark with “You” tends to put the other person on the defensive— they feel criticised and blamed, which often leads to a negative, unproductive conversation.  By contrast, an “I” statement lets you own your own feelings and share them in a non‑confrontational way, making it more likely that both partners will listen and have a positive dialogue [Source: data/amity_relationship_care.pdf, Page: 24].",
+            "candidate_prompt_answer": "The book advises using “I” statements because saying things that begin with “You” puts the other person on the defensive—they feel criticised and blamed, which leads to a negative, unproductive conversation. In contrast, “I” statements let you own and share your own feelings in a non‑confrontational way, making it more likely that both partners will listen and have a positive dialogue [Source: data/amity_relationship_care.pdf, Page: 24].",
+            "candidate_manual_review": {
+                "factual_correctness": 2,
+                "semantic_faithfulness": 2,
+                "completeness": 2,
+                "citation_accuracy": 2,
+                "total_score": 8,
+                "notes": "Correct, complete explanation with appropriate supporting citation.",
+                "review_status": "COMPLETED"
+            }
+        },
+        {
+            "id": "G09",
+            "type": "answerable",
+            "question": "What are some helpful ways partners can improve their relationship according to the book?",
+            "original_prompt_answer": "The book suggests several practical actions that partners can take to strengthen their relationship, such as:\n\n- **Take a short reflection** – spend about five minutes thinking about a situation before responding, so you can choose a more productive reaction [Source: data/amity_relationship_care.pdf, Page: 4].  \n- **Acknowledge each other and show respect** – focus on respectful communication rather than criticism or blame [Source: data/amity_relationship_care.pdf, Page: 4].  \n- **Practice compassion, kindness and empathy** – actively try to see things from your partner’s perspective and respond with understanding [Source: data/amity_relationship_care.pdf, Page: 12].  \n- **Be kind in everyday interactions** – look for opportunities to say or do something kind [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Listen to learn, not just to respond** – listen with the intention of truly understanding your partner’s feelings [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Consider your partner’s love language** – tailor your actions to the ways they feel most loved and appreciated [Source: data/amity_relationship_care.pdf, Page: 26].  \n- **Repair conflicts** – engage in repair strategies after disagreements to help restore the connection [Source: data/amity_relationship_care.pdf, Page: 26].  \n\nThese steps together form a set of helpful ways partners can improve their relationship according to the booklet.",
+            "candidate_prompt_answer": "Helpful ways partners can improve their relationship, as described in the book, include:\n\n- Take a few minutes (about 5 minutes) to reflect on a situation before responding, choosing better decisions and focusing on acknowledgment and respect rather than criticism or blame [Source: data/amity_relationship_care.pdf, Page: 4].  \n- Practice compassion, kindness, and empathy—actively trying to see things from the other person’s perspective and understanding their experience [Source: data/amity_relationship_care.pdf, Page: 12].  \n- Be kind in everyday interactions; look for opportunities to say or do something kind [Source: data/amity_relationship_care.pdf, Page: 26].  \n- Communicate positively by **listening to learn**, not just listening to respond [Source: data/amity_relationship_care.pdf, Page: 26].  \n- Consider your partner’s love language and act in ways that speak to it [Source: data/amity_relationship_care.pdf, Page: 26].  \n- Engage in “repair” behaviors—actions that help restore the connection after a conflict [Source: data/amity_relationship_care.pdf, Page: 26].  \n\nThese practices together support healthier, stronger relationships.",
+            "candidate_manual_review": {
+                "factual_correctness": 2,
+                "semantic_faithfulness": 1,
+                "completeness": 1,
+                "citation_accuracy": 2,
+                "total_score": 6,
+                "notes": "Several recommendations are supported, but communicating needs and explicit apology are not fully covered as distinct actions; some repair wording is interpretive.",
+                "review_status": "COMPLETED"
+            }
+        },
+        {
+            "id": "G10",
+            "type": "answerable",
+            "question": "What do group dynamics refer to?",
+            "original_prompt_answer": "Group dynamics refer to a system of behaviours and psychological processes that occur within a social ingroup (intragroup dynamics) or between social outgroups (intergroup dynamics) [Source: data/psychology_human_relationships.pdf, Page: 20].",
+            "candidate_prompt_answer": "Group dynamics refer to a system of behaviours and psychological processes that occur within a social ingroup (intragroup dynamics) or between social outgroups (intergroup dynamics) [Source: data/psychology_human_relationships.pdf, Page: 20].",
+            "candidate_manual_review": {
+                "factual_correctness": 2,
+                "semantic_faithfulness": 2,
+                "completeness": 2,
+                "citation_accuracy": 2,
+                "total_score": 8,
+                "notes": "Correct definition with appropriate supporting citation.",
+                "review_status": "COMPLETED"
+            }
+        },
+        {
+            "id": "G11",
+            "type": "answerable",
+            "question": "What is the difference between cooperation and competition in group dynamics?",
+            "original_prompt_answer": "Cooperation is a prosocial process in which individuals work or act together so that everyone gains a mutual benefit, and it typically takes place **within** an ingroup (an intragroup process). Competition is the opposite: individuals pursue a selfish, non‑shared goal, and it usually occurs **between** different outgroups (an intergroup process) [Source: data/psychology_human_relationships.pdf, Page: 20] [Source: data/psychology_human_relationships.pdf, Page: 20].",
+            "candidate_prompt_answer": "Cooperation is a prosocial process in which individuals work or act together so that everyone benefits; it typically occurs **within ingroups** and is considered an **intragroup** dynamic. Competition is the opposite—individuals pursue selfish, non‑shared goals, and it usually takes place **between outgroups**, making it an **intergroup** dynamic [Source: data/psychology_human_relationships.pdf, Page: 20] [Source: data/psychology_human_relationships.pdf, Page: 20].",
+            "candidate_manual_review": {
+                "factual_correctness": 2,
+                "semantic_faithfulness": 2,
+                "completeness": 2,
+                "citation_accuracy": 2,
+                "total_score": 8,
+                "notes": "Correct distinction between cooperation and competition with appropriate supporting citation.",
+                "review_status": "COMPLETED"
+            }
+        },
+        {
+            "id": "G12",
+            "type": "answerable",
+            "question": "What three types of cooperation within ingroups were identified by Tyler and Blader?",
+            "original_prompt_answer": "Tyler and Blader (2001) identified three types of cooperation within ingroups:\n\n1. **Following the group’s rules**  \n2. **Conducting work on behalf of the group**  \n3. **An intention to stay within the group**  \n\n [Source: data/psychology_human_relationships.pdf, Page: 21]",
+            "candidate_prompt_answer": "Tyler and Blader (2001) identified three types of ingroup cooperation:  \n\n1. Following the group’s rules.  \n2. Conducting work on behalf of the group.  \n3. An intention to stay within the group.  \n\n [Source: data/psychology_human_relationships.pdf, Page: 21]",
+            "candidate_manual_review": {
+                "factual_correctness": 2,
+                "semantic_faithfulness": 2,
+                "completeness": 2,
+                "citation_accuracy": 2,
+                "total_score": 8,
+                "notes": "Correctly identifies all three types of ingroup cooperation with appropriate supporting citation.",
+                "review_status": "COMPLETED"
+            }
+        },
+        {
+            "id": "G13",
+            "type": "unanswerable",
+            "question": "Who invented the Python programming language?",
+            "original_prompt_answer": "I cannot find the answer in the provided documents.",
+            "candidate_prompt_answer": "I cannot find the answer in the provided documents.",
+            "abstention_check": {
+                "candidate_correct": true
+            }
+        },
+        {
+            "id": "G14",
+            "type": "unanswerable",
+            "question": "What was Amazon's total worldwide net revenue in 2023?",
+            "original_prompt_answer": "I cannot find the answer in the provided documents.",
+            "candidate_prompt_answer": "I cannot find the answer in the provided documents.",
+            "abstention_check": {
+                "candidate_correct": true
+            }
+        },
+        {
+            "id": "G15",
+            "type": "unanswerable",
+            "question": "Which country won the 2023 FIFA Women's World Cup?",
+            "original_prompt_answer": "I cannot find the answer in the provided documents.",
+            "candidate_prompt_answer": "I cannot find the answer in the provided documents.",
+            "abstention_check": {
+                "candidate_correct": true
+            }
+        },
+        {
+            "id": "G16",
+            "type": "unanswerable",
+            "question": "What is the capital city of Japan?",
+            "original_prompt_answer": "I cannot find the answer in the provided documents.",
+            "candidate_prompt_answer": "I cannot find the answer in the provided documents.",
+            "abstention_check": {
+                "candidate_correct": true
+            }
+        }
+    ]
+}
